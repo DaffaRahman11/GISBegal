@@ -9,8 +9,18 @@
                         <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
                          place while helping teams to reach sales goals. </p>
                     </div>
-                    <a href="page-add-sale.html" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
+                    <a href="/curanmor/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Data Curanmor</a>
                 </div>
+                @if (session()->has('succes'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('succes') }}
+                </div>
+                @endif
+                @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+                @endif
             </div>
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
@@ -40,9 +50,9 @@
                                 </div>
                             </td>
                             <td>{{ $curanmor->id }}</td>
-                            <td>{{ $curanmor-> punyaKecamatanrCuranmor -> nama_kecamatan }}</td>
-                            <td>{{ $curanmor-> jumlah_curanmor }}</td>
-                            <td>{{ $curanmor-> punyaKlasterCuranmor -> nama_klaster }}</td>
+                            <td>{{ $curanmor->punyaKecamatanCuranmor->nama_kecamatan }}</td>
+                            <td>{{ $curanmor->jumlah_curanmor }}</td>
+                            <td style="background-color: {{ $curanmor->punyaKlasterCuranmor->warna }}">{{ $curanmor->punyaKlasterCuranmor->nama_klaster }}</td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
                                     <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"

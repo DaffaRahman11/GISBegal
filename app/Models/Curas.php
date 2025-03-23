@@ -16,8 +16,9 @@ class Curas extends Model
     public function punyaKlasterCuras(): BelongsTo{
         return $this->belongsTo(Klaster::class, 'klaster_id');
     }
+
     
-    public function punyaKecamatanrCuras(): BelongsTo {
+    public function punyaKecamatanCuras(): BelongsTo {
         return $this->belongsTo(Kecamatan::class, 'kecamatan_id'); // Pastikan FK benar
     }
     

@@ -18,7 +18,12 @@ Route::get('/blank', function () {
     return view('admin.dashboardBlank');
 });
 
+Route::get('/mapcuras', function () {
+    return view('admin.dashboardMapCuras');
+});
+
+
 Route::resource('/kecamatan', KecamatanController::class) ->parameters(['data-kecamatan' => 'kecamatan']);
-Route::resource('/Curas', CurasController::class) ->parameters(['data-curas' => 'curas']);
-Route::resource('/Curanmor', CuranmorController::class) ->parameters(['data-curanmor' => 'curanmor']);
-Route::resource('/Klaster', KlasterController::class) ->parameters(['data-klaster' => 'klaster']);
+Route::resource('/curas', CurasController::class);
+Route::resource('/curanmor', CuranmorController::class) ->parameters(['data-curanmor' => 'curanmor']);
+Route::resource('/klaster', KlasterController::class) ->parameters(['data-klaster' => 'klaster']);

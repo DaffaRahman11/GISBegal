@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Klaster;
 use App\Models\Curanmor;
+use App\Models\Kecamatan;
 use Illuminate\Http\Request;
 
 class CuranmorController extends Controller
@@ -20,15 +22,27 @@ class CuranmorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboardTambahCuranmor', ['kecamatans' => Kecamatan::all()], ['klasters' => Klaster::all()]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     *Store a newly created resource in storage.
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $validateData = $request->validate([
+                'kecamatan_id' =>'required|max:255|exists:kecamatans,id|unique:curanmors,kecamatan_id',
+                'jumlah_curanmor' =>'required',
+                'klaster_id' =>'required|max:255|exists:klasters,id',
+
+            ]);
+    
+            Curanmor::create($validateData);
+            return redirect('/curanmor')->with('succes', 'Berhasil Menambahkan Data Curanmor Baru');
+        }catch (\Exception $e){
+            return redirect('/curanmor')->with('error', 'Gagal Menambahkan Data Curanmor Baru');
+        }
     }
 
     /**

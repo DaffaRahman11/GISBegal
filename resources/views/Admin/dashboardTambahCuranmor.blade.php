@@ -10,33 +10,36 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="page-list-returns.html" data-toggle="validator">
+                        <form action="/curanmor" data-toggle="validator" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Nama Kecamatan *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <select  class="selectpicker form-control" data-style="py-0" id="kecamatan_id" name="kecamatan_id">
                                             <option value="" selected disabled>Pilih Kecamatan</option>
-                                            <option>Leces</option>
-                                            <option>Dringu</option>
-                                            <option>Pajarakan</option>
+                                            @foreach ( $kecamatans as $kecamatan )
+                                            <option value="{{ $kecamatan -> id }}" >{{ $kecamatan -> nama_kecamatan }}</option>
+                                            @endforeach
+                                            
                                         </select>
                                     </div>
                                 </div>          
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Jumlah Kasus Curanmor *</label>
-                                        <input type="text" class="form-control" placeholder="Jumlah Kasus Curanmor">
+                                        <input type="text" class="form-control" placeholder="Jumlah Kasus Curanmor" id="curanmor" name="jumlah_curanmor">
                                     </div>
                                 </div>
                                 <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Klaster *</label>
-                                        <select name="type" class="selectpicker form-control" data-style="py-0">
+                                        <select  class="selectpicker form-control" data-style="py-0" name="klaster_id" id="klaster_id">
                                             <option value="" selected disabled>Pilih Klaster</option>
-                                            <option>Aman</option>
-                                            <option>Sedang</option>
-                                            <option>Rawan</option>
+                                            @foreach ( $klasters as $klaster )
+                                            <option value="{{ $klaster -> id }}" style="background-color: {{ $klaster->warna }}">{{ $klaster -> nama_klaster }}</option> 
+                                            @endforeach
+                                            
                                         </select>
                                     </div>
                                 </div>

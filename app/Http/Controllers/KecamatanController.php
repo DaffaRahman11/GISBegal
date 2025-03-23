@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Crypt;
 
 class KecamatanController extends Controller
 {
@@ -21,7 +22,7 @@ class KecamatanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboardTambahKecamatan');
     }
 
     /**
@@ -29,7 +30,17 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $validateData = $request->validate([
+                'nama_kecamatan' =>'required|max:255|unique:kecamatans,nama_kecamatan',
+            ]);
+    
+            Kecamatan::create($validateData);
+            return redirect('/kecamatan')->with('succes', 'Berhasil Menambahkan Data Kecamatan Baru');
+        }catch (\Exception $e){
+            return redirect('/kecamatan')->with('error', 'Gagal Menambahkan Data Kecamatan Baru');
+        }
+        
     }
 
     /**
@@ -37,7 +48,7 @@ class KecamatanController extends Controller
      */
     public function show(Kecamatan $kecamatan)
     {
-        //
+        
     }
 
     /**
@@ -45,7 +56,14 @@ class KecamatanController extends Controller
      */
     public function edit(Kecamatan $kecamatan)
     {
-        //
+        try {
+            
+            return view('admin.dashboardEditKecamatan', [
+                'kecamatan' => $kecamatan
+            ]);
+        } catch (\Exception $e) {
+            abort(404); // Jika dekripsi gagal, tampilkan halaman 404
+        }
     }
 
     /**
@@ -53,7 +71,18 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, Kecamatan $kecamatan)
     {
-        //
+        try{
+            $validateData = $request->validate([
+                'nama_kecamatan' =>'required|max:255|unique:kecamatans,nama_kecamatan',
+            ]);
+    
+            Kecamatan::where('id', $kecamatan->id)->update($validateData);
+            return redirect('/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Ubah');
+        }catch (\Exception $e){
+            return redirect('/kecamatan')->with('error', 'Data Kecamatan Gagal Di Ubah');
+        }
+        
+        
     }
 
     /**
@@ -61,6 +90,14 @@ class KecamatanController extends Controller
      */
     public function destroy(Kecamatan $kecamatan)
     {
-        //
+        try{
+            Kecamatan::destroy($kecamatan->id);
+            return redirect('/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Hapus');
+
+        }catch (\Exception $e){
+            return redirect('/kecamatan')->with('error', 'Data Kecamatan '. $kecamatan->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Kecamatan '. $kecamatan->nama_kecamatan.' Terlebih Dahulu');
+        }
+        
+    
     }
 }

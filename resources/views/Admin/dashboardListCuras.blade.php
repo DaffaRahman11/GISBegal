@@ -9,8 +9,18 @@
                         <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
                          place while helping teams to reach sales goals. </p>
                     </div>
-                    <a href="page-add-sale.html" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
+                    <a href="/curas/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kasus Curas</a>
                 </div>
+                @if (session()->has('succes'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('succes') }}
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
             </div>
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
@@ -39,18 +49,20 @@
                                     <label for="checkbox2" class="mb-0"></label>
                                 </div>
                             </td>
-                            <td>{{ $curas -> id }}</td>
-                            <td>{{ $curas -> punyaKecamatanrCuras -> nama_kecamatan }}</td>
-                            <td>{{ $curas -> jumlah_curas }}</td>
-                            <td>{{ $curas -> punyaKlasterCuras -> nama_klaster }}</td>
+                            <td>{{ $curas->id }}</td>
+                            <td>{{ $curas->punyaKecamatanCuras->nama_kecamatan}}</td>
+                            <td>{{ $curas->jumlah_curas }}</td>
+                            <td style="background-color: {{ $curas->punyaKlasterCuras->warna }}">{{ $curas -> punyaKlasterCuras -> nama_klaster }}</td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
-                                    <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
-                                        href="#"><i class="ri-eye-line mr-0"></i></a>
                                     <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
-                                        href="#"><i class="ri-pencil-line mr-0"></i></a>
-                                    <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
-                                        href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                        href="/curas/{{ $curas->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
+                                    <form action="/curas/{{ $curas->id }}" method="post" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>
+                                            
+                                    </form>
                                 </div>
                             </td>
                         </tr>

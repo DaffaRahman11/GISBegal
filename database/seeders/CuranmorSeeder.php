@@ -27,7 +27,8 @@ class CuranmorSeeder extends Seeder
         // Buat data kecamatan dengan klaster_id yang valid
         Curanmor::create([
             'kecamatan_id' => $kecamatanId1->id,
-            'jumlah_curanmor' => 90, // Ambil klaster secara acak
+            'jumlah_curanmor' => 90, 
+            'klaster_id' => $klasterId->random(),// Ambil klaster secara acak
         ]);
         Curanmor::create([
             'kecamatan_id' => $kecamatanId2->id,

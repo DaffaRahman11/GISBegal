@@ -17,7 +17,7 @@ class Curanmor extends Model
         return $this->belongsTo(Klaster::class, 'klaster_id');
     }
     
-    public function punyaKecamatanrCuranmor(): BelongsTo{
+    public function punyaKecamatanCuranmor(): BelongsTo{
         return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
 }

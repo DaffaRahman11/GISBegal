@@ -9,9 +9,19 @@
                         <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
                          place while helping teams to reach sales goals. </p>
                     </div>
-                    <a href="page-add-sale.html" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
+                    <a href="/klaster/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
                 </div>
             </div>
+            @if (session()->has('succes'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('succes') }}
+                    </div>
+                @endif
+                @if (session()->has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ session('error') }}
+                    </div>
+                @endif
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
                 <table class="data-table table mb-0 tbl-server-info">
@@ -40,15 +50,17 @@
                             </td>
                             <td>{{ $klaster -> id }}</td>
                             <td>{{ $klaster -> nama_klaster }}</td>
-                            <td>{{ $klaster -> warna }}</td>
+                            <td style="background-color: {{ $klaster->warna }}" >{{ $klaster -> warna }}</td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
-                                    <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
-                                        href="#"><i class="ri-eye-line mr-0"></i></a>
-                                    <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
-                                        href="#"><i class="ri-pencil-line mr-0"></i></a>
-                                    <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
-                                        href="#"><i class="ri-delete-bin-line mr-0"></i></a>
+                                    <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" 
+                                        href="/klaster/{{ $klaster->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
+                                        <form action="/klaster/{{ $klaster->id }}" method="post" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>
+                                            
+                                        </form>
                                 </div>
                             </td>
                         </tr>

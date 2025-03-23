@@ -20,7 +20,7 @@ class KlasterController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboardTambahKlaster');
     }
 
     /**
@@ -28,7 +28,19 @@ class KlasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        try{
+            $validateData = $request->validate([
+                'nama_klaster' =>'required|max:255|unique:klasters,nama_klaster',
+                'warna' =>'required|max:255',
+            ]);
+    
+            Klaster::create($validateData);
+            return redirect('/klaster')->with('succes', 'Berhasil Menambahkan Klaster Baru');
+        }catch (\Exception $e){
+            
+            return redirect('/klaster')->with('error', 'Gagal Menambahkan Klaster Baru');
+        }
     }
 
     /**
@@ -44,7 +56,14 @@ class KlasterController extends Controller
      */
     public function edit(Klaster $klaster)
     {
-        //
+        try {
+            
+            return view('admin.dashboardEditKlaster', [
+                'klaster' => $klaster
+            ]);
+        } catch (\Exception $e) {
+            abort(404); // Jika dekripsi gagal, tampilkan halaman 404
+        }
     }
 
     /**
@@ -52,7 +71,20 @@ class KlasterController extends Controller
      */
     public function update(Request $request, Klaster $klaster)
     {
-        //
+        try {
+            $validateData = $request->validate([
+                'nama_klaster' => 'sometimes|required|max:255|unique:klasters,nama_klaster,' . $klaster->id,
+                'warna' => 'sometimes|required|max:255',
+            ]);
+        
+            // Hanya update data yang diisi (tidak mengganti dengan null)
+            Klaster::where('id', $klaster->id)->update(array_filter($validateData));
+        
+            return redirect('/klaster')->with('success', 'Data Klaster Berhasil Diubah');
+        } catch (\Exception $e) {
+            return redirect('/klaster')->with('error', 'Data Klaster Gagal Diubah');
+        }
+        
     }
 
     /**
@@ -60,6 +92,12 @@ class KlasterController extends Controller
      */
     public function destroy(Klaster $klaster)
     {
-        //
+        try{
+            Klaster::destroy($klaster->id);
+            return redirect('/klaster')->with('succes', 'Data Klaster Berhasil Di Hapus');
+
+        }catch (\Exception $e){
+            return redirect('/klaster')->with('error', 'Data Klaster '. $klaster->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Klaster '. $klaster->nama_kecamatan.' Terlebih Dahulu');
+        }
     }
 }

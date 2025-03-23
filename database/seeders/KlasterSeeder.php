@@ -15,17 +15,17 @@ class KlasterSeeder extends Seeder
     {
         Klaster::create([
             'nama_klaster'=> 'Aman',
-            'warna'=> 'Hijau',
+            'warna'=> '#00FF00',
         ]);
         
         Klaster::create([
             'nama_klaster'=> 'Sedang',
-            'warna'=> 'Kuning',
+            'warna'=> '#FFFF00',
         ]);
         
         Klaster::create([
             'nama_klaster'=> 'Rawan',
-            'warna'=> 'Merah',
+            'warna'=> '#FF0000',
         ]);
     }
 }
