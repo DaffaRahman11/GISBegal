@@ -15,45 +15,44 @@ class CuranmorSeeder extends Seeder
      */
     public function run(): void
     {
-        $klasterId = Klaster::pluck('id');
-        $kecamatanId1 = Kecamatan::where('id', '1')->first();
-        $kecamatanId2 = Kecamatan::where('id', '2')->first();
-        $kecamatanId3 = Kecamatan::where('id', '3')->first();
-        $kecamatanId4 = Kecamatan::where('id', '4')->first();
-        $kecamatanId5 = Kecamatan::where('id', '5')->first();
-        $kecamatanId6 = Kecamatan::where('id', '6')->first();
+        $klasterIds = Klaster::pluck('id'); // Ambil semua ID klaster
+        $kecamatanIds = Kecamatan::pluck('id'); // Ambil semua ID kecamatan
 
-        
-        // Buat data kecamatan dengan klaster_id yang valid
-        Curanmor::create([
-            'kecamatan_id' => $kecamatanId1->id,
-            'jumlah_curanmor' => 90, 
-            'klaster_id' => $klasterId->random(),// Ambil klaster secara acak
-        ]);
-        Curanmor::create([
-            'kecamatan_id' => $kecamatanId2->id,
-            'jumlah_curanmor' => 76,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curanmor::create([
-            'kecamatan_id' => $kecamatanId3->id,
-            'jumlah_curanmor' => 23,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curanmor::create([
-            'kecamatan_id' => $kecamatanId4->id,
-            'jumlah_curanmor' => 87,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curanmor::create([
-            'kecamatan_id' => $kecamatanId5->id,
-            'jumlah_curanmor' => 56,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curanmor::create([
-            'kecamatan_id' => $kecamatanId6->id,
-            'jumlah_curanmor' => 54,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
+        // Data jumlah curanmor untuk setiap kecamatan
+        $dataCuranmor= [
+            1 => 5,
+            2 => 4,
+            3 => 2,
+            4 => 22,
+            5 => 4,
+            6 => 18,
+            7 => 0,
+            8 => 37,
+            9 => 9,
+            10 => 3,
+            11 => 2,
+            12 => 13,
+            13 => 1,
+            14 => 21,
+            15 => 14,
+            16 => 4,
+            17 => 10,
+            18 => 0,
+            19 => 1,
+            20 => 10,
+            21 => 1,
+            22 => 2,
+            23 => 15,
+            24 => 4,
+        ];
+
+        // Looping untuk membuat data curanmor berdasarkan kecamatan
+        foreach ($kecamatanIds as $kecamatanId) {
+            Curanmor::create([
+                'kecamatan_id' => $kecamatanId,
+                'jumlah_curanmor' => $dataCuranmor[$kecamatanId], // Gunakan nilai default jika tidak ada data
+                'klaster_id' => $klasterIds->random(), // Pilih klaster secara acak
+            ]);
+        }
     }
 }

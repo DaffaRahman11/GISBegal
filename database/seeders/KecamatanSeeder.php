@@ -14,11 +14,15 @@ class KecamatanSeeder extends Seeder
     public function run(): void
     {
         Kecamatan::create([
-            'nama_kecamatan'=> 'Leces',
+            'nama_kecamatan'=> 'Bantaran',
         ]);
         
         Kecamatan::create([
-            'nama_kecamatan'=> 'Tegalsiwalan',
+            'nama_kecamatan'=> 'Banyuanyar',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Besuk',
         ]);
         
         Kecamatan::create([
@@ -26,7 +30,7 @@ class KecamatanSeeder extends Seeder
         ]);
         
         Kecamatan::create([
-            'nama_kecamatan'=> 'Kraksaan',
+            'nama_kecamatan'=> 'Gading',
         ]);
         
         Kecamatan::create([
@@ -34,7 +38,75 @@ class KecamatanSeeder extends Seeder
         ]);
         
         Kecamatan::create([
-            'nama_kecamatan'=> 'Gading',
+            'nama_kecamatan'=> 'Kotaanyar',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Kraksaan',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Krenjengan',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Krucil',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Kuripan',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Leces',
+        ]);
+ 
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Lumbang',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Maron',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Paiton',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Pakuniran',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Pajarakan',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Sukapura',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Sumber',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Sumberasih',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Tegalsiwalan',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Tiris',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Tongas',
+        ]);
+        
+        Kecamatan::create([
+            'nama_kecamatan'=> 'Wonomerto',
         ]);
     }
 }

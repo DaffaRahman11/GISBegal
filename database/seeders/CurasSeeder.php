@@ -15,45 +15,44 @@ class CurasSeeder extends Seeder
      */
     public function run(): void
     {
-        $klasterId = Klaster::pluck('id');
-        $kecamatanId1 = Kecamatan::where('id', '1')->first();
-        $kecamatanId2 = Kecamatan::where('id', '2')->first();
-        $kecamatanId3 = Kecamatan::where('id', '3')->first();
-        $kecamatanId4 = Kecamatan::where('id', '4')->first();
-        $kecamatanId5 = Kecamatan::where('id', '5')->first();
-        $kecamatanId6 = Kecamatan::where('id', '6')->first();
+        $klasterIds = Klaster::pluck('id'); // Ambil semua ID klaster
+        $kecamatanIds = Kecamatan::pluck('id'); // Ambil semua ID kecamatan
 
-        
-        // Buat data kecamatan dengan klaster_id yang valid
-        Curas::create([
-            'kecamatan_id' => $kecamatanId1->id,
-            'jumlah_curas' => 32,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curas::create([
-            'kecamatan_id' => $kecamatanId2->id,
-            'jumlah_curas' => 77,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curas::create([
-            'kecamatan_id' => $kecamatanId3->id,
-            'jumlah_curas' => 44,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curas::create([
-            'kecamatan_id' => $kecamatanId4->id,
-            'jumlah_curas' => 5,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curas::create([
-            'kecamatan_id' => $kecamatanId5->id,
-            'jumlah_curas' => 55,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
-        Curas::create([
-            'kecamatan_id' => $kecamatanId6->id,
-            'jumlah_curas' => 43,
-            'klaster_id' => $klasterId->random(), // Ambil klaster secara acak
-        ]);
+        // Data jumlah curas untuk setiap kecamatan (sesuaikan dengan kebutuhan)
+        $dataCuras = [
+            1 => 0,
+            2 => 0,
+            3 => 0,
+            4 => 0,
+            5 => 1,
+            6 => 1,
+            7 => 0,
+            8 => 0,
+            9 => 0,
+            10 => 0,
+            11 => 0,
+            12 => 0,
+            13 => 0,
+            14 => 0,
+            15 => 0,
+            16 => 0,
+            17 => 0,
+            18 => 0,
+            19 => 0,
+            20 => 1,
+            21 => 0,
+            22 => 0,
+            23 => 1,
+            24 => 0,
+        ];
+
+        // Looping untuk membuat data curas berdasarkan kecamatan
+        foreach ($kecamatanIds as $kecamatanId) {
+            Curas::create([
+                'kecamatan_id' => $kecamatanId,
+                'jumlah_curas' => $dataCuras[$kecamatanId], // Gunakan nilai default jika tidak ada data
+                'klaster_id' => $klasterIds->random(), // Pilih klaster secara acak
+            ]);
+        }
     }
 }

@@ -74,6 +74,14 @@ class CuranmorController extends Controller
      */
     public function destroy(Curanmor $curanmor)
     {
-        //
+        try{
+            $hapus = Curanmor::find($curanmor);
+            Curanmor::destroy($hapus);
+            return redirect('/curanmor')->with('succes', 'Data Curanmor Berhasil Di Hapus');
+
+        }catch (\Exception $e){
+
+            return redirect('/curanmor')->with('error', 'Data Curanmor '. $curanmor->nama_kecamatan .' Gagal Di Hapus');
+        }
     }
 }
