@@ -56,9 +56,20 @@ class CuranmorController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Curanmor $curanmor)
+    public function edit($curanmor)
     {
-        //
+        try {
+
+            $edit = Curanmor::find($curanmor);
+            
+            return view('admin.dashboardEditCuranmor', [
+                'curanmor' => $edit,
+                'kecamatans' => Kecamatan::all(),
+                'klasters' => Klaster::all(),
+            ]);
+        } catch (\Exception $e) {
+            abort(404);
+        }
     }
 
     /**
@@ -72,7 +83,7 @@ class CuranmorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Curanmor $curanmor)
+    public function destroy($curanmor)
     {
         try{
             $hapus = Curanmor::find($curanmor);
