@@ -18,16 +18,13 @@
                                 <div class="col-md-12"> 
                                     <div class="form-group">
                                         <label>Nama Kecamatan *</label>
-                                        <select  class="selectpicker form-control" data-style="py-0" id="kecamatan_id" name="kecamatan_id">
-                                            <option value="" selected disabled> Pilih Kecamatan  </option>
-                                            @foreach ( $kecamatans as $kecamatan )
-                                            <option value="{{ $kecamatan->id }}" 
-                                                {{ old('kecamatan_id', $curanmor->kecamatan_id) == $kecamatan->id ? 'selected' : '' }}>
-                                                {{ $kecamatan->nama_kecamatan }}
-                                            </option>
-                                            @endforeach
-                                            
-                                        </select>
+                                        <input type="text" class="form-control" placeholder="Nama Kecamatan" 
+                                            id="nama_kecamatan" name="nama_kecamatan" 
+                                            value="{{ $curanmor->punyaKecamatanCuranmor->nama_kecamatan }}" 
+                                            readonly>
+
+                                        <!-- Input hidden untuk mengirim ID kecamatan -->
+                                        <input type="hidden" name="kecamatan_id" value="{{ $curanmor->kecamatan_id }}">
                                     </div>
                                 </div>          
                                 <div class="col-md-6">

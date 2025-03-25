@@ -78,25 +78,39 @@ class CurasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Curas $curas)
+    public function update(Request $request, $id)
     {
         try {
-            $validateData = $request->validate([
-                'kecamatan_id' => 'sometimes|required|max:255' . $curas->kecamatan_id,
-                'jumlah_curas' => 'sometimes|required|integer',
-                'klaster_id' => 'sometimes|required|max:255' . $curas->klaster_id,
-                
+            // Cari data berdasarkan ID yang dikirim
+            $curas = Curas::findOrFail($id);
+
+            // Debugging untuk memastikan data ditemukan
+            // dd($curas->toArray()); // Jika berhasil, ini akan menampilkan data curas
+
+            // Validasi input
+            $request->validate([
+                'kecamatan_id' => [
+                    'required',
+                    'exists:kecamatans,id',
+                    Rule::unique('curas')->ignore($curas->id),
+                ],
+                'klaster_id' => 'required|exists:klasters,id',
+                'jumlah_curas' => 'required|integer|min:0',
             ]);
-    
-            // Pastikan hanya field yang diisi yang akan diperbarui
-            $curas->update(array_filter($validateData));
-    
+
+            // Update data
+            $curas->update([
+                'kecamatan_id' => $request->kecamatan_id,
+                'klaster_id' => $request->klaster_id,
+                'jumlah_curas' => $request->jumlah_curas,
+            ]);
+
             return redirect('/curas')->with('succes', 'Data Kecamatan Berhasil Diubah');
         } catch (\Exception $e) {
-            
-            return redirect('/curas')->with('error', 'Data Kecamatan Gagal Diubah');
+            return redirect('/curas')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
         }
     }
+
     
 
 
@@ -106,15 +120,23 @@ class CurasController extends Controller
      */
     public function destroy($curas)
     {
-        try{
+        try {
+            // Cari data berdasarkan ID
             $hapus = Curas::find($curas);
-            Curas::destroy($hapus);
-            return redirect('/curas')->with('succes', 'Data Curas Berhasil Di Hapus');
 
-        }catch (\Exception $e){
+            // Pastikan data ditemukan sebelum menghapus
+            if (!$hapus) {
+                return redirect('/curas')->with('error', 'Data tidak ditemukan.');
+            }
 
-            return dd($e);
-            // redirect('/curas')->with('error', 'Data Curas '. $curas->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Klaster '. $curas->nama_kecamatan.' Terlebih Dahulu');
+            // Hapus data
+            $hapus->delete();
+
+            return redirect('/curas')->with('succes', 'Data Curas Berhasil Dihapus');
+        } catch (\Exception $e) {
+            return redirect('/curas')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+    
+
 }

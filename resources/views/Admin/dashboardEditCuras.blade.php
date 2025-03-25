@@ -17,7 +17,18 @@
                             <div class="row">
                                 <div class="col-md-12"> 
                                     <div class="form-group">
+
                                         <label>Nama Kecamatan *</label>
+                                        <input type="text" class="form-control" placeholder="Nama Kecamatan" 
+                                            id="nama_kecamatan" name="nama_kecamatan" 
+                                            value="{{ $curas->punyaKecamatanCuras->nama_kecamatan }}" 
+                                            readonly>
+
+                                        <!-- Input hidden untuk mengirim ID kecamatan -->
+                                        <input type="hidden" name="kecamatan_id" value="{{ $curas->kecamatan_id }}">
+
+
+                                        {{-- <label>Nama Kecamatan *</label>
                                         <select  class="selectpicker form-control" data-style="py-0" id="kecamatan_id" name="kecamatan_id">
                                             <option value="" selected disabled> Pilih Kecamatan  </option>
                                             @foreach ( $kecamatans as $kecamatan )
@@ -27,7 +38,7 @@
                                             </option>
                                             @endforeach
                                             
-                                        </select>
+                                        </select> --}}
                                     </div>
                                 </div>          
                                 <div class="col-md-6">
@@ -49,7 +60,7 @@
                                     </div>
                                 </div>
                             </div>                            
-                            <button type="submit" class="btn btn-primary mr-2">Tambah Data Kasus Curas</button>
+                            <button type="submit" class="btn btn-primary mr-2">Ubah Data Kasus Curas</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </form>
                     </div>

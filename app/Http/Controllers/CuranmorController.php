@@ -6,6 +6,7 @@ use App\Models\Klaster;
 use App\Models\Curanmor;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class CuranmorController extends Controller
 {
@@ -77,7 +78,30 @@ class CuranmorController extends Controller
      */
     public function update(Request $request, Curanmor $curanmor)
     {
-        //
+            try {
+    
+                // Validasi input
+                $request->validate([
+                    'kecamatan_id' => [
+                        'required',
+                        'exists:kecamatans,id',
+                        Rule::unique('curanmors')->ignore($curanmor->id),
+                    ],
+                    'klaster_id' => 'required|exists:klasters,id',
+                    'jumlah_curanmor' => 'required|integer|min:0',
+                ]);
+    
+                // Update data
+                $curanmor->update([
+                    'kecamatan_id' => $request->kecamatan_id,
+                    'klaster_id' => $request->klaster_id,
+                    'jumlah_curanmor' => $request->jumlah_curanmor,
+                ]);
+    
+                return redirect('/curanmor')->with('succes', 'Data Kecamatan Berhasil Diubah');
+            } catch (\Exception $e) {
+                return redirect('/curanmor')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
+            }
     }
 
     /**
@@ -85,14 +109,22 @@ class CuranmorController extends Controller
      */
     public function destroy($curanmor)
     {
-        try{
+        try {
+            // Cari data berdasarkan ID
             $hapus = Curanmor::find($curanmor);
-            Curanmor::destroy($hapus);
-            return redirect('/curanmor')->with('succes', 'Data Curanmor Berhasil Di Hapus');
 
-        }catch (\Exception $e){
+            // Pastikan data ditemukan sebelum menghapus
+            if (!$hapus) {
+                return redirect('/curanmor')->with('error', 'Data tidak ditemukan.');
+            }
 
-            return redirect('/curanmor')->with('error', 'Data Curanmor '. $curanmor->nama_kecamatan .' Gagal Di Hapus');
+            // Hapus data
+            $hapus->delete();
+
+            return redirect('/curanmor')->with('succes', 'Data Curanmor Berhasil Dihapus');
+        } catch (\Exception $e) {
+            return redirect('/curanmor')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
+    
 }
