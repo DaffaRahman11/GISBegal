@@ -33,14 +33,14 @@
                                     <label for="checkbox1" class="mb-0"></label>
                                 </div>
                             </th>
-                            <th>id</th>
+                            <th>No</th>
                             <th>Nama Kecamatan</th>
                             <th>Jumlah Kasus Curas</th>
                             <th>Klaster</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-                    @foreach ( $Curases as $curas )
+                    @foreach ( $curases as $curas )
                     <tbody class="ligth-body">
                         <tr>
                             <td>
@@ -49,7 +49,7 @@
                                     <label for="checkbox2" class="mb-0"></label>
                                 </div>
                             </td>
-                            <td>{{ $curas->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $curas->punyaKecamatanCuras->nama_kecamatan}}</td>
                             <td>{{ $curas->jumlah_curas }}</td>
                             <td style="background-color: {{ $curas->punyaKlasterCuras->warna }}">{{ $curas -> punyaKlasterCuras -> nama_klaster }}</td>

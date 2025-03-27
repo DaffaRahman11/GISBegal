@@ -15,7 +15,9 @@ class CuranmorController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboardListCuranmor', ['curanmors' => Curanmor::all()]);
+        $curanmors = Curanmor::orderBy('jumlah_curanmor', 'asc')->get();
+        return view('admin.dashboardListCuranmor', compact('curanmors'));
+        
     }
 
     /**

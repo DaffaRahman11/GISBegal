@@ -33,7 +33,7 @@
                                     <label for="checkbox1" class="mb-0"></label>
                                 </div>
                             </th>
-                            <th>id</th>
+                            <th>No</th>
                             <th>Nama Kecamatan</th>
                             <th>Jumlah Kasus Curanmor</th>
                             <th>Klaster</th>
@@ -49,7 +49,7 @@
                                     <label for="checkbox2" class="mb-0"></label>
                                 </div>
                             </td>
-                            <td>{{ $curanmor->id }}</td>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $curanmor->punyaKecamatanCuranmor->nama_kecamatan}}</td>
                             <td>{{ $curanmor->jumlah_curanmor }}</td>
                             <td style="background-color: {{ $curanmor->punyaKlasterCuranmor->warna }}">{{ $curanmor->punyaKlasterCuranmor->nama_klaster }}</td>
