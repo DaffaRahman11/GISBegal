@@ -46,7 +46,7 @@ class KecamatanSeeder extends Seeder
         ]);
         
         Kecamatan::create([
-            'nama_kecamatan'=> 'Krenjengan',
+            'nama_kecamatan'=> 'Krejengan',
         ]);
         
         Kecamatan::create([
