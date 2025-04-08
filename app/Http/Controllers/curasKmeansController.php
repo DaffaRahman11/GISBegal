@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Curas;
 use Illuminate\Http\Request;
+use App\Models\Klaster;
 
 class curasKmeansController extends Controller
 {
@@ -11,7 +12,7 @@ class curasKmeansController extends Controller
     {
     $data = Curas::select('id', 'kecamatan_id', 'klaster_id', 'jumlah_curas')->orderBy('jumlah_curas', 'asc')->get();
 
-    $k = 3;
+    $k = Klaster::count('id');
     $maxIterasi = 100;
     $centroids = $data->random($k)->values()->map(function ($item) {
         return [
@@ -51,6 +52,8 @@ class curasKmeansController extends Controller
 
         $prevAssignment = $currentAssignment;
 
+        
+
         // Update centroid berdasarkan rata-rata
         foreach ($clustered as $key => $group) {
             $avg = collect($group)->avg('jumlah_curas');
@@ -61,17 +64,20 @@ class curasKmeansController extends Controller
             });
         }
     }
+    
 
     // Final mapping centroid ke klaster_id (aman/sedang/rawan)
     $finalCentroids = $centroids->map(function ($item, $index) {
         return ['index' => $index + 1, 'jumlah_curas' => $item['jumlah_curas']];
     })->sortBy('jumlah_curas')->values();
 
-    $centroidToKlaster = [
-        $finalCentroids[0]['index'] => 1, // aman
-        $finalCentroids[1]['index'] => 2, // sedang
-        $finalCentroids[2]['index'] => 3, // rawan
-    ];
+    $centroidToKlaster = [];
+
+    foreach ($finalCentroids as $i => $centroid) {
+        // Klaster ID mulai dari 1 (asumsi klaster di DB bernomor 1, 2, 3, ...)
+        $centroidToKlaster[$centroid['index']] = $i + 1;
+    }
+
 
     // Update ke database
     foreach ($data as $item) {
