@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CurasController;
+use App\Http\Controllers\KmeansController;
 use App\Http\Controllers\KlasterController;
 use App\Http\Controllers\CuranmorController;
-use App\Http\Controllers\curasKmeansController;
-use App\Http\Controllers\hasilIterasiController;
 use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\hasilIterasiController;
 
 Route::get('/', function () {
-    return view('admin.login');
+    return view('landing');
 });
 
 Route::get('/dashboard', function () {
@@ -29,5 +29,6 @@ Route::resource('/kecamatan', KecamatanController::class) ->parameters(['data-ke
 Route::resource('/curas', CurasController::class);
 Route::resource('/curanmor', CuranmorController::class) ->parameters(['data-curanmor' => 'curanmor']);
 Route::resource('/klaster', KlasterController::class) ->parameters(['data-klaster' => 'klaster']);
-Route::get('/hitung-kmeans', [curasKmeansController::class, 'hitungKMeans']);
+Route::get('/kmeans-curas', [KmeansController::class, 'KMeansCuras']);
+Route::get('/kmeans-curanmor', [KmeansController::class, 'KMeansCuranmor']);
 Route::get('/iterasiCuras', [hasilIterasiController::class, 'iterasiCuras']);

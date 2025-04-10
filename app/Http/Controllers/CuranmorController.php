@@ -6,6 +6,7 @@ use App\Models\Klaster;
 use App\Models\Curanmor;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use App\Services\KMeansService;
 use Illuminate\Validation\Rule;
 
 class CuranmorController extends Controller
@@ -90,7 +91,7 @@ class CuranmorController extends Controller
                         Rule::unique('curanmors')->ignore($curanmor->id),
                     ],
                     'klaster_id' => 'required|exists:klasters,id',
-                    'jumlah_curanmor' => 'required|integer|min:0',
+                    'jumlah_curanmor' => 'required|numeric|min:0',
                 ]);
     
                 // Update data
@@ -99,6 +100,12 @@ class CuranmorController extends Controller
                     'klaster_id' => $request->klaster_id,
                     'jumlah_curanmor' => $request->jumlah_curanmor,
                 ]);
+
+            $service = new KMeansService();
+            $hasil = $service->hitungKMeansCuranmor();
+
+            // simpan hasil ke file json
+            file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasil));
     
                 return redirect('/curanmor')->with('succes', 'Data Kecamatan Berhasil Diubah');
             } catch (\Exception $e) {

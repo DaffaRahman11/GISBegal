@@ -6,6 +6,7 @@ use App\Models\Curas;
 use App\Models\Klaster;
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use App\Services\KMeansService;
 use Illuminate\Validation\Rule;
 
 class CurasController extends Controller
@@ -105,6 +106,12 @@ class CurasController extends Controller
                 'klaster_id' => $request->klaster_id,
                 'jumlah_curas' => $request->jumlah_curas,
             ]);
+
+            $service = new KMeansService();
+            $hasil = $service->hitungKMeansCuras();
+
+            // simpan hasil ke file json
+            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
 
             return redirect('/curas')->with('succes', 'Data Kecamatan Berhasil Diubah');
         } catch (\Exception $e) {
