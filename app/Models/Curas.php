@@ -19,9 +19,11 @@ class Curas extends Model
 
     
     public function punyaKecamatanCuras(): BelongsTo {
-        return $this->belongsTo(Kecamatan::class, 'kecamatan_id'); // Pastikan FK benar
+        return $this->belongsTo(Kecamatan::class, 'kecamatan_id'); 
     }
     
+    protected $with = ['punyaKlasterCuras', 'punyaKecamatanCuras'];
+
 
     
 }

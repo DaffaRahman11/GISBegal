@@ -9,7 +9,7 @@
                         <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
                          place while helping teams to reach sales goals. </p>
                     </div>
-                    <a href="/curas/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kasus Curas</a>
+                    <a href="/dashboard/curas/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kasus Curas</a>
                 </div>
                 @if (session()->has('succes'))
                 <div class="alert alert-success" role="alert">
@@ -56,8 +56,8 @@
                             <td>
                                 <div class="d-flex align-items-center list-action">
                                     <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
-                                        href="/curas/{{ $curas->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
-                                    <form action="/curas/{{ $curas->id }}" method="post" class="d-inline">
+                                        href="/dashboard/curas/{{ $curas->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
+                                    <form action="/dashboard/curas/{{ $curas->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>

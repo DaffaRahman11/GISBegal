@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/curanmor/{{ $curanmor->id }}" data-toggle="validator" method="post">
+                        <form action="/dashboard/curanmor/{{ $curanmor->id }}" data-toggle="validator" method="post">
                             @method('put')
                             @csrf
                             <div class="row">
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                             </div>                            
-                            <button type="submit" class="btn btn-primary mr-2">Tambah Data Kasus CURANMOR</button>
+                            <button type="submit" class="btn btn-primary mr-2">Ubah Data Kasus CURANMOR</button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </form>
                     </div>

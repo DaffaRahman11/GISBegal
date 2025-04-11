@@ -36,10 +36,10 @@ class KlasterController extends Controller
             ]);
     
             Klaster::create($validateData);
-            return redirect('/klaster')->with('succes', 'Berhasil Menambahkan Klaster Baru');
+            return redirect('/dashboard/klaster')->with('succes', 'Berhasil Menambahkan Klaster Baru');
         }catch (\Exception $e){
             
-            return redirect('/klaster')->with('error', 'Gagal Menambahkan Klaster Baru');
+            return redirect('/dashboard/klaster')->with('error', 'Gagal Menambahkan Klaster Baru');
         }
     }
 
@@ -80,9 +80,9 @@ class KlasterController extends Controller
             // Hanya update data yang diisi (tidak mengganti dengan null)
             Klaster::where('id', $klaster->id)->update(array_filter($validateData));
         
-            return redirect('/klaster')->with('success', 'Data Klaster Berhasil Diubah');
+            return redirect('/dashboard/klaster')->with('success', 'Data Klaster Berhasil Diubah');
         } catch (\Exception $e) {
-            return redirect('/klaster')->with('error', 'Data Klaster Gagal Diubah');
+            return redirect('/dashboard/klaster')->with('error', 'Data Klaster Gagal Diubah');
         }
         
     }
@@ -94,10 +94,10 @@ class KlasterController extends Controller
     {
         try{
             Klaster::destroy($klaster->id);
-            return redirect('/klaster')->with('succes', 'Data Klaster Berhasil Di Hapus');
+            return redirect('/dashboard/klaster')->with('succes', 'Data Klaster Berhasil Di Hapus');
 
         }catch (\Exception $e){
-            return redirect('/klaster')->with('error', 'Data Klaster '. $klaster->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Klaster '. $klaster->nama_kecamatan.' Terlebih Dahulu');
+            return redirect('/dashboard/klaster')->with('error', 'Data Klaster '. $klaster->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Klaster '. $klaster->nama_kecamatan.' Terlebih Dahulu');
         }
     }
 }

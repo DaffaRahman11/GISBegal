@@ -48,7 +48,7 @@
                               <span class="ml-4">Dashboard</span>
                           </a>
                     </li>
-                    <li class=" {{ Request::is('kecamatan')||Request::is('kecamatan/create') ? 'active' : '' }}">
+                    <li class=" {{ Request::is('dashboard/kecamatan')||Request::is('dashboard/kecamatan/create') ? 'active' : '' }}">
                           <a href="#product" class="collapsed" data-toggle="collapse" aria-expanded="false">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M5.875 12.5729C5.30847 11.2498 5 9.84107 5 8.51463C5 4.9167 8.13401 2 12 2C15.866 2 19 4.9167 19 8.51463C19 12.0844 16.7658 16.2499 13.2801 17.7396C12.4675 18.0868 11.5325 18.0868 10.7199 17.7396C9.60664 17.2638 8.62102 16.5151 7.79508 15.6" stroke="#676e8a" stroke-width="1.9200000000000004" stroke-linecap="round"></path> <path d="M14 9C14 10.1046 13.1046 11 12 11C10.8954 11 10 10.1046 10 9C10 7.89543 10.8954 7 12 7C13.1046 7 14 7.89543 14 9Z" stroke="#676e8a" stroke-width="1.9200000000000004"></path> <path d="M20.9605 15.5C21.6259 16.1025 22 16.7816 22 17.5C22 18.4251 21.3797 19.285 20.3161 20M3.03947 15.5C2.37412 16.1025 2 16.7816 2 17.5C2 19.9853 6.47715 22 12 22C13.6529 22 15.2122 21.8195 16.5858 21.5" stroke="#676e8a" stroke-width="1.9200000000000004" stroke-linecap="round"></path> </g></svg>
                               <span class="ml-4">Kecamatan</span>
@@ -58,18 +58,18 @@
                           </a>
                           <ul id="product" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                               <li class="">
-                                  <a href="/kecamatan">
+                                  <a href="/dashboard/kecamatan">
                                       <i class="las la-minus"></i><span>Daftar Kecamatan</span>
                                   </a>
                               </li>
                               <li class="">
-                                  <a href="/kecamatan/create">
+                                  <a href="/dashboard/kecamatan/create">
                                       <i class="las la-minus"></i><span>Tambah Data Kecamatan</span>
                                   </a>
                               </li>
                           </ul>
                     </li>
-                   <li class="{{ Request::is('klaster') || Request::is('klaster/create') ? 'active' : '' }}">
+                   <li class="{{ Request::is('dashboard/klaster') || Request::is('dashboard/klaster/create') ? 'active' : '' }}">
                         <a href="#sale" class="collapsed" data-toggle="collapse" aria-expanded="false">
                             <svg class="svg-icon" id="p-dash4" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path>
@@ -81,18 +81,18 @@
                         </a>
                         <ul id="sale" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                 <li class="">
-                                        <a href="/klaster">
+                                        <a href="/dashboard/klaster">
                                             <i class="las la-minus"></i><span>Daftar Klaster</span>
                                         </a>
                                 </li>
                                 <li class="">
-                                        <a href="/klaster/create">
+                                        <a href="/dashboard/klaster/create">
                                             <i class="las la-minus"></i><span>Tambah Klaster</span>
                                         </a>
                                 </li>
                         </ul>
                     </li>
-                    <li class=" {{ Request::is('curas')||Request::is('curas/create') ||Request::is('curanmor/create') ||Request::is('curanmor/create') ? 'active' : '' }}">
+                    <li class=" {{ Request::is('dashboard/curas')||Request::is('dashboard/curas/create') ||Request::is('dashboard/curanmor/create') ||Request::is('dashboard/curanmor/create') ? 'active' : '' }}">
                         <a href="#people" class="collapsed" data-toggle="collapse" aria-expanded="false">
                             <svg class="svg-icon" id="p-dash8" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
@@ -104,30 +104,30 @@
                         </a>
                         <ul id="people" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                                 <li class="">
-                                        <a href="/curas">
+                                        <a href="/dashboard/curas">
                                             <i class="las la-minus"></i><span>Kasus Curas</span>
                                         </a>
                                 </li>
                                 <li class="">
-                                        <a href="/curas/create">
+                                        <a href="/dashboard/curas/create">
                                             <i class="las la-minus"></i><span>Tambah Kasus Curas</span>
                                         </a>
                                 </li>
                                 
                                 <li class="">
-                                        <a href="/curanmor">
+                                        <a href="/dashboard/curanmor">
                                             <i class="las la-minus"></i><span>Kasus Curanmor</span>
                                         </a>
                                 </li>
                                 <li class="">
-                                        <a href="/curanmor/create">
+                                        <a href="/dashboard/curanmor/create">
                                             <i class="las la-minus"></i><span>Tambah Kasus Curanmor</span>
                                         </a>
                                 </li>
                                 
                         </ul>
                     </li>
-                    <li class=" {{ Request::is('mapcuras')||Request::is('mapcuranmor') ? 'active' : '' }}">
+                    <li class=" {{ Request::is('dashboard/mapcuras')||Request::is('dashboard/mapcuranmor') ? 'active' : '' }}">
                         <a href="#category" class="collapsed" data-toggle="collapse" aria-expanded="false">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#676e8a"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M21 7.16229C21 6.11871 21 5.59692 20.7169 5.20409C20.4337 4.81126 19.9387 4.64625 18.9487 4.31624L17.7839 3.92799C16.4168 3.47229 15.7333 3.24444 15.0451 3.3366C14.3569 3.42876 13.7574 3.82843 12.5583 4.62778L11.176 5.54937C10.2399 6.1734 9.77191 6.48541 9.24685 6.60952C9.05401 6.65511 8.85714 6.68147 8.6591 6.68823C8.11989 6.70665 7.58626 6.52877 6.51901 6.17302C5.12109 5.70705 4.42213 5.47406 3.89029 5.71066C3.70147 5.79466 3.53204 5.91678 3.39264 6.06935C3 6.49907 3 7.23584 3 8.70938V12.7736M21 11V15.2907C21 16.7642 21 17.501 20.6074 17.9307C20.468 18.0833 20.2985 18.2054 20.1097 18.2894C19.5779 18.526 18.8789 18.293 17.481 17.827C16.4137 17.4713 15.8801 17.2934 15.3409 17.3118C15.1429 17.3186 14.946 17.3449 14.7532 17.3905C14.2281 17.5146 13.7601 17.8266 12.824 18.4507L11.4417 19.3722C10.2426 20.1716 9.64311 20.5713 8.95493 20.6634C8.26674 20.7556 7.58319 20.5277 6.21609 20.072L5.05132 19.6838C4.06129 19.3538 3.56627 19.1888 3.28314 18.7959C3.01507 18.424 3.0008 17.9365 3.00004 17" stroke="#676e8a" stroke-width="1.9200000000000004" stroke-linecap="round"></path> <path d="M15 3.5V7M15 17V11" stroke="#676e8a" stroke-width="1.9200000000000004" stroke-linecap="round"></path> <path d="M9 20.5V17M9 7V13" stroke="#676e8a" stroke-width="1.9200000000000004" stroke-linecap="round"></path> </g></svg>
                             <span class="ml-4">Hasil Pemetaan</span>
@@ -137,12 +137,12 @@
                         </a>
                         <ul id="category" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
                             <li class="">
-                                <a href="/mapcuras">
+                                <a href="/dashboard/mapcuras">
                                     <i class="las la-minus"></i><span>Pemetaan Kasus Curas</span>
                                 </a>
                             </li>
                             <li class="">
-                                <a href="/mapcuras">
+                                <a href="/dashboard/mapcuranmor">
                                     <i class="las la-minus"></i><span>Pemetaan Kasus Curanmor</span>
                                 </a>
                             </li>

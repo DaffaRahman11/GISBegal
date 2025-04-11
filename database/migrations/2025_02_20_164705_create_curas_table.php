@@ -17,7 +17,7 @@ return new class extends Migration
                 table: 'kecamatans', indexName: 'curas_kecamatan_id');
             $table->float('jumlah_curas');
             $table->foreignId('klaster_id')->nullable()->constrained(
-                table: 'klasters', indexName: 'curas_klaster_id')->onDelete('set null');
+                table: 'klasters', indexName: 'curas_klaster_id');
             $table->timestamps();
         });
     }

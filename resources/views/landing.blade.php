@@ -20,6 +20,52 @@
     <link rel="stylesheet" href="{{ asset('assets/assetLanding/css/style.css') }}" />
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('assets/assetLanding/css/responsive.css') }}" />
+    <style>
+      .bungkus-progres {
+        width: 150px;
+        height: 150px;
+        position: relative;
+        margin: auto;
+      }
+    
+      .lingkaran-progres {
+        transform: rotate(-90deg);
+      }
+    
+      .latar-progres,
+      .isi-progres {
+        fill: none;
+        stroke-width: 10;
+      }
+    
+      .latar-progres {
+        stroke: #e6e6e6;
+      }
+    
+      .isi-progres {
+        stroke: #28a745;
+        stroke-linecap: round;
+        stroke-dasharray: 440;
+        stroke-dashoffset: 440;
+        transition: stroke-dashoffset 1s ease;
+      }
+    
+      .teks-progres {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 24px;
+        font-weight: bold;
+      }
+    
+      .teks-label {
+        text-align: center;
+        margin-top: 10px;
+        font-weight: 600;
+        color: #000;
+      }
+    </style>
   </head>
   <body>
     <!-- loading -->
@@ -31,54 +77,6 @@
     <!-- loading End -->
     <!-- Header -->
     <header id="main-header" class="header-two">
-      <div class="header-top-bar">
-        <div class="container-fluid">
-          <div class="row no-gutters">
-            <div class="col-auto mr-auto">
-              <ul>
-                <li>
-                  <a href="tel:+1234567890"
-                    ><i class="fas fa-phone mr-1"></i
-                    ><span>+1234567890</span></a
-                  >
-                </li>
-                <li>
-                  <a href="javascript:void(0)"
-                    ><i class="fas fa-envelope mr-1"></i
-                    ><span>info@mail.com</span></a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="col-auto">
-              <div class="social-bar">
-                <ul>
-                  <li>
-                    <a href="javascript:void(0)"
-                      ><i class="fab fa-facebook-f"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"
-                      ><i class="fab fa-twitter"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"
-                      ><i class="fab fa-linkedin-in"></i
-                    ></a>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0)"
-                      ><i class="fab fa-gitlab"></i
-                    ></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <!-- menu start -->
       <nav id="menu-1" class="mega-menu" data-color="">
         <!-- menu list items container -->
@@ -117,19 +115,6 @@
                   <!-- active class -->
                   <li>
                     <a href="javascript:void(0)" class="active">Home</a>
-                    <!-- drop down multilevel  -->
-                    <ul class="drop-down-multilevel">
-                      <li><a href="index.html">Home 1</a></li>
-                      <li class="active"><a href="index-2.html">Home 2 </a></li>
-                      <li><a href="index-3.html">Home 3 </a></li>
-                      <li><a href="index-4.html">Home 4 </a></li>
-                      <li>
-                        <a href="#"
-                          >Home 5
-                          <span class="badge badge-danger">Soon</span></a
-                        >
-                      </li>
-                    </ul>
                   </li>
                   <li>
                     <a href="javascript:void(0)">Pages</a>
@@ -1484,6 +1469,27 @@
     <!-- Banner END -->
     <!-- Main Content -->
     <div class="main-content">
+      <section class="iq-solutions position-relative">
+        <div class="container">
+          <div class="batang-progres text-center">
+            <div class="bungkus-progres">
+              <svg width="150" height="150" class="lingkaran-progres">
+                <circle class="latar-progres" cx="75" cy="75" r="70"></circle>
+                <circle
+                  class="isi-progres"
+                  cx="75"
+                  cy="75"
+                  r="70"
+                  data-persentase="76"
+                ></circle>
+              </svg>
+              <div class="teks-progres" id="nilai-progres"></div>
+            </div>
+            <p class="teks-label">Marketing</p>
+          </div>
+          
+        </div>
+      </section>
       <!--Solutions From  -->
       <section class="iq-solutions position-relative">
         <div class="container">
@@ -2747,7 +2753,7 @@
     <!-- countdown JavaScript -->
     <script src="{{ asset('assets/assetLanding/js/countdown.js') }}"></script>
     <!-- waypoints JavaScript -->
-    <script src="{{ asset('assets/assetLanding/js/waypoints.min.js') }}j"></script>
+    <script src="{{ asset('assets/assetLanding/js/waypoints.min.js') }}"></script>
     <!-- Counterup JavaScript -->
     <script src="{{ asset('assets/assetLanding/js/jquery.counterup.min.js') }}"></script>
     <!-- Owl Carousel JavaScript -->
@@ -2777,6 +2783,43 @@
     <script src="{{ asset('assets/assetLanding/js/retina.min.js') }}"></script>
     <!-- Custom JavaScript -->
     <script src="{{ asset('assets/assetLanding/js/custom.js') }}"></script>
+    {{-- Script Untuk Progress Circle Bar (Menampilkan Jumlah Kasus) --}}
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const lingkaran = document.querySelector(".isi-progres");
+        const nilai = document.getElementById("nilai-progres");
+        const persen = parseInt(lingkaran.getAttribute("data-persentase"));
+        const radius = parseFloat(lingkaran.getAttribute("r"));
+        const keliling = 2 * Math.PI * radius;
+    
+        lingkaran.style.strokeDasharray = `${keliling}`;
+        lingkaran.style.strokeDashoffset = `${keliling}`;
+    
+        const animasiLingkaran = (persen) => {
+          const offset = keliling - (persen / 100) * keliling;
+          lingkaran.style.strokeDashoffset = offset;
+        };
+    
+        const animasiHitung = (tujuan) => {
+          let sekarang = 0;
+          const langkah = () => {
+            if (sekarang <= tujuan) {
+              nilai.innerText = sekarang + "%";
+              sekarang++;
+              setTimeout(langkah, 10);
+            }
+          };
+          langkah();
+        };
+    
+        animasiLingkaran(persen);
+        animasiHitung(persen);
+      });
+    </script>
+    
+    
+
+    {{-- Script Bawaan --}}
     <script>
       var revapi12,
         tpj = jQuery;

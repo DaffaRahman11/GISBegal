@@ -43,9 +43,9 @@ class CuranmorController extends Controller
             ]);
     
             Curanmor::create($validateData);
-            return redirect('/curanmor')->with('succes', 'Berhasil Menambahkan Data Curanmor Baru');
+            return redirect('/dashboard/curanmor')->with('succes', 'Berhasil Menambahkan Data Curanmor Baru');
         }catch (\Exception $e){
-            return redirect('/curanmor')->with('error', 'Gagal Menambahkan Data Curanmor Baru');
+            return redirect('/dashboard/curanmor')->with('error', 'Gagal Menambahkan Data Curanmor Baru');
         }
     }
 
@@ -107,9 +107,9 @@ class CuranmorController extends Controller
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasil));
     
-                return redirect('/curanmor')->with('succes', 'Data Kecamatan Berhasil Diubah');
+                return redirect('/dashboard/curanmor')->with('succes', 'Data Kecamatan Berhasil Diubah');
             } catch (\Exception $e) {
-                return redirect('/curanmor')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
+                return redirect('/dashboard/curanmor')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
             }
     }
 
@@ -124,15 +124,15 @@ class CuranmorController extends Controller
 
             // Pastikan data ditemukan sebelum menghapus
             if (!$hapus) {
-                return redirect('/curanmor')->with('error', 'Data tidak ditemukan.');
+                return redirect('/dashboard/curanmor')->with('error', 'Data tidak ditemukan.');
             }
 
             // Hapus data
             $hapus->delete();
 
-            return redirect('/curanmor')->with('succes', 'Data Curanmor Berhasil Dihapus');
+            return redirect('/dashboard/curanmor')->with('succes', 'Data Curanmor Berhasil Dihapus');
         } catch (\Exception $e) {
-            return redirect('/curanmor')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect('/dashboard/curanmor')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
     

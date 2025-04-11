@@ -44,9 +44,9 @@ class CurasController extends Controller
             ]);
     
             Curas::create($validateData);
-            return redirect('/curas')->with('succes', 'Berhasil Menambahkan Data Curas Baru');
+            return redirect('/dashboard/curas')->with('succes', 'Berhasil Menambahkan Data Curas Baru');
         }catch (\Exception $e){
-            return redirect('/curas')->with('error', 'Gagal Menambahkan Data Curas Baru');
+            return redirect('/dashboard/curas')->with('error', 'Gagal Menambahkan Data Curas Baru');
         }
     }
 
@@ -113,9 +113,9 @@ class CurasController extends Controller
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
 
-            return redirect('/curas')->with('succes', 'Data Kecamatan Berhasil Diubah');
+            return redirect('/dashboard/curas')->with('succes', 'Data Kecamatan Berhasil Diubah');
         } catch (\Exception $e) {
-            return redirect('/curas')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
+            return redirect('/dashboard/curas')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
         }
     }
 
@@ -134,15 +134,15 @@ class CurasController extends Controller
 
             // Pastikan data ditemukan sebelum menghapus
             if (!$hapus) {
-                return redirect('/curas')->with('error', 'Data tidak ditemukan.');
+                return redirect('/dashboard/curas')->with('error', 'Data tidak ditemukan.');
             }
 
             // Hapus data
             $hapus->delete();
 
-            return redirect('/curas')->with('succes', 'Data Curas Berhasil Dihapus');
+            return redirect('/dashboard/curas')->with('succes', 'Data Curas Berhasil Dihapus');
         } catch (\Exception $e) {
-            return redirect('/curas')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return redirect('/dashboard/curas')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
         }
     }
     

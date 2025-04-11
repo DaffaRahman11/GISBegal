@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/klaster/{{ $klaster->id }}" data-toggle="validator" method="POST">
+                        <form action="/dashboard/klaster/{{ $klaster->id }}" data-toggle="validator" method="POST">
                             @method('put')
                             @csrf
                             <div class="row">          

@@ -9,7 +9,7 @@
                         <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
                          place while helping teams to reach sales goals. </p>
                     </div>
-                    <a href="/klaster/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
+                    <a href="/dashboard/klaster/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
                 </div>
             </div>
             @if (session()->has('succes'))
@@ -54,8 +54,8 @@
                             <td>
                                 <div class="d-flex align-items-center list-action">
                                     <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" 
-                                        href="/klaster/{{ $klaster->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
-                                        <form action="/klaster/{{ $klaster->id }}" method="post" class="d-inline">
+                                        href="/dashboard/klaster/{{ $klaster->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
+                                        <form action="/dashboard/klaster/{{ $klaster->id }}" method="post" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>

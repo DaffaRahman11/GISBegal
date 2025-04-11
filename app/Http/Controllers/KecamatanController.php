@@ -36,9 +36,9 @@ class KecamatanController extends Controller
             ]);
     
             Kecamatan::create($validateData);
-            return redirect('/kecamatan')->with('succes', 'Berhasil Menambahkan Data Kecamatan Baru');
+            return redirect('/dashboard/kecamatan')->with('succes', 'Berhasil Menambahkan Data Kecamatan Baru');
         }catch (\Exception $e){
-            return redirect('/kecamatan')->with('error', 'Gagal Menambahkan Data Kecamatan Baru');
+            return redirect('/dashboard/kecamatan')->with('error', 'Gagal Menambahkan Data Kecamatan Baru');
         }
         
     }
@@ -77,9 +77,9 @@ class KecamatanController extends Controller
             ]);
     
             Kecamatan::where('id', $kecamatan->id)->update($validateData);
-            return redirect('/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Ubah');
+            return redirect('/dashboard/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Ubah');
         }catch (\Exception $e){
-            return redirect('/kecamatan')->with('error', 'Data Kecamatan Gagal Di Ubah');
+            return redirect('/dashboard/kecamatan')->with('error', 'Data Kecamatan Gagal Di Ubah');
         }
         
         
@@ -92,10 +92,10 @@ class KecamatanController extends Controller
     {
         try{
             Kecamatan::destroy($kecamatan->id);
-            return redirect('/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Hapus');
+            return redirect('/dashboard/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Hapus');
 
         }catch (\Exception $e){
-            return redirect('/kecamatan')->with('error', 'Data Kecamatan '. $kecamatan->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Kecamatan '. $kecamatan->nama_kecamatan.' Terlebih Dahulu');
+            return redirect('/dashboard/kecamatan')->with('error', 'Data Kecamatan '. $kecamatan->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Kecamatan '. $kecamatan->nama_kecamatan.' Terlebih Dahulu');
         }
         
     

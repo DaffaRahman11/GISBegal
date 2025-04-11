@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/kecamatan" data-toggle="validator" method="POST">
+                        <form action="/dashboard/kecamatan" data-toggle="validator" method="POST">
                             @csrf
                             <div class="row">          
                                 <div class="col-md-12">

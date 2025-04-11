@@ -11,7 +11,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/curas/{{ $curas->id }}" data-toggle="validator" method="post">
+                        <form action="/dashboard/curas/{{ $curas->id }}" data-toggle="validator" method="post">
                             @method('put')
                             @csrf
                             <div class="row">
@@ -24,21 +24,11 @@
                                             value="{{ $curas->punyaKecamatanCuras->nama_kecamatan }}" 
                                             readonly>
 
-                                        <!-- Input hidden untuk mengirim ID kecamatan -->
+                                        
                                         <input type="hidden" name="kecamatan_id" value="{{ $curas->kecamatan_id }}">
 
 
-                                        {{-- <label>Nama Kecamatan *</label>
-                                        <select  class="selectpicker form-control" data-style="py-0" id="kecamatan_id" name="kecamatan_id">
-                                            <option value="" selected disabled> Pilih Kecamatan  </option>
-                                            @foreach ( $kecamatans as $kecamatan )
-                                            <option value="{{ $kecamatan->id }}" 
-                                                {{ old('kecamatan_id', $curas->kecamatan_id) == $kecamatan->id ? 'selected' : '' }}>
-                                                {{ $kecamatan->nama_kecamatan }}
-                                            </option>
-                                            @endforeach
-                                            
-                                        </select> --}}
+                                        
                                     </div>
                                 </div>          
                                 <div class="col-md-6">

@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/kecamatan/{{ $kecamatan -> id }}" data-toggle="validator" method="post">
+                        <form action="/dashboard/kecamatan/{{ $kecamatan -> id }}" data-toggle="validator" method="post">
                             @method('put')
                             @csrf
                             <div class="row">          

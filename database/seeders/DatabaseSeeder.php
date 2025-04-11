@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Curas;
 use App\Models\User;
+use App\Models\Curas;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Services\KMeansService;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +24,13 @@ class DatabaseSeeder extends Seeder
             CurasSeeder::class,
             CuranmorSeeder::class,
         ]);
+
+        $serviceKMeansCuras = new KMeansService();
+        $hasilKMeansCuras = $serviceKMeansCuras->hitungKMeansCuras();
+        file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasilKMeansCuras));
+
+        $serviceKmeansCuranmor = new KMeansService();
+        $hasilKMeansCuranmor = $serviceKmeansCuranmor->hitungKMeansCuranmor();
+        file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasilKMeansCuranmor));
     }
 }

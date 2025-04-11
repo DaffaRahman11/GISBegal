@@ -10,7 +10,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form action="/curas" data-toggle="validator" method="post">
+                        <form action="/dashboard/curas" data-toggle="validator" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-12"> 

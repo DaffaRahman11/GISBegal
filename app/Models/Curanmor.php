@@ -20,4 +20,7 @@ class Curanmor extends Model
     public function punyaKecamatanCuranmor(): BelongsTo{
         return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
     }
+
+    protected $with = ['punyaKecamatanCuranmor', 'punyaKlasterCuranmor'];
+
 }
