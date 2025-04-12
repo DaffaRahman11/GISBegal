@@ -34,7 +34,7 @@
                                     <label for="checkbox1" class="mb-0"></label>
                                 </div>
                             </th>
-                            <th>id</th>
+                            <th>No</th>
                             <th>Nama Kecamatan</th>
                             <th>Action</th>
                         </tr>

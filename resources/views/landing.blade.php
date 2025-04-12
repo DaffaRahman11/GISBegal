@@ -1529,10 +1529,9 @@
               />
             </div>
             <div class="col-lg-6 wow fadeInRight">
-              <h2 class="iq-fw-8 mb-2 iq-mt-40">Why Choose Us</h2>
+              <h2 class="iq-fw-8 mb-2 iq-mt-40">Apa Sih Curas dan Curanmor Itu ?</h2>
               <p class="iq-font-18 mb-3">
-                Progravida nibh vel velit auctor alinean sollicitudin, lorem
-                quis bibendum auctor, nisi elit consequat ipsum.
+                Ternyata banyak yang belum paham apa itu Curas dan Curanmor. Yuk Kita Bahas
               </p>
               <ul class="iq-project-info">
                 <li>
@@ -1542,11 +1541,10 @@
                     </div>
                     <div class="media-body ml-3">
                       <h5 class="mt-0 mb-2 iq-fw-8">
-                        <a href="service-detail.html">Data Analysis</a>
+                        <a href="service-detail.html">Curas ( Pencurian Dengan Kekerasan )</a>
                       </h5>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor
+                        Pencurian dengan Kekerasan atau yang sering disebut Curas, merupakan salah satu tindak pidana pencurian yang dalam prakteknya melakukan kekerasan secara fisik maupun ancaman kepada korbannya. Salah satu contoh Curas yaitu Begal
                       </p>
                     </div>
                   </div>
@@ -1558,27 +1556,10 @@
                     </div>
                     <div class="media-body ml-3">
                       <h5 class="mt-0 mb-2 iq-fw-8">
-                        <a href="service-detail.html">PPC Marketing</a>
+                        <a href="service-detail.html">Curanmor ( Pencurian Kendaraan Bermotor )</a>
                       </h5>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div class="media service-info mt-0 mb-0">
-                    <div class="iq-feature-shap">
-                      <i class="ion-ios-world-outline"></i>
-                    </div>
-                    <div class="media-body ml-3">
-                      <h5 class="mt-0 mb23 iq-fw-8">
-                        <a href="service-detail.html">Business Analytics</a>
-                      </h5>
-                      <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor
+                        Pencurian Kendaraan Bermotor atau yang sering disebut Curanmor, merupakan salah satu tindak pidana pencurian yang sasaran utamanya yaitu kendaraan bermotor, seperti Motor dan Mobil
                       </p>
                     </div>
                   </div>

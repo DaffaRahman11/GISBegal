@@ -6,8 +6,8 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                     <div>
                         <h4 class="mb-3">Daftar Kasus Pencurian Kendaraan Bermotor (CURANMOR)</h4>
-                        <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
-                         place while helping teams to reach sales goals. </p>
+                        <p class="mb-0">Berikut ini merupakan data kasus Pencurian Kendaraan Bermotor (CURANMOR) pada <br>
+                            masing masing kecamatan di Kabupaten Probolinggo</p>
                     </div>
                     <a href="/dashboard/curanmor/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kasus Curanmor</a>
                 </div>

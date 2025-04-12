@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Ubah Data Klaster {{ $klaster->nama_klaster }}</h4>
+                            <h4 class="card-title">Ubah Data Klaster</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -35,7 +35,7 @@
                                     </div>
                                 </div>
                             </div>                            
-                            <button type="submit" class="btn btn-primary mr-2">Ubah Data Klaster  {{ $klaster->nama_klaster }}</button>
+                            <button type="submit" class="btn btn-primary mr-2">Ubah Data Klaster  </button>
                             <button type="reset" class="btn btn-danger">Reset</button>
                         </form>
                     </div>

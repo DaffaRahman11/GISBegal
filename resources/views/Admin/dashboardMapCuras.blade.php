@@ -7,7 +7,7 @@
     <script>
         let curasData = {};
     
-        fetch("{{ url('/api/map') }}")
+        fetch("{{ url('/api/map/curas') }}")
             .then(res => res.json())
             .then(data => {
                 data.forEach(item => {
@@ -26,7 +26,7 @@
             let curas = curasData[namaKecamatan];
     
             return {
-                fillColor: curas ? getColor(curas.klaster) : '#cccccc',
+                fillColor: curas ? getColor(curas.warna) : '#cccccc',
                 weight: 1,
                 opacity: 1,
                 color: 'white',
@@ -37,16 +37,17 @@
         function popUp(feature, layer) {
             let namaKecamatan = feature.properties.WADMKC;
             let curas = curasData[namaKecamatan];
-    
-            let content = `<strong>${namaKecamatan}</strong><br/>`;
+
+            let content = `<strong>Kecamatan ${namaKecamatan}</strong><br/><br/>`;
             if (curas) {
-                content += `Jumlah Curas: ${curas.jumlah_curas}<br/>Klaster: ${curas.klaster}`;
+                content += `Jumlah Curas : ${curas.jumlah_curas}<br/>Kategori : ${curas.klaster}`;
             } else {
                 content += `Data tidak tersedia`;
             }
-    
+
             layer.bindPopup(content);
         }
+
     
         function loadMap() {
             var map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);

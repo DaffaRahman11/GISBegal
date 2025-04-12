@@ -85,251 +85,21 @@
                         </div>                        
                         <div class="card-header-toolbar d-flex align-items-center">
                             <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton001"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
+                                <span id="dropdownMenuButton001" class="dropdown-toggle dropdown-bg btn" data-toggle="dropdown">
+                                    <span id="currentMapLabel">Curas</span> <i class="ri-arrow-down-s-line ml-1"></i>
                                 </span>
                                 <div class="dropdown-menu dropdown-menu-right shadow-none"
                                     aria-labelledby="dropdownMenuButton001">
-                                    <a class="dropdown-item" href="#">Curas</a>
-                                    <a class="dropdown-item" href="#">Curanmor</a>
+                                    <a class="dropdown-item" href="#" id="btn-curas">Curas</a>
+                                    <a class="dropdown-item" href="#" id="btn-curanmor">Curanmor</a>
                                 </div>
+
+                                
                             </div>
                         </div>
                     </div>                    
                     <div class="card-body">
                         <div id="map" style="width: 100%; height: 500px;" ></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Top Products</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton006"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton006">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-unstyled row top-product mb-0">
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-warning-light rounded">
-                                            <img src="{{ asset('assets/images/product/01.png') }}" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Organic Cream</h5>
-                                            <p class="mb-0">789 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-danger-light rounded">
-                                            <img src="../assets/images/product/02.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Rain Umbrella</h5>
-                                            <p class="mb-0">657 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-info-light rounded">
-                                            <img src="../assets/images/product/03.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Serum Bottle</h5>
-                                            <p class="mb-0">489 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="col-lg-3">
-                                <div class="card card-block card-stretch card-height mb-0">
-                                    <div class="card-body">
-                                        <div class="bg-success-light rounded">
-                                            <img src="../assets/images/product/02.png" class="style-img img-fluid m-auto p-3" alt="image">
-                                        </div>
-                                        <div class="style-text text-left mt-3">
-                                            <h5 class="mb-1">Organic Cream</h5>
-                                            <p class="mb-0">468 Item</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">  
-                <div class="card card-transparent card-block card-stretch mb-4">
-                    <div class="card-header d-flex align-items-center justify-content-between p-0">
-                        <div class="header-title">
-                            <h4 class="card-title mb-0">Best Item All Time</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div><a href="#" class="btn btn-primary view-btn font-size-14">View All</a></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body card-item-right">
-                        <div class="d-flex align-items-top">
-                            <div class="bg-warning-light rounded">
-                                <img src="../assets/images/product/04.png" class="style-img img-fluid m-auto" alt="image">
-                            </div>
-                            <div class="style-text text-left">
-                                <h5 class="mb-2">Coffee Beans Packet</h5>
-                                <p class="mb-2">Total Sell : 45897</p>
-                                <p class="mb-0">Total Earned : $45,89 M</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body card-item-right">
-                        <div class="d-flex align-items-top">
-                            <div class="bg-danger-light rounded">
-                                <img src="../assets/images/product/05.png" class="style-img img-fluid m-auto" alt="image">
-                            </div>
-                            <div class="style-text text-left">
-                                <h5 class="mb-2">Bottle Cup Set</h5>
-                                <p class="mb-2">Total Sell : 44359</p>
-                                <p class="mb-0">Total Earned : $45,50 M</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>            
-            <div class="col-lg-4">  
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body">
-                        <div class="d-flex align-items-top justify-content-between">
-                            <div class="">
-                                <p class="mb-0">Income</p>
-                                <h5>$ 98,7800 K</h5>
-                            </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton003"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton003">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="layout1-chart-3" class="layout-chart-1"></div>
-                    </div>
-                </div>
-                <div class="card card-block card-stretch card-height-helf">
-                    <div class="card-body">
-                        <div class="d-flex align-items-top justify-content-between">
-                            <div class="">
-                                <p class="mb-0">Expenses</p>
-                                <h5>$ 45,8956 K</h5>
-                            </div>
-                            <div class="card-header-toolbar d-flex align-items-center">
-                                <div class="dropdown">
-                                    <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton004"
-                                        data-toggle="dropdown">
-                                        This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                    </span>
-                                    <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                        aria-labelledby="dropdownMenuButton004">
-                                        <a class="dropdown-item" href="#">Year</a>
-                                        <a class="dropdown-item" href="#">Month</a>
-                                        <a class="dropdown-item" href="#">Week</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="layout1-chart-4" class="layout-chart-2"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-8">  
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Order Summary</h4>
-                        </div>                        
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton005"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton005">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> 
-                    <div class="card-body">
-                        <div class="d-flex flex-wrap align-items-center mt-2">
-                            <div class="d-flex align-items-center progress-order-left">
-                                <div class="progress progress-round m-0 orange conversation-bar" data-percent="46">
-                                    <span class="progress-left">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <span class="progress-right">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <div class="progress-value text-secondary">46%</div>
-                                </div>
-                                <div class="progress-value ml-3 pr-5 border-right">
-                                    <h5>$12,6598</h5>
-                                    <p class="mb-0">Average Orders</p>
-                                </div>
-                            </div>
-                            <div class="d-flex align-items-center ml-5 progress-order-right">
-                                <div class="progress progress-round m-0 primary conversation-bar" data-percent="46">
-                                    <span class="progress-left">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <span class="progress-right">
-                                        <span class="progress-bar"></span>
-                                    </span>
-                                    <div class="progress-value text-primary">46%</div>
-                                </div>
-                                <div class="progress-value ml-3">
-                                    <h5>$59,8478</h5>
-                                    <p class="mb-0">Top Orders</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body pt-0">
-                        <div id="layout1-chart-5"></div>
                     </div>
                 </div>
             </div>
@@ -340,28 +110,44 @@
     </div>
     {{-- Script MAP --}}
     <script>
+        let map;
+        let geoLayer;
+        let mapTitle = document.querySelector('.card-title');
+        let apiUrl = "{{ url('/api/map/curas') }}"; // default awal curas
         let curasData = {};
     
-        fetch("{{ url('/api/map') }}")
-            .then(res => res.json())
-            .then(data => {
-                data.forEach(item => {
-                    curasData[item.kecamatan] = item;
+        function fetchAndLoadMap(url, titleText) {
+            fetch(url)
+                .then(res => res.json())
+                .then(data => {
+                    curasData = {};
+                    data.forEach(item => {
+                        curasData[item.kecamatan] = item;
+                    });
+                    mapTitle.textContent = titleText;
+    
+                    if (geoLayer) {
+                        geoLayer.remove(); // hapus layer lama
+                    }
+    
+                    geoLayer = new L.GeoJSON.AJAX(["{{ asset('/assets/map/gisProbolinggo.geojson') }}"], {
+                        style: styleFeature,
+                        onEachFeature: popUp
+                    });
+                    geoLayer.addTo(map);
                 });
+        }
     
-                loadMap(); // setelah data siap, jalankan ini
-            });
-    
-        function getColor(klasterWarna) {
-            return klasterWarna || '#cccccc'; // fallback
+        function getColor(warna) {
+            return warna || '#cccccc';
         }
     
         function styleFeature(feature) {
             let namaKecamatan = feature.properties.WADMKC;
-            let curas = curasData[namaKecamatan];
+            let data = curasData[namaKecamatan];
     
             return {
-                fillColor: curas ? getColor(curas.klaster) : '#cccccc',
+                fillColor: data ? getColor(data.warna) : '#cccccc',
                 weight: 1,
                 opacity: 1,
                 color: 'white',
@@ -371,11 +157,15 @@
     
         function popUp(feature, layer) {
             let namaKecamatan = feature.properties.WADMKC;
-            let curas = curasData[namaKecamatan];
+            let data = curasData[namaKecamatan];
     
-            let content = `<strong>${namaKecamatan}</strong><br/>`;
-            if (curas) {
-                content += `Jumlah Curas: ${curas.jumlah_curas}<br/>Klaster: ${curas.klaster}`;
+            let content = `<strong>Kecamatan ${namaKecamatan}</strong><br/><br/>`;
+            if (data) {
+                if ('jumlah_curas' in data) {
+                    content += `Jumlah Curas: ${data.jumlah_curas}<br/>Kategori: ${data.klaster}`;
+                } else if ('jumlah_curanmor' in data) {
+                    content += `Jumlah Curanmor: ${data.jumlah_curanmor}<br/>Kategori: ${data.klaster}`;
+                }
             } else {
                 content += `Data tidak tersedia`;
             }
@@ -383,18 +173,39 @@
             layer.bindPopup(content);
         }
     
-        function loadMap() {
-            var map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
-    
+        function loadInitialMap() {
+            map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
-    
-            new L.GeoJSON.AJAX(["{{ asset('/assets/map/gisProbolinggo.geojson') }}"], {
-                style: styleFeature,
-                onEachFeature: popUp
-            }).addTo(map);
+            fetchAndLoadMap(apiUrl, 'Pemetaan Curas Kab Probolinggo');
         }
+    
+        // Event dropdown
+        document.addEventListener('DOMContentLoaded', () => {
+            loadInitialMap();
+    
+            document.getElementById('btn-curas').addEventListener('click', (e) => {
+                e.preventDefault();
+                fetchAndLoadMap("{{ url('/api/map/curas') }}", "Pemetaan Curas Kab Probolinggo");
+            });
+    
+            document.getElementById('btn-curanmor').addEventListener('click', (e) => {
+                e.preventDefault();
+                fetchAndLoadMap("{{ url('/api/map/curanmor') }}", "Pemetaan Curanmor Kab Probolinggo");
+            });
+        });
     </script>
+
+<script>
+    document.querySelectorAll('.dropdown-item').forEach(function(item) {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('currentMapLabel').textContent = this.textContent;
+        });
+    });
+</script>
+
+    
 </x-layoutAdmin>

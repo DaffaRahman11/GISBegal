@@ -50,10 +50,10 @@
                   <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="privacy-policy.html">Privacy</a>
+                  <a class="nav-link" href="#">Privacy</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="javascript:void(0)">Terms</a>
+                  <a class="nav-link" href="#">Terms</a>
                 </li>
               </ul>
             </div>

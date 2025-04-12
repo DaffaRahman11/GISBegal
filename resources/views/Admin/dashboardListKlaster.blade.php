@@ -6,10 +6,10 @@
                 <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                     <div>
                         <h4 class="mb-3">Daftar Klaster</h4>
-                        <p class="mb-0">Sales enables you to effectively control sales KPIs and monitor them in one central<br>
-                         place while helping teams to reach sales goals. </p>
+                        <p class="mb-0">Berikut merupakan data Klaster atau Kategori yang dijadikan sebagai acuan pemetaan.<br>
+                         Ingat dalam pengisian data klaster, kategori aman atau rendah dimulai dari id 1</p>
                     </div>
-                    <a href="/dashboard/klaster/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Sale</a>
+                    <a href="/dashboard/klaster/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Klaster</a>
                 </div>
             </div>
             @if (session()->has('succes'))

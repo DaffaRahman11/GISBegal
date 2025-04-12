@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>POS Dash | Responsive Bootstrap 4 Admin Dashboard Template</title>
+      <title>PROTECT | Probolinggo Threat & Crime Tracker</title>
       
       <!-- Favicon -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -15,6 +15,14 @@
       <link rel="stylesheet" href="{{ asset('/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}/">
       <link rel="stylesheet" href="{{ asset('/assets/vendor/line-awesome/dist/line-awesome/css/line-awesome.min.css') }}">
       <link rel="stylesheet" href="{{ asset('/assets/vendor/remixicon/fonts/remixicon.css') }}">  
+      <style> 
+        #map {
+            position: relative; /* bukan absolute atau fixed */
+            z-index: 0; /* pastikan ini lebih rendah dari header atau layout */
+            }
+
+            
+      </style>
       
       
   </head>
@@ -31,7 +39,7 @@
       <div class="iq-sidebar  sidebar-default ">
           <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
               <a href="/dashboard" class="header-logo">
-                  <img src="{{ asset('/assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">POSDash</h5>
+                  <img src="{{ asset('/assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">PROTECT</h5>
               </a>
               <div class="iq-menu-bt-sidebar ml-0">
                   <i class="las la-bars wrapper-menu"></i>
@@ -162,7 +170,7 @@
                       <i class="ri-menu-line wrapper-menu"></i>
                       <a href="../backend/index.html" class="header-logo">
                           <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal" alt="logo">
-                          <h5 class="logo-title ml-3">POSDash</h5>
+                          <h5 class="logo-title ml-3">PROTECT</h5>
       
                       </a>
                   </div>
@@ -272,15 +280,15 @@
                               <li class="nav-item nav-icon dropdown caption-content">
                                   <a href="#" class="search-toggle dropdown-toggle" id="dropdownMenuButton4"
                                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                      <img src="{{ asset('assets/images/user/1.png') }}" class="img-fluid rounded" alt="user">
+                                      <img src="{{ asset('assets/images/user/admin-daffa.jpeg') }}" class="img-fluid rounded" alt="user">
                                   </a>
                                   <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton">
                                       <div class="card shadow-none m-0">
                                           <div class="card-body p-0 text-center">
                                               <div class="media-body profile-detail text-center">
-                                                  <img src="{{ asset('assets/images/page-img/profile-bg.jpg') }}" alt="profile-bg"
+                                                  <img src="{{ asset('assets/images/logo_polije.png') }}" alt="profile-bg"
                                                       class="rounded-top img-fluid mb-4">
-                                                  <img src="{{ asset('assets/images/user/1.png') }}" alt="profile-img"
+                                                  <img src="{{ asset('assets/images/user/admin-daffa.jpeg') }}" alt="profile-img"
                                                       class="rounded profile-img img-fluid avatar-70">
                                               </div>
                                               <div class="p-3">

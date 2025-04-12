@@ -21,7 +21,10 @@ Route::get('/blank', function () {
 
 Route::get('/dashboard/mapcuras', function () {
     return view('admin.dashboardMapCuras');
-});
+})->middleware('auth');
+Route::get('/dashboard/mapcuranmor', function () {
+    return view('admin.dashboardMapCuranmor');
+})->middleware('auth');
 
 Route::get('/dashboard', [dashboardController::class, 'index'])->middleware('auth');
 Route::get('/login', [loginController::class, 'index'])->name('login');
