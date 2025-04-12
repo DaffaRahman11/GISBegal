@@ -5,8 +5,8 @@
             <div class="col-lg-4">
                 <div class="card card-transparent card-block card-stretch card-height border-none">
                     <div class="card-body p-0 mt-lg-2 mt-0">
-                        <h3 class="mb-3">Hi Graham, Good Morning</h3>
-                        <p class="mb-0 mr-4">Your dashboard gives you views of key performance or business process.</p>
+                        <h3 class="mb-3">Hai {{ Auth::user()->nama }}</h3>
+                        <p class="mb-0 mr-4">Selamat Datang di Dashboard Admin Sistem Informasi Geografis (SIG) PROTECT</p>
                     </div>
                 </div>
             </div>
@@ -20,12 +20,14 @@
                                         <img src="../assets/images/product/1.png" class="img-fluid" alt="image">
                                     </div>
                                     <div>
-                                        <p class="mb-2">Total Sales</p>
-                                        <h4>31.50</h4>
+                                        <p class="mb-2">
+                                            <strong> Kecamatan Rawan Curas </strong>
+                                        </p>
+                                        <h4>{{ $jumlahRawanCuras }}</h4>
                                     </div>
                                 </div>                                
                                 <div class="iq-progress-bar mt-2">
-                                    <span class="bg-info iq-progress progress-1" data-percent="85">
+                                    <span class="bg-info iq-progress progress-1" data-percent="{{ $prosentaseCuras }}">
                                     </span>
                                 </div>
                             </div>
@@ -39,12 +41,14 @@
                                         <img src="../assets/images/product/2.png" class="img-fluid" alt="image">
                                     </div>
                                     <div>
-                                        <p class="mb-2">Total Cost</p>
-                                        <h4>$ 4598</h4>
+                                        <p class="mb-2"> 
+                                            <strong> Kecamatan Rawan Ranmor </strong>
+                                        </p>
+                                        <h4>{{ $jumlahRawanCuranmor }}</h4>
                                     </div>
                                 </div>
                                 <div class="iq-progress-bar mt-2">
-                                    <span class="bg-danger iq-progress progress-1" data-percent="70">
+                                    <span class="bg-danger iq-progress progress-1" data-percent="{{ $prosentaseCuranmor }}">
                                     </span>
                                 </div>
                             </div>
@@ -58,12 +62,14 @@
                                         <img src="../assets/images/product/3.png" class="img-fluid" alt="image">
                                     </div>
                                     <div>
-                                        <p class="mb-2">Product Sold</p>
-                                        <h4>4589 M</h4>
+                                        <p class="mb-2">
+                                            <strong>Kecamatan Kab Probolinggo</strong>
+                                        </p>
+                                        <h4>{{ $totalKecamatan }}</h4>
                                     </div>
                                 </div>
                                 <div class="iq-progress-bar mt-2">
-                                    <span class="bg-success iq-progress progress-1" data-percent="75">
+                                    <span class="bg-success iq-progress progress-1" data-percent="100">
                                     </span>
                                 </div>
                             </div>
@@ -71,11 +77,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card card-block card-stretch card-height">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Overview</h4>
+                            <h4 class="card-title">Pemetaan Curas dan Curanmor Kab Probolinggo</h4>
                         </div>                        
                         <div class="card-header-toolbar d-flex align-items-center">
                             <div class="dropdown">
@@ -85,41 +91,14 @@
                                 </span>
                                 <div class="dropdown-menu dropdown-menu-right shadow-none"
                                     aria-labelledby="dropdownMenuButton001">
-                                    <a class="dropdown-item" href="#">Year</a>
-                                    <a class="dropdown-item" href="#">Month</a>
-                                    <a class="dropdown-item" href="#">Week</a>
+                                    <a class="dropdown-item" href="#">Curas</a>
+                                    <a class="dropdown-item" href="#">Curanmor</a>
                                 </div>
                             </div>
                         </div>
                     </div>                    
                     <div class="card-body">
-                        <div id="layout1-chart1"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="card card-block card-stretch card-height">
-                    <div class="card-header d-flex align-items-center justify-content-between">
-                        <div class="header-title">
-                            <h4 class="card-title">Revenue Vs Cost</h4>
-                        </div>
-                        <div class="card-header-toolbar d-flex align-items-center">
-                            <div class="dropdown">
-                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
-                                    data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
-                                </span>
-                                <div class="dropdown-menu dropdown-menu-right shadow-none"
-                                    aria-labelledby="dropdownMenuButton002">
-                                    <a class="dropdown-item" href="#">Yearly</a>
-                                    <a class="dropdown-item" href="#">Monthly</a>
-                                    <a class="dropdown-item" href="#">Weekly</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="layout1-chart-2" style="min-height: 360px;"></div>
+                        <div id="map" style="width: 100%; height: 500px;" ></div>
                     </div>
                 </div>
             </div>
@@ -150,7 +129,7 @@
                                 <div class="card card-block card-stretch card-height mb-0">
                                     <div class="card-body">
                                         <div class="bg-warning-light rounded">
-                                            <img src="../assets/images/product/01.png" class="style-img img-fluid m-auto p-3" alt="image">
+                                            <img src="{{ asset('assets/images/product/01.png') }}" class="style-img img-fluid m-auto p-3" alt="image">
                                         </div>
                                         <div class="style-text text-left mt-3">
                                             <h5 class="mb-1">Organic Cream</h5>
@@ -355,6 +334,67 @@
                 </div>
             </div>
         </div>
+        
         <!-- Page end  -->
+        
     </div>
+    {{-- Script MAP --}}
+    <script>
+        let curasData = {};
+    
+        fetch("{{ url('/api/map') }}")
+            .then(res => res.json())
+            .then(data => {
+                data.forEach(item => {
+                    curasData[item.kecamatan] = item;
+                });
+    
+                loadMap(); // setelah data siap, jalankan ini
+            });
+    
+        function getColor(klasterWarna) {
+            return klasterWarna || '#cccccc'; // fallback
+        }
+    
+        function styleFeature(feature) {
+            let namaKecamatan = feature.properties.WADMKC;
+            let curas = curasData[namaKecamatan];
+    
+            return {
+                fillColor: curas ? getColor(curas.klaster) : '#cccccc',
+                weight: 1,
+                opacity: 1,
+                color: 'white',
+                fillOpacity: 0.7
+            };
+        }
+    
+        function popUp(feature, layer) {
+            let namaKecamatan = feature.properties.WADMKC;
+            let curas = curasData[namaKecamatan];
+    
+            let content = `<strong>${namaKecamatan}</strong><br/>`;
+            if (curas) {
+                content += `Jumlah Curas: ${curas.jumlah_curas}<br/>Klaster: ${curas.klaster}`;
+            } else {
+                content += `Data tidak tersedia`;
+            }
+    
+            layer.bindPopup(content);
+        }
+    
+        function loadMap() {
+            var map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
+    
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+    
+            new L.GeoJSON.AJAX(["{{ asset('/assets/map/gisProbolinggo.geojson') }}"], {
+                style: styleFeature,
+                onEachFeature: popUp
+            }).addTo(map);
+        }
+    </script>
 </x-layoutAdmin>

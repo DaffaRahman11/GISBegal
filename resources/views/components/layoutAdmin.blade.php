@@ -180,40 +180,7 @@
                       </button>
                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
                           <ul class="navbar-nav ml-auto navbar-list align-items-center">
-                              <li class="nav-item nav-icon dropdown">
-                                  <a href="#" class="search-toggle dropdown-toggle btn border add-btn"
-                                      id="dropdownMenuButton02" data-toggle="dropdown" aria-haspopup="true"
-                                      aria-expanded="false">
-                                      <img src="{{ asset('assets/images/small/flag-01.png') }}" alt="img-flag"
-                                          class="img-fluid image-flag mr-2">En
-                                  </a>
-                                  <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                                      <div class="card shadow-none m-0">
-                                          <div class="card-body p-3">
-                                              <a class="iq-sub-card" href="#"><img
-                                                      src="{{ asset('assets/images/small/flag-02.png') }}" alt="img-flag"
-                                                      class="img-fluid mr-2">French</a>
-                                              <a class="iq-sub-card" href="#"><img
-                                                      src="{{ asset('assets/images/small/flag-03.png') }}" alt="img-flag"
-                                                      class="img-fluid mr-2">Spanish</a>
-                                              <a class="iq-sub-card" href="#"><img
-                                                      src="{{ asset('assets/images/small/flag-04.png') }}" alt="img-flag"
-                                                      class="img-fluid mr-2">Italian</a>
-                                              <a class="iq-sub-card" href="#"><img
-                                                      src="{{ asset('assets/images/small/flag-05.png') }}" alt="img-flag"
-                                                      class="img-fluid mr-2">German</a>
-                                              <a class="iq-sub-card" href="#"><img
-                                                      src="{{ asset('assets/images/small/flag-06.png') }}" alt="img-flag"
-                                                      class="img-fluid mr-2">Japanese</a>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </li>
-                              <li>
-                                  <a href="#" class="btn border add-btn shadow-none mx-2 d-none d-md-block"
-                                      data-toggle="modal" data-target="#new-order"><i class="las la-plus mr-2"></i>New
-                                      Order</a>
-                              </li>
+                              
                               <li class="nav-item nav-icon search-content">
                                   <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown"
                                       aria-haspopup="true" aria-expanded="false">
@@ -247,61 +214,21 @@
                                           <div class="card-body p-0 ">
                                               <div class="cust-title p-3">
                                                   <div class="d-flex align-items-center justify-content-between">
-                                                      <h5 class="mb-0">All Messages</h5>
-                                                      <a class="badge badge-primary badge-card" href="#">3</a>
+                                                      <h5 class="mb-0">Pesan Masuk</h5>
+                                                      <a class="badge badge-primary badge-card" href="#"></a>
                                                   </div>
                                               </div>
                                               <div class="px-3 pt-0 pb-0 sub-card">
                                                   <a href="#" class="iq-sub-card">
-                                                      <div class="media align-items-center cust-card py-3 border-bottom">
-                                                          <div class="">
-                                                              <img class="avatar-50 rounded-small"
-                                                                  src="{{ asset('assets/images/user/01.jpg') }}" alt="01">
-                                                          </div>
-                                                          <div class="media-body ml-3">
-                                                              <div class="d-flex align-items-center justify-content-between">
-                                                                  <h6 class="mb-0">Emma Watson</h6>
-                                                                  <small class="text-dark"><b>12 : 47 pm</b></small>
-                                                              </div>
-                                                              <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                          </div>
-                                                      </div>
-                                                  </a>
-                                                  <a href="#" class="iq-sub-card">
-                                                      <div class="media align-items-center cust-card py-3 border-bottom">
-                                                          <div class="">
-                                                              <img class="avatar-50 rounded-small"
-                                                                  src="{{ asset('assets/images/user/02.jpg') }}" alt="02">
-                                                          </div>
-                                                          <div class="media-body ml-3">
-                                                              <div class="d-flex align-items-center justify-content-between">
-                                                                  <h6 class="mb-0">Ashlynn Franci</h6>
-                                                                  <small class="text-dark"><b>11 : 30 pm</b></small>
-                                                              </div>
-                                                              <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                          </div>
-                                                      </div>
-                                                  </a>
-                                                  <a href="#" class="iq-sub-card">
                                                       <div class="media align-items-center cust-card py-3">
-                                                          <div class="">
-                                                              <img class="avatar-50 rounded-small"
-                                                                  src="{{ asset('assets/images/user/03.jpg') }}" alt="03">
-                                                          </div>
                                                           <div class="media-body ml-3">
                                                               <div class="d-flex align-items-center justify-content-between">
-                                                                  <h6 class="mb-0">Kianna Carder</h6>
-                                                                  <small class="text-dark"><b>11 : 21 pm</b></small>
+                                                                <h6 class="mb-0">Tidak Ada Pesan Masuk</h6>
                                                               </div>
-                                                              <small class="mb-0">Lorem ipsum dolor sit amet</small>
                                                           </div>
                                                       </div>
                                                   </a>
                                               </div>
-                                              <a class="right-ic btn btn-primary btn-block position-relative p-2" href="#"
-                                                  role="button">
-                                                  View All
-                                              </a>
                                           </div>
                                       </div>
                                   </div>
@@ -322,61 +249,22 @@
                                           <div class="card-body p-0 ">
                                               <div class="cust-title p-3">
                                                   <div class="d-flex align-items-center justify-content-between">
-                                                      <h5 class="mb-0">Notifications</h5>
-                                                      <a class="badge badge-primary badge-card" href="#">3</a>
+                                                      <h5 class="mb-0">Notifikasi</h5>
+                                                      <a class="badge badge-primary badge-card" href="#"></a>
                                                   </div>
                                               </div>
                                               <div class="px-3 pt-0 pb-0 sub-card">
                                                   <a href="#" class="iq-sub-card">
-                                                      <div class="media align-items-center cust-card py-3 border-bottom">
-                                                          <div class="">
-                                                              <img class="avatar-50 rounded-small"
-                                                                  src="{{ asset('assets/images/user/01.jpg') }}" alt="01">
-                                                          </div>
-                                                          <div class="media-body ml-3">
-                                                              <div class="d-flex align-items-center justify-content-between">
-                                                                  <h6 class="mb-0">Emma Watson</h6>
-                                                                  <small class="text-dark"><b>12 : 47 pm</b></small>
-                                                              </div>
-                                                              <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                          </div>
-                                                      </div>
-                                                  </a>
-                                                  <a href="#" class="iq-sub-card">
-                                                      <div class="media align-items-center cust-card py-3 border-bottom">
-                                                          <div class="">
-                                                              <img class="avatar-50 rounded-small"
-                                                                  src="{{ asset('assets/images/user/02.jpg') }}" alt="02">
-                                                          </div>
-                                                          <div class="media-body ml-3">
-                                                              <div class="d-flex align-items-center justify-content-between">
-                                                                  <h6 class="mb-0">Ashlynn Franci</h6>
-                                                                  <small class="text-dark"><b>11 : 30 pm</b></small>
-                                                              </div>
-                                                              <small class="mb-0">Lorem ipsum dolor sit amet</small>
-                                                          </div>
-                                                      </div>
-                                                  </a>
-                                                  <a href="#" class="iq-sub-card">
                                                       <div class="media align-items-center cust-card py-3">
-                                                          <div class="">
-                                                              <img class="avatar-50 rounded-small"
-                                                                  src="{{ asset('assets/images/user/03.jpg') }}" alt="03">
-                                                          </div>
+                                                        
                                                           <div class="media-body ml-3">
                                                               <div class="d-flex align-items-center justify-content-between">
-                                                                  <h6 class="mb-0">Kianna Carder</h6>
-                                                                  <small class="text-dark"><b>11 : 21 pm</b></small>
+                                                                  <h6 class="mb-0">Tidak Ada Notifikasi Terbaru</h6>
                                                               </div>
-                                                              <small class="mb-0">Lorem ipsum dolor sit amet</small>
                                                           </div>
                                                       </div>
                                                   </a>
                                               </div>
-                                              <a class="right-ic btn btn-primary btn-block position-relative p-2" href="#"
-                                                  role="button">
-                                                  View All
-                                              </a>
                                           </div>
                                       </div>
                                   </div>
@@ -396,11 +284,13 @@
                                                       class="rounded profile-img img-fluid avatar-70">
                                               </div>
                                               <div class="p-3">
-                                                  <h5 class="mb-1">JoanDuo@property.com</h5>
-                                                  <p class="mb-0">Since 10 march, 2020</p>
+                                                  <h5 class="mb-1">{{ Auth::user()->nama }}</h5>
+                                                  <p class="mb-0">{{ Auth::user()->email }}</p>
                                                   <div class="d-flex align-items-center justify-content-center mt-3">
-                                                      <a href="../app/user-profile.html" class="btn border mr-2">Profile</a>
-                                                      <a href="auth-sign-in.html" class="btn border">Sign Out</a>
+                                                      <form action="/logout" method="POST">
+                                                        @csrf
+                                                        <button class="btn border" href="">Sign Out</button>
+                                                        </form>
                                                   </div>
                                               </div>
                                           </div>
@@ -411,29 +301,6 @@
                       </div>
                   </div>
               </nav>
-          </div>
-      </div>
-      <div class="modal fade" id="new-order" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                  <div class="modal-body">
-                      <div class="popup text-left">
-                          <h4 class="mb-3">New Order</h4>
-                          <div class="content create-workform bg-body">
-                              <div class="pb-3">
-                                  <label class="mb-2">Email</label>
-                                  <input type="text" class="form-control" placeholder="Enter Name or Email">
-                              </div>
-                              <div class="col-lg-12 mt-4">
-                                  <div class="d-flex flex-wrap align-items-ceter justify-content-center">
-                                      <div class="btn btn-primary mr-4" data-dismiss="modal">Cancel</div>
-                                      <div class="btn btn-outline-primary" data-dismiss="modal">Create</div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
           </div>
       </div>
 

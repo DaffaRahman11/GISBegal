@@ -47,7 +47,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>
+                  <a class="nav-link" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="privacy-policy.html">Privacy</a>
@@ -63,7 +63,15 @@
             <h6>
               Selamat Datang Di <span class="main-color">PROTECT</span> Silakan Masuk Ke Akun Anda
             </h6>
-            <form>
+
+                @if (session()->has('loginError'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ session('loginError') }}
+                </div>
+            @endif
+
+            <form action="/login" method="POST">
+              @csrf
               <div class="form-group">
                <label>Masukkan Email</label>
                 <input
@@ -73,6 +81,9 @@
                   class="form-control"
                   placeholder="Email"
                   autocomplete="email"
+                  autofocus
+                  required @error('email') is-invalid
+                  @enderror value="{{ old('email') }}"
                 />
               </div>
               <div class="form-group">
@@ -80,9 +91,10 @@
                 <input
                   id="password"
                   type="password"
-                  name=""
+                  name="password"
                   class="form-control"
                   placeholder="Password"
+                  required
                 />
               </div>
               
