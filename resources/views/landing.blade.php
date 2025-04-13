@@ -8,10 +8,10 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>
-      Markethon - Digital Marketing Agency Responsive HTML5 Template
+      KPROTECT | Probolinggo Threat & Crime Tracker
     </title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/assetLanding/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/assetLanding/images/favicon2.png') }}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/assetLanding/css/bootstrap.min.css') }}" />
     <!-- Typography CSS -->
@@ -89,7 +89,7 @@
                   <li>
                     <a href="index.html"
                       ><img
-                        src="{{ asset('assets/assetLanding/images/logo-white.png') }}"
+                        src="{{ asset('assets/assetLanding/images/logo.png') }}"
                         alt="logo"
                         class="img-fluid"
                     /></a>
@@ -117,164 +117,17 @@
                     <a href="javascript:void(0)" class="active">Home</a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Pages</a>
+                    <a href="javascript:void(0)">Curas & Curanmor</a>
                     <!-- drop down full width -->
-                    <ul class="drop-down-multilevel">
-                      <li>
-                        <a href="javascript:void(0)">
-                          About <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li><a href="about-us.html">About us</a></li>
-                          <li><a href="about-me.html">About me</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">
-                          Other Pages <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li><a href="coming-soon.html">Comming Soon</a></li>
-                          <li><a href="client.html">Clients</a></li>
-                          <li><a href="process.html">Process</a></li>
-                          <li><a href="404.html">404 Page</a></li>
-                          <li>
-                            <a href="privacy-policy.html">Privacy Policy</a>
-                          </li>
-                          <li><a href="maintenance.html">Maintenance</a></li>
-                          <li><a href="thankyou.html">Thank You</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">
-                          Services <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li><a href="service.html">Service</a></li>
-                          <li>
-                            <a href="service-detail.html">Service Details</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)"
-                          >Team <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li><a href="team.html">Team</a></li>
-                          <li><a href="team-detail.html">Team Details</a></li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)"
-                          >Login Register <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li><a href="login.html">Login</a></li>
-                          <li><a href="register.html">Register</a></li>
-                          <li>
-                            <a href="password-reset.html">Password Reset</a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li><a href="pricing.html">Pricing Table</a></li>
-                      <li><a href="faq.html">FAQ</a></li>
-                    </ul>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Portfolio</a>
+                    <a href="javascript:void(0)">Clustering</a>
                     <!-- drop down third level -->
-                    <ul class="drop-down-multilevel">
-                      <li><a href="portfolio.html">Portfolio</a></li>
-                      <li>
-                        <a href="porfolio-detail.html">Portfolio Details</a>
-                      </li>
-                      <li>
-                        <a href="portfolio-two.html">Portfolio 2 column</a>
-                      </li>
-                      <li>
-                        <a href="full-3-portfolio.html">Portfolio 3 column</a>
-                      </li>
-                      <li>
-                        <a href="full-4-portfolio.html">Portfolio 4 column</a>
-                      </li>
-                      <li>
-                        <a href="full-5-portfolio.html">Portfolio 5 column</a>
-                      </li>
-                    </ul>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Blog</a>
-                    <!-- drop down third level -->
-                    <ul class="drop-down-multilevel">
-                      <li>
-                        <a href="javascript:void(0)">
-                          Blog Details <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li>
-                            <a href="blog-details-left-sidebar.html"
-                              >Blog Detail Left Sidebar</a
-                            >
-                          </li>
-                          <li>
-                            <a href="blog-details-right-sidebar.html"
-                              >Blog Detail Right Sidebar</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">
-                          Blog Grid <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li>
-                            <a href="all-blog-grid.html">All Blog Grid</a>
-                          </li>
-                          <li>
-                            <a href="blog-grid-left-sidebar.html"
-                              >Blog Grid Left Sidebar</a
-                            >
-                          </li>
-                          <li>
-                            <a href="blog-grid-right-sidebar.html"
-                              >Blog Grid Right Sidebar</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="javascript:void(0)">
-                          Blog List <i class="fas fa-angle-right"></i
-                        ></a>
-                        <!-- drop down third level -->
-                        <ul class="drop-down-multilevel">
-                          <li>
-                            <a href="all-blog-list.html">All Blog List</a>
-                          </li>
-                          <li>
-                            <a href="blog-list-left-sidebar.html"
-                              >Blog List Left Sidebar</a
-                            >
-                          </li>
-                          <li>
-                            <a href="blog-list-right-sidebar.html"
-                              >Blog List Right Sidebar</a
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
+                    <a href="javascript:void(0)">Map</a>
                   </li>
-                  <li><a href="contact-us.html">Contact us</a></li>
+                  <li><a href="contact-us.html">Our Teams</a></li>
                 </ul>
               </div>
             </div>
@@ -298,7 +151,7 @@
           margin-top: 0px;
           margin-bottom: 0px;
         "
-      >
+        >
         <!-- START REVOLUTION SLIDER 5.4.3.1 fullwidth mode -->
         <div
           id="rev_slider_12_1"
@@ -307,6 +160,459 @@
           data-version="5.4.3.1"
         >
           <ul>
+            <!-- SLIDE  -->
+            <li
+              data-index="rs-42"
+              data-transition="fade"
+              data-slotamount="default"
+              data-hideafterloop="0"
+              data-hideslideonmobile="off"
+              data-easein="default"
+              data-easeout="default"
+              data-masterspeed="300"
+              data-rotate="0"
+              data-saveperformance="off"
+              data-title="Slide"
+              data-param1=""
+              data-param2=""
+              data-param3=""
+              data-param4=""
+              data-param5=""
+              data-param6=""
+              data-param7=""
+              data-param8=""
+              data-param9=""
+              data-param10=""
+              data-description=""
+              >
+              <!-- MAIN IMAGE -->
+              <img
+                src="{{ asset('assets/assetLanding/revslider/assets/b5690-bg-2.jpg') }}"
+                alt=""
+                data-bgposition="center center"
+                data-bgfit="cover"
+                data-bgrepeat="no-repeat"
+                data-bgparallax="off"
+                class="rev-slidebg"
+                data-no-retina
+              />
+              <!-- LAYERS -->
+              <!-- LAYER NR. 12 -->
+              <h1
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-1"
+                data-x="56"
+                data-y="center"
+                data-voffset="-60"
+                data-width="['auto']"
+                data-height="['auto']"
+                data-type="text"
+                data-responsive_offset="on"
+                data-frames='[{"delay":600,"speed":1020,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="
+                  z-index: 5;
+                  white-space: nowrap;
+                  text-transform: capitalize;
+                  font-size: 60px;
+                  line-height: 70px;
+                  font-weight: 700;
+                  color: rgba(255, 255, 255, 1);
+                  font-family: 'Nunito', sans-serif;
+                "
+              >
+                <strong>KP</strong>rotect<br /> Probolinggo
+              </h1> 
+              <!-- LAYER NR. 13 -->
+              <p
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-2"
+                data-x="59"
+                data-y="center"
+                data-voffset="50"
+                data-width="['auto']"
+                data-height="['auto']"
+                data-type="text"
+                data-responsive_offset="on"
+                data-frames='[{"delay":600,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="
+                  z-index: 6;
+                  white-space: nowrap;
+                  font-size: 16px;
+                  line-height: 30px;
+                  font-weight: 400;
+                  color: rgba(255, 255, 255, 1);
+                  font-family: 'Poppins', sans-serif;
+                "
+              >
+                Kasus Curas dan Curanmor di Probolinggo mengalami peningkatan.<br />
+                 Dengan <strong>KP</strong>rotect kita dapat mengetahui daerah yang Rawan 
+              </p>
+              <!-- LAYER NR. 14 -->
+              <div
+                class="tp-caption rev-btn button button-sm rev-withicon tp-resizeme rs-hover-ready"
+                id="slide-42-layer-3"
+                data-x="60"
+                data-y="center"
+                data-voffset="130"
+                data-width="['auto']"
+                data-height="['auto']"
+                data-type="button"
+                data-responsive_offset="on"
+                data-responsive="on"
+                data-frames='[{"delay":600,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":""}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop=""
+                data-paddingright="[35,35,35,35]"
+                data-paddingbottom=""
+                data-paddingleft="[35,35,35,35]"
+                style="
+                  z-index: 7;
+                  white-space: nowrap;
+                  font-size: 18px;
+                  line-height: 50px;
+                  height: auto;
+                  font-weight: 300;
+                  color: rgb(255, 255, 255);
+                  font-family: Nunito;
+                  padding: 0px 35px;
+                  border-color: rgb(0, 0, 0);
+                  border-radius: 30px;
+                  outline: none;
+                  box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  visibility: inherit;
+                  transition: none 0s ease 0s;
+                  text-align: inherit;
+                  margin: 0px;
+                  letter-spacing: 1px;
+                  min-height: 0px;
+                  min-width: 0px;
+                  max-height: none;
+                  max-width: none;
+                  opacity: 1;
+                  transform: matrix3d(
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1
+                  );
+                  transform-origin: 50% 50% 0px;
+                  border-width: 0px;
+                "
+              >
+                Get Started
+              </div>
+              <!-- LAYER NR. 15 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-4"
+                data-x="626"
+                data-y="219"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":900,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 8"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/81a17-Untitled-57.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 16 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-5"
+                data-x="630"
+                data-y="468"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":900,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 9"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/0d1ed-Untitled-58.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 17 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-14"
+                data-x="747"
+                data-y="443"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":1200,"speed":300,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 10"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/4c71e-09.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 18 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-13"
+                data-x="859"
+                data-y="317"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":1200,"speed":1500,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 11"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/desktop.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                  style="width: 300px; height: auto;"
+                />
+              </div>
+              <!-- LAYER NR. 19 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-15"
+                data-x="1109"
+                data-y="462"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":1200,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 12"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/871fe-07.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 20 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-16"
+                data-x="895"
+                data-y="527"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":2100,"speed":300,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 13"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/ed9b4-12.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 21 -->
+              <div
+                class="tp-caption tp-resizeme"
+                id="slide-42-layer-17"
+                data-x="1069"
+                data-y="203"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":1500,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 14"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/b9754-01.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 22 -->
+              <div
+                class="tp-caption tp-resizeme rs-parallaxlevel-1"
+                id="slide-42-layer-18"
+                data-x="690"
+                data-y="342"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":1800,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 15"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/bea0c-04.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 23 -->
+              <div
+                class="tp-caption tp-resizeme rs-parallaxlevel-1"
+                id="slide-42-layer-19"
+                data-x="1161"
+                data-y="374"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":1800,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 16"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/c18a0-05.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 24 -->
+              <div
+                class="tp-caption tp-resizeme rs-parallaxlevel-1"
+                id="slide-42-layer-20"
+                data-x="1222"
+                data-y="283"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":2100,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 17"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/3b231-10.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+              <!-- LAYER NR. 25 -->
+              <div
+                class="tp-caption tp-resizeme rs-parallaxlevel-1"
+                id="slide-42-layer-21"
+                data-x="936"
+                data-y="174"
+                data-width="['none','none','none','none']"
+                data-height="['none','none','none','none']"
+                data-type="image"
+                data-responsive_offset="on"
+                data-frames='[{"delay":2100,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                data-textAlign="['left','left','left','left']"
+                data-paddingtop="[0,0,0,0]"
+                data-paddingright="[0,0,0,0]"
+                data-paddingbottom="[0,0,0,0]"
+                data-paddingleft="[0,0,0,0]"
+                style="z-index: 18"
+              >
+                <img
+                  src="{{ asset('assets/assetLanding/revslider/assets/5f84f-11.png') }}"
+                  alt=""
+                  data-ww="auto"
+                  data-hh="auto"
+                  data-no-retina
+                />
+              </div>
+            </li>
             <!-- SLIDE  -->
             <li
               data-index="rs-41"
@@ -331,7 +637,7 @@
               data-param9=""
               data-param10=""
               data-description=""
-            >
+              >
               <!-- MAIN IMAGE -->
               <img
                 src="{{ asset('assets/assetLanding/revslider/assets/b5690-bg-2.jpg') }}"
@@ -542,7 +848,7 @@
                 data-paddingbottom="[0,0,0,0]"
                 data-paddingleft="[0,0,0,0]"
                 style="z-index: 10"
-              >
+                >
                 <img
                   src="{{ asset('assets/assetLanding/revslider/assets/a9361-09.png') }}"
                   alt=""
@@ -568,7 +874,7 @@
                 data-paddingbottom="[0,0,0,0]"
                 data-paddingleft="[0,0,0,0]"
                 style="z-index: 11"
-              >
+                >
                 <img
                   src="{{ asset('assets/assetLanding/revslider/assets/0f298-01.png') }}"
                   alt=""
@@ -594,7 +900,7 @@
                 data-paddingbottom="[0,0,0,0]"
                 data-paddingleft="[0,0,0,0]"
                 style="z-index: 14"
-              >
+                >
                 <img
                   src="{{ asset('assets/assetLanding/revslider/assets/af220-05.png') }}"
                   alt=""
@@ -632,459 +938,6 @@
             </li>
             <!-- SLIDE  -->
             <li
-              data-index="rs-42"
-              data-transition="fade"
-              data-slotamount="default"
-              data-hideafterloop="0"
-              data-hideslideonmobile="off"
-              data-easein="default"
-              data-easeout="default"
-              data-masterspeed="300"
-              data-rotate="0"
-              data-saveperformance="off"
-              data-title="Slide"
-              data-param1=""
-              data-param2=""
-              data-param3=""
-              data-param4=""
-              data-param5=""
-              data-param6=""
-              data-param7=""
-              data-param8=""
-              data-param9=""
-              data-param10=""
-              data-description=""
-            >
-              <!-- MAIN IMAGE -->
-              <img
-                src="{{ asset('assets/assetLanding/revslider/assets/b5690-bg-2.jpg') }}"
-                alt=""
-                data-bgposition="center center"
-                data-bgfit="cover"
-                data-bgrepeat="no-repeat"
-                data-bgparallax="off"
-                class="rev-slidebg"
-                data-no-retina
-              />
-              <!-- LAYERS -->
-              <!-- LAYER NR. 12 -->
-              <h1
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-1"
-                data-x="56"
-                data-y="center"
-                data-voffset="-60"
-                data-width="['auto']"
-                data-height="['auto']"
-                data-type="text"
-                data-responsive_offset="on"
-                data-frames='[{"delay":600,"speed":1020,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="
-                  z-index: 5;
-                  white-space: nowrap;
-                  text-transform: capitalize;
-                  font-size: 60px;
-                  line-height: 70px;
-                  font-weight: 700;
-                  color: rgba(255, 255, 255, 1);
-                  font-family: 'Nunito', sans-serif;
-                "
-              >
-                Everyday is<br />New Beginning.
-              </h1>
-              <!-- LAYER NR. 13 -->
-              <p
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-2"
-                data-x="59"
-                data-y="center"
-                data-voffset="50"
-                data-width="['auto']"
-                data-height="['auto']"
-                data-type="text"
-                data-responsive_offset="on"
-                data-frames='[{"delay":600,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="
-                  z-index: 6;
-                  white-space: nowrap;
-                  font-size: 16px;
-                  line-height: 30px;
-                  font-weight: 400;
-                  color: rgba(255, 255, 255, 1);
-                  font-family: 'Poppins', sans-serif;
-                "
-              >
-                There are many variations of passages of Lorem Ipsum
-                available,<br />but the majority have suffered alteration in
-                some form.
-              </p>
-              <!-- LAYER NR. 14 -->
-              <div
-                class="tp-caption rev-btn button button-sm rev-withicon tp-resizeme rs-hover-ready"
-                id="slide-42-layer-3"
-                data-x="60"
-                data-y="center"
-                data-voffset="130"
-                data-width="['auto']"
-                data-height="['auto']"
-                data-type="button"
-                data-responsive_offset="on"
-                data-responsive="on"
-                data-frames='[{"delay":600,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"x:50px;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"},{"frame":"hover","speed":"0","ease":"Linear.easeNone","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":""}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop=""
-                data-paddingright="[35,35,35,35]"
-                data-paddingbottom=""
-                data-paddingleft="[35,35,35,35]"
-                style="
-                  z-index: 7;
-                  white-space: nowrap;
-                  font-size: 18px;
-                  line-height: 50px;
-                  height: auto;
-                  font-weight: 300;
-                  color: rgb(255, 255, 255);
-                  font-family: Nunito;
-                  padding: 0px 35px;
-                  border-color: rgb(0, 0, 0);
-                  border-radius: 30px;
-                  outline: none;
-                  box-shadow: rgb(153, 153, 153) 0px 0px 0px 0px;
-                  box-sizing: border-box;
-                  cursor: pointer;
-                  visibility: inherit;
-                  transition: none 0s ease 0s;
-                  text-align: inherit;
-                  margin: 0px;
-                  letter-spacing: 1px;
-                  min-height: 0px;
-                  min-width: 0px;
-                  max-height: none;
-                  max-width: none;
-                  opacity: 1;
-                  transform: matrix3d(
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1,
-                    0,
-                    0,
-                    0,
-                    0,
-                    1
-                  );
-                  transform-origin: 50% 50% 0px;
-                  border-width: 0px;
-                "
-              >
-                Get Started
-              </div>
-              <!-- LAYER NR. 15 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-4"
-                data-x="626"
-                data-y="219"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":900,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 8"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/81a17-Untitled-57.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 16 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-5"
-                data-x="630"
-                data-y="468"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":900,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 9"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/') }}revslider/assets/0d1ed-Untitled-58.png"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 17 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-14"
-                data-x="747"
-                data-y="443"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1200,"speed":300,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 10"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/4c71e-09.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 18 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-13"
-                data-x="859"
-                data-y="317"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1200,"speed":1500,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 11"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/7b389-06.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 19 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-15"
-                data-x="1109"
-                data-y="462"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1200,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 12"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/871fe-07.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 20 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-16"
-                data-x="895"
-                data-y="527"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":2100,"speed":300,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 13"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/ed9b4-12.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 21 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-17"
-                data-x="1069"
-                data-y="203"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1500,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 14"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/b9754-01.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 22 -->
-              <div
-                class="tp-caption tp-resizeme rs-parallaxlevel-1"
-                id="slide-42-layer-18"
-                data-x="690"
-                data-y="342"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1800,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 15"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/bea0c-04.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 23 -->
-              <div
-                class="tp-caption tp-resizeme rs-parallaxlevel-1"
-                id="slide-42-layer-19"
-                data-x="1161"
-                data-y="374"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1800,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 16"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/c18a0-05.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 24 -->
-              <div
-                class="tp-caption tp-resizeme rs-parallaxlevel-1"
-                id="slide-42-layer-20"
-                data-x="1222"
-                data-y="283"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":2100,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 17"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/3b231-10.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 25 -->
-              <div
-                class="tp-caption tp-resizeme rs-parallaxlevel-1"
-                id="slide-42-layer-21"
-                data-x="936"
-                data-y="174"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":2100,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 18"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/5f84f-11.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-            </li>
-            <!-- SLIDE  -->
-            <li
               data-index="rs-43"
               data-transition="fade"
               data-slotamount="default"
@@ -1107,7 +960,7 @@
               data-param9=""
               data-param10=""
               data-description=""
-            >
+              >
               <!-- MAIN IMAGE -->
               <img
                 src="{{ asset('assets/assetLanding/revslider/assets/b5690-bg-2.jpg') }}"
@@ -2688,7 +2541,7 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="footer-copyright text-center iq-fw-3">
-                ©Copyrights 2019 Markethon
+                Develop By : Daffa Rahman | Designed By : Markethon
               </div>
             </div>
           </div>
