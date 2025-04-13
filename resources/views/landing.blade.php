@@ -113,7 +113,7 @@
                 <ul class="menu-links">
                   <!-- active class -->
                   <li>
-                    <a href="javascript:void(0)" class="active">Home</a>
+                    <a href="#home" class="active">Home</a>
                   </li>
                   <li>
                     <a href="#sectionCurasCuranmor">Curas & Curanmor</a>
@@ -138,7 +138,7 @@
     </header>
     <!-- Header END -->
     <!-- Banner -->
-    <div class="iq-banner">
+    <div class="iq-banner" id="home">
       <div
         id="rev_slider_12_1_wrapper"
         class="rev_slider_wrapper fullwidthbanner-container"
@@ -323,8 +323,8 @@
                   transform-origin: 50% 50% 0px;
                   border-width: 0px;
                 "
-              >
-                Cek Daerahmu
+               >
+                <a href="#sectionMap">Cek Daerahmu </a>
               </div>
               <!-- LAYER NR. 15 -->
               <div
@@ -650,8 +650,8 @@
                   transform-origin: 50% 50% 0px;
                   border-width: 0px;
                 "
-              >
-                 Cek Daerahmu
+               >
+               <a href="#sectionMap">Cek Daerahmu </a>
               </div>
               <!-- LAYER NR. 4 -->
               <div
@@ -947,8 +947,8 @@
                   transform-origin: 50% 50% 0px;
                   border-width: 0px;
                 "
-              >
-                Cek Daerahmu
+               >
+                <a href="#sectionMap">Cek Daerahmu </a>
               </div>
               <!-- LAYER NR. 30 -->
               <div
@@ -1811,7 +1811,7 @@
                   </li>
                   <li class="list-item"><a href="#sectionCurasCuranmor">Curas</a></li>
                   <li class="list-item"><a href="#sectionKmeans">Clustering</a></li>
-                  <li class="list-item"><a href="#sectionMapCuras">Map</a></li>
+                  <li class="list-item"><a href="#sectionMap">Map</a></li>
                   <li class="list-item"><a href="#sectionOurTeam">Our Team</a></li>
                 </ul>
               </div>
