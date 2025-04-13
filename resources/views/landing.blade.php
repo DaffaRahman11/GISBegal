@@ -10,6 +10,9 @@
     <title>
       KPROTECT | Probolinggo Threat & Crime Tracker
     </title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="{{ asset('assets/map/leaflet.ajax.js') }}" ></script>
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/assetLanding/images/favicon2.png') }}" />
     <!-- Bootstrap CSS -->
@@ -21,49 +24,45 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('assets/assetLanding/css/responsive.css') }}" />
     <style>
-      .bungkus-progres {
-        width: 150px;
-        height: 150px;
-        position: relative;
-        margin: auto;
-      }
-    
-      .lingkaran-progres {
-        transform: rotate(-90deg);
-      }
-    
-      .latar-progres,
-      .isi-progres {
-        fill: none;
-        stroke-width: 10;
-      }
-    
-      .latar-progres {
-        stroke: #e6e6e6;
-      }
-    
-      .isi-progres {
-        stroke: #28a745;
-        stroke-linecap: round;
-        stroke-dasharray: 440;
-        stroke-dashoffset: 440;
-        transition: stroke-dashoffset 1s ease;
-      }
-    
-      .teks-progres {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 24px;
-        font-weight: bold;
-      }
-    
-      .teks-label {
-        text-align: center;
-        margin-top: 10px;
+      #map {
+            position: relative; /* bukan absolute atau fixed */
+            z-index: 0; /* pastikan ini lebih rendah dari header atau layout */
+            }
+
+.progressbar {
+      text-align: center;
+      margin: 20px; /* Tambahkan jarak antar progressbar */
+    }
+
+    .circle-outer {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background-color: #35e1a4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    .circle-inner {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background-color: #2980b9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 32px;
+      font-weight: bold;
+    }
+  
+      .iq-progress-bar-text {
+        margin-top: 15px;
+        font-size: 18px;
         font-weight: 600;
-        color: #000;
+        color: #333;
       }
     </style>
   </head>
@@ -117,17 +116,18 @@
                     <a href="javascript:void(0)" class="active">Home</a>
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Curas & Curanmor</a>
+                    <a href="#sectionCurasCuranmor">Curas & Curanmor</a>
                     <!-- drop down full width -->
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Clustering</a>
+                    <a href="#sectionKmeans">Clustering</a>
                     <!-- drop down third level -->
                   </li>
                   <li>
-                    <a href="javascript:void(0)">Map</a>
+                    <a href="#sectionMap">Map</a>
                   </li>
-                  <li><a href="contact-us.html">Our Teams</a></li>
+                  <li><a href="#sectionOurTeam">Our Teams</a>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -158,7 +158,7 @@
           class="rev_slider fullwidthabanner"
           style="display: none"
           data-version="5.4.3.1"
-        >
+          >
           <ul>
             <!-- SLIDE  -->
             <li
@@ -254,8 +254,9 @@
                   font-family: 'Poppins', sans-serif;
                 "
               >
-                Kasus Curas dan Curanmor di Probolinggo mengalami peningkatan.<br />
-                 Dengan <strong>KP</strong>rotect kita dapat mengetahui daerah yang Rawan 
+                Website Informasi Geografis yang dirancang untuk memetakan<br /> 
+                kasus Curas dan Curanmor di Kabupaten Probolinggo
+                
               </p>
               <!-- LAYER NR. 14 -->
               <div
@@ -323,7 +324,7 @@
                   border-width: 0px;
                 "
               >
-                Get Started
+                Cek Daerahmu
               </div>
               <!-- LAYER NR. 15 -->
               <div
@@ -378,31 +379,7 @@
                 />
               </div>
               <!-- LAYER NR. 17 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-14"
-                data-x="747"
-                data-y="443"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1200,"speed":300,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 10"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/4c71e-09.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
+              
               <!-- LAYER NR. 18 -->
               <div
                 class="tp-caption tp-resizeme"
@@ -430,84 +407,7 @@
                   style="width: 300px; height: auto;"
                 />
               </div>
-              <!-- LAYER NR. 19 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-15"
-                data-x="1109"
-                data-y="462"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1200,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 12"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/871fe-07.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 20 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-16"
-                data-x="895"
-                data-y="527"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":2100,"speed":300,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"opacity:0;","to":"o:1;","ease":"Power2.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 13"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/ed9b4-12.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
-              <!-- LAYER NR. 21 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-42-layer-17"
-                data-x="1069"
-                data-y="203"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":1500,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 14"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/b9754-01.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
+             
               <!-- LAYER NR. 22 -->
               <div
                 class="tp-caption tp-resizeme rs-parallaxlevel-1"
@@ -586,32 +486,7 @@
                   data-no-retina
                 />
               </div>
-              <!-- LAYER NR. 25 -->
-              <div
-                class="tp-caption tp-resizeme rs-parallaxlevel-1"
-                id="slide-42-layer-21"
-                data-x="936"
-                data-y="174"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":2100,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 18"
-              >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/5f84f-11.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
+              
             </li>
             <!-- SLIDE  -->
             <li
@@ -678,7 +553,7 @@
                   font-family: 'Nunito', sans-serif;
                 "
               >
-                We Manage<br />Your Business.
+                Curas & Curanmor
               </h1>
               <!-- LAYER NR. 2 -->
               <p
@@ -707,9 +582,8 @@
                   font-family: 'Poppins', sans-serif;
                 "
               >
-                There are many variations of passages of Lorem Ipsum
-                available,<br />but the majority have suffered alteration in
-                some form.
+                Kasus Curas dan Curanmor yang semakin sering terjadi di Probolinggo
+                <br />Menimbulkan banyak korban dan kerugian  
               </p>
               <!-- LAYER NR. 3 -->
               <div
@@ -777,7 +651,7 @@
                   border-width: 0px;
                 "
               >
-                Get Started
+                 Cek Daerahmu
               </div>
               <!-- LAYER NR. 4 -->
               <div
@@ -857,32 +731,7 @@
                   data-no-retina
                 />
               </div>
-              <!-- LAYER NR. 7 -->
-              <div
-                class="tp-caption tp-resizeme"
-                id="slide-41-layer-7"
-                data-x="772"
-                data-y="531"
-                data-width="['none','none','none','none']"
-                data-height="['none','none','none','none']"
-                data-type="image"
-                data-responsive_offset="on"
-                data-frames='[{"delay":2100,"speed":1000,"text_c":"transparent","bg_c":"transparent","use_text_c":false,"use_bg_c":false,"frame":"0","from":"z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power3.easeInOut"},{"delay":"wait","speed":300,"use_text_c":false,"use_bg_c":false,"text_c":"transparent","bg_c":"transparent","frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
-                data-textAlign="['left','left','left','left']"
-                data-paddingtop="[0,0,0,0]"
-                data-paddingright="[0,0,0,0]"
-                data-paddingbottom="[0,0,0,0]"
-                data-paddingleft="[0,0,0,0]"
-                style="z-index: 11"
-                >
-                <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/0f298-01.png') }}"
-                  alt=""
-                  data-ww="auto"
-                  data-hh="auto"
-                  data-no-retina
-                />
-              </div>
+              
               <!-- LAYER NR. 10 -->
               <div
                 class="tp-caption tp-resizeme rs-parallaxlevel-1"
@@ -902,7 +751,7 @@
                 style="z-index: 14"
                 >
                 <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/af220-05.png') }}"
+                  src="{{ asset('assets/assetLanding/revslider/assets/awan.png') }}"
                   alt=""
                   data-ww="auto"
                   data-hh="auto"
@@ -1001,7 +850,7 @@
                   font-family: 'Nunito', sans-serif;
                 "
               >
-                Best Digital<br />Marketing Solution.
+                Algoritma<br />K - Means Clustering
               </h1>
               <!-- LAYER NR. 28 -->
               <p
@@ -1030,9 +879,8 @@
                   font-family: 'Poppins', sans-serif;
                 "
               >
-                There are many variations of passages of Lorem Ipsum
-                available,<br />but the majority have suffered alteration in
-                some form.
+                Dasar Pemetaan menggunakan data dari Polres Probolinggo
+                <br /> Dan di olah menggunakan Algoritma K - Means Clustering
               </p>
               <!-- LAYER NR. 29 -->
               <div
@@ -1100,7 +948,7 @@
                   border-width: 0px;
                 "
               >
-                Get Started
+                Cek Daerahmu
               </div>
               <!-- LAYER NR. 30 -->
               <div
@@ -1251,7 +1099,7 @@
                 style="z-index: 13"
               >
                 <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/54e08-09.png') }}"
+                  src="{{ asset('assets/assetLanding/revslider/assets/af220-05.png') }}"
                   alt=""
                   data-ww="auto"
                   data-hh="auto"
@@ -1277,7 +1125,7 @@
                 style="z-index: 14"
               >
                 <img
-                  src="{{ asset('assets/assetLanding/revslider/assets/bd913-10.png') }}"
+                  src="{{ asset('assets/assetLanding/revslider/assets/af220-05.png') }}"
                   alt=""
                   data-ww="auto"
                   data-hh="auto"
@@ -1322,61 +1170,13 @@
     <!-- Banner END -->
     <!-- Main Content -->
     <div class="main-content">
-      <section class="iq-solutions position-relative">
-        <div class="container">
-          <div class="batang-progres text-center">
-            <div class="bungkus-progres">
-              <svg width="150" height="150" class="lingkaran-progres">
-                <circle class="latar-progres" cx="75" cy="75" r="70"></circle>
-                <circle
-                  class="isi-progres"
-                  cx="75"
-                  cy="75"
-                  r="70"
-                  data-persentase="76"
-                ></circle>
-              </svg>
-              <div class="teks-progres" id="nilai-progres"></div>
-            </div>
-            <p class="teks-label">Marketing</p>
-          </div>
-          
-        </div>
-      </section>
-      <!--Solutions From  -->
-      <section class="iq-solutions position-relative">
-        <div class="container">
-          <div class="row no-gutters flex-row-reverse">
-            <div class="col-lg-6">
-              <img src="{{ asset('assets/assetLanding/images/others/1.png') }}" class="img-fluid" alt="" />
-            </div>
-            <div class="col-lg-6 align-self-center">
-              <h2 class="iq-fw-8 mb-2 iq-mt-40">
-                Best Digital Marketing Solution
-              </h2>
-              <p class="mb-3">
-                Progravida nibh vel velit auctor alinean sollicitudin, lorem
-                quis bibendum auctor, nisi elit consequat ipsum,Lorem
-                Ipsum.lorem quis bibendum auctor.
-              </p>
-              <ul class="listing-mark">
-                <li>Simply dummy text of the Lorem Ipsum is printing.</li>
-                <li>Dummy text of the printing and typesetting industry.</li>
-                <li>Text of the printing and typesetting industry.</li>
-                <li>Ipsum has been the industry's standard dummy.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Solutions END -->
       <!-- Choose From  -->
-      <section class="iq-choose-info position-relative iq-rmt-40">
+      <section class="iq-choose-info position-relative iq-rmt-40" id="sectionCurasCuranmor">
         <div class="container">
           <div class="row">
             <div class="col-lg-6 align-self-center">
               <img
-                src="{{ asset('assets/assetLanding/images/others/31.png') }}"
+                src="{{ asset('assets/assetLanding/images/others/34.png') }}"
                 class="img-fluid wow fadeInLeft"
                 alt=""
               />
@@ -1434,145 +1234,31 @@
         </div>
       </section>
       <!-- Choose From End -->
-
-      <!-- Service Info  -->
-      <section class="iq-project-info position-relative iq-rmt-40 pt-0">
+      <!--Solutions From  -->
+      <section class="iq-solutions position-relative" id="sectionKmeans">
         <div class="container">
-          <div class="row">
-            <div class="col-sm-12 text-center">
-              <div class="section-title">
-                <p class="text-uppercase iq-fw-3 iq-ls-3">Features</p>
-                <h2 class="title iq-fw-8">Our Special Features</h2>
-              </div>
+          <div class="row no-gutters flex-row-reverse">
+            <div class="col-lg-6">
+              <img src="{{ asset('assets/assetLanding/images/others/1.png') }}" class="img-fluid" alt="" />
+            </div>
+            <div class="col-lg-6 align-self-center">
+              <h2 class="iq-fw-8 mb-2 iq-mt-40">
+                Apa Sih K - Means Clustering Itu ?
+              </h2>
+              <p class="mb-3 mt-5">
+                K - Means Clustering merupakan salah satu algortitma machine learning 
+                yang digunakan untuk memetakan data berdasarkan kemiripan dari masing - masing data.
+                Terus bedanya K - Means dengan algoritma clustering yang lain apa ? Pada awal iterasi K - Means menggunakan nilai titik pusat klasternya secara acak.
+              </p>
+              
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="media iq-project-info">
-                <div class="media-body mr-3 text-right float-left">
-                  <h5 class="mt-0 mb-1 iq-fw-8">
-                    <a href="service-detail.html">Data Analysis</a>
-                  </h5>
-                  <p class="mb-0">
-                    It is a long established fact that a reader
-                  </p>
-                </div>
-                <div class="service-shap align-self-center float-right">
-                  <i class="ion-ios-cloud-download-outline"></i>
-                </div>
-              </div>
-              <div class="media iq-project-info">
-                <div class="media-body mr-3 text-right float-left">
-                  <h5 class="mt-0 mb-1 iq-fw-8">
-                    <a href="service-detail.html">PPC Marketing</a>
-                  </h5>
-                  <p class="mb-0">
-                    It is a long established fact that a reader
-                  </p>
-                </div>
-                <div class="service-shap align-self-center float-right">
-                  <i class="ion-ios-pie-outline"></i>
-                </div>
-              </div>
-              <div class="media iq-project-info mb-0">
-                <div class="media-body mr-3 text-right float-left">
-                  <h5 class="mt-0 mb-1 iq-fw-8">
-                    <a href="service-detail.html">Business Analytics</a>
-                  </h5>
-                  <p class="mb-0">
-                    It is a long established fact that a reader
-                  </p>
-                </div>
-                <div class="service-shap align-self-center float-right">
-                  <i class="ion-ios-world-outline"></i>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4 align-self-center feature-images">
-              <img src="{{ asset('assets/assetLanding/images/others/33.png') }}" class="img-fluid" alt="image" />
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-              <div class="media iq-project-info">
-                <div class="service-shap align-self-center">
-                  <i class="ion-ios-gear-outline"></i>
-                </div>
-                <div class="media-body ml-3">
-                  <h5 class="mt-0 mb-1 iq-fw-8">
-                    <a href="service-detail.html">Social Marketing</a>
-                  </h5>
-                  <p class="mb-0">
-                    It is a long established fact that a reader
-                  </p>
-                </div>
-              </div>
-              <div class="media iq-project-info">
-                <div class="service-shap align-self-center">
-                  <i class="ion-ios-briefcase-outline"></i>
-                </div>
-                <div class="media-body ml-3">
-                  <h5 class="mt-0 mb-1 iq-fw-8">
-                    <a href="service-detail.html">Business Analytics</a>
-                  </h5>
-                  <p class="mb-0">
-                    It is a long established fact that a reader
-                  </p>
-                </div>
-              </div>
-              <div class="media iq-project-info mb-0">
-                <div class="service-shap align-self-center">
-                  <i class="ion-ios-gear-outline"></i>
-                </div>
-                <div class="media-body ml-3">
-                  <h5 class="mt-0 mb-1 iq-fw-8">
-                    <a href="service-detail.html">Research</a>
-                  </h5>
-                  <p class="mb-0">
-                    It is a long established fact that a reader
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="scrollme">
-          <img
-            src="{{ asset('assets/assetLanding/images/others/32.png') }}"
-            class="img-fluid service-right animateme"
-            data-when="exit"
-            data-from="0.5"
-            data-to="0"
-            data-translatey="100"
-            alt="image"
-          />
         </div>
       </section>
-      <!--Project Info End -->
-      <!-- Video -->
-      <div class="iq-videos overview-block-ptb position-relative iq-rmt-40">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-9 position-relative">
-              <img src="{{ asset('assets/assetLanding/') }}images/video/2.png" class="img-fluid w-100" alt="" />
-              <div class="waves-box">
-                <a
-                  href="https://www.youtube.com/watch?v=0O2aH4XLbto"
-                  class="video-play popup-youtube"
-                  ><i class="fas fa-play"></i
-                ></a>
-                <div class="iq-waves">
-                  <div class="waves wave-1"></div>
-                  <div class="waves wave-2"></div>
-                  <div class="waves wave-3"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Video END -->
+      <!-- Solutions END -->
       <!-- Team section -->
-      <section class="iq-bestteam main-bg position-relative pt-0">
-        <div class="container">
+      <section class="iq-bestteam main-bg position-relative pt-0" id="sectionOurTeam">
+        <div class="container mt-5">
           <div class="row">
             <div class="col-sm-12 text-center">
               <div class="section-title">
@@ -1583,12 +1269,12 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <div class="row justify-content-center">
             <div class="col-lg-3 col-md-6">
               <div class="team-box">
                 <div class="team-img text-center">
                   <img
-                    src="{{ asset('assets/assetLanding/images/team/01.jpg') }}"
+                    src="{{ asset('assets/assetLanding/images/team/admin-daffa.jpeg') }}"
                     class="img-fluid rounded-circle"
                     alt="image"
                   />
@@ -1597,10 +1283,10 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Marie Mart</a>
+                      <a href="team-detail.html">Daffa Fauzi Rahman</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Web Designer</span
+                      >Web Developer</span
                     >
                   </div>
                 </div>
@@ -1630,7 +1316,7 @@
               <div class="team-box">
                 <div class="team-img text-center">
                   <img
-                    src="{{ asset('assets/assetLanding/images/team/02.jpg') }}"
+                    src="{{ asset('assets/assetLanding/images/team/bety.png') }}"
                     class="img-fluid rounded-circle"
                     alt="image"
                   />
@@ -1639,10 +1325,10 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Kips Leo</a>
+                      <a href="team-detail.html">Bety Etikasari</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Web Designer</span
+                      >Pembimbing</span
                     >
                   </div>
                 </div>
@@ -1672,7 +1358,7 @@
               <div class="team-box">
                 <div class="team-img text-center">
                   <img
-                    src="{{ asset('assets/assetLanding/images/team/03.jpg') }}"
+                    src="{{ asset('assets/assetLanding/images/team/bitari.png') }}"
                     class="img-fluid rounded-circle"
                     alt="image"
                   />
@@ -1681,10 +1367,10 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Glen Jax</a>
+                      <a href="team-detail.html">Dia Bitari Mei Yuana</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Web Designer</span
+                      >Penguji</span
                     >
                   </div>
                 </div>
@@ -1710,193 +1396,20 @@
                 </div>
               </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-              <div class="team-box">
-                <div class="team-img text-center">
-                  <img
-                    src="{{ asset('assets/assetLanding/images/team/04.jpg') }}"
-                    class="img-fluid rounded-circle"
-                    alt="image"
-                  />
-                </div>
-                <div class="team-detail">
-                  <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
-                  <div class="team-info">
-                    <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Nik Jorden</a>
-                    </h6>
-                    <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Web Designer</span
-                    >
-                  </div>
-                </div>
-                <div class="team-hover">
-                  <p>
-                    Progravida nibh vel velit auctor alinean sollicitudin nisi
-                    elit consequat ipsum.
-                  </p>
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-twitter"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-instagram"></i></a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            
           </div>
         </div>
       </section>
       <!-- Team END -->
-      <!-- Testimonial  -->
-      <section class="iq-testimonial">
-        <div class="container position-relative">
-          <div class="row no-gutters">
-            <div class="col-lg-4 align-self-center">
-              <h2 class="iq-fw-8 mb-2">Check What's Our Client Say</h2>
-              <p class="">
-                Progravida nibh vel velit auctor alinean sollicitudin.
-              </p>
-            </div>
-            <div class="col-lg-8">
-              <div class="testimonial-block">
-                <div
-                  class="owl-carousel"
-                  data-autoplay="true"
-                  data-loop="true"
-                  data-nav="true"
-                  data-dots="false"
-                  data-items="2"
-                  data-items-laptop="2"
-                  data-items-tab="2"
-                  data-items-mobile="1"
-                  data-items-mobile-sm="1"
-                  data-margin="20"
-                >
-                  <div class="item">
-                    <div class="testimonial-box">
-                      <img
-                        src="{{ asset('assets/assetLanding/images/testimonials/01.jpg') }}"
-                        class="img-fluid mb-5 img-shap"
-                        alt=""
-                      />
-                      <p class="testimonial-info">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor, nisi elit consequat.
-                      </p>
-                      <h6 class="mb-5">
-                        Marie Mart
-                        <span
-                          ><strong class="text-black">CEO -</strong
-                          ><span class="iq-fw-4 ml-0"> Markethon</span></span
-                        >
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="testimonial-box">
-                      <img
-                        src="{{ asset('assets/assetLanding/images/testimonials/02.jpg') }}"
-                        class="img-fluid mb-5 img-shap"
-                        alt=""
-                      />
-                      <p class="testimonial-info">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor, nisi elit consequat.
-                      </p>
-                      <h6 class="mb-5">
-                        Kips Leo
-                        <span
-                          ><strong class="text-black">CEO -</strong
-                          ><span class="iq-fw-4 ml-0"> Markethon</span></span
-                        >
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="testimonial-box">
-                      <img
-                        src="{{ asset('assets/assetLanding/images/testimonials/03.jpg') }}"
-                        class="img-fluid mb-5 img-shap"
-                        alt=""
-                      />
-                      <p class="testimonial-info">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor, nisi elit consequat.
-                      </p>
-                      <h6 class="mb-5">
-                        Glen Jax
-                        <span
-                          ><strong class="text-black">CEO -</strong
-                          ><span class="iq-fw-4 ml-0"> Markethon</span></span
-                        >
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="testimonial-box">
-                      <img
-                        src="{{ asset('assets/assetLanding/images/testimonials/04.jpg') }}"
-                        class="img-fluid mb-5 img-shap"
-                        alt=""
-                      />
-                      <p class="testimonial-info">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor, nisi elit consequat.
-                      </p>
-                      <h6 class="mb-5">
-                        Nik Jorden
-                        <span
-                          ><strong class="text-black">CEO -</strong
-                          ><span class="iq-fw-4 ml-0"> Markethon</span></span
-                        >
-                      </h6>
-                    </div>
-                  </div>
-                  <div class="item">
-                    <div class="testimonial-box">
-                      <img
-                        src="{{ asset('assets/assetLanding/images/testimonials/03.jpg') }}"
-                        class="img-fluid mb-5 img-shap"
-                        alt=""
-                      />
-                      <p class="testimonial-info">
-                        Progravida nibh vel velit auctor alinean sollicitudin,
-                        lorem quis bibendum auctor, nisi elit consequat.
-                      </p>
-                      <h6 class="mb-5">
-                        JD Scot
-                        <span
-                          ><strong class="text-black">CEO -</strong
-                          ><span class="iq-fw-4 ml-0"> Markethon</span></span
-                        >
-                      </h6>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Testimonial END -->
-      <!--
-         Pricing -->
-      <section class="iq-pricing-table pt-0 iq-rmt-40">
+
+      <!--Pricing -->
+      <section class="iq-pricing-table pt-0 iq-rmt-40" id="sectionMap">
         <div class="container">
           <div class="row">
             <div class="col-sm-12 text-center">
-              <div class="section-title">
-                <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">Our Pricing</p>
-                <h2 class="title iq-fw-8">Our Popular Pricing Plans</h2>
+              <div class="section-title mt-5">
+                <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2 mt-3">Hasil Pemetaan</p>
+                <h2 class="title iq-fw-8">Pemetaan Kasus Curas dan Curanmor <br> di Kabupaten Probolinggo</h2>
               </div>
             </div>
           </div>
@@ -1906,271 +1419,40 @@
                 <li class="nav-item">
                   <a
                     class="nav-link active"
-                    id="monthly-tab"
+                    id="btn-curas"
                     data-toggle="pill"
                     href="#monthly"
                     role="tab"
                     aria-controls="monthly"
                     aria-selected="true"
-                    >Monthly</a
+                    >Curas</a
                   >
                 </li>
                 <li class="nav-item">
                   <a
                     class="nav-link"
-                    id="yearly-tab"
+                    id="btn-curanmor"
                     data-toggle="pill"
                     href="#yearly"
                     role="tab"
                     aria-controls="yearly"
                     aria-selected="false"
-                    >Yearly</a
+                    >Curanmor</a
                   >
                 </li>
               </ul>
+              
               <div class="tab-content iq-mt-80" id="pills-tabContent">
                 <div
-                  class="tab-pane fade show active"
+                  class="tab-pane show active"
                   id="monthly"
                   role="tabpanel"
                   aria-labelledby="monthly-tab"
-                >
+                  >
                   <div class="row pricing1 text-center">
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                      <div class="iq-pricing white-bg">
-                        <div class="pricing-header mb-5">
-                          <h6 class="iq-fw-6 mb-2">Start Up</h6>
-                          <h3 class="iq-fw-8">$19.99</h3>
-                        </div>
-                        <ul class="">
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Email Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >Content Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Voice Optimize
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >SEO Consulting
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >Video Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Advertising
-                          </li>
-                        </ul>
-                        <a class="slide-button button mt-5" href="pricing.html">
-                          <div class="first">Purchase</div>
-                          <div class="second">Purchase</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                    <div class="col-xl-12 col-sm-12">
                       <div class="iq-pricing active white-bg">
-                        <div class="pricing-header mb-5">
-                          <h6 class="iq-fw-6 mb-2">Professional</h6>
-                          <h3 class="iq-fw-8">$29.99</h3>
-                        </div>
-                        <ul class="">
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Email Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Content Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Voice Optimize
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >SEO Consulting
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >Video Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Advertising
-                          </li>
-                        </ul>
-                        <a class="slide-button button mt-5" href="pricing.html">
-                          <div class="first">Purchase</div>
-                          <div class="second">Purchase</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
-                      <div class="iq-pricing white-bg">
-                        <div class="pricing-header mb-5">
-                          <h6 class="iq-fw-6 mb-2">Advanced</h6>
-                          <h3 class="iq-fw-8">$45.99</h3>
-                        </div>
-                        <ul class="">
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Email Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Content Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Voice Optimize
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >SEO Consulting
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Video Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Advertising
-                          </li>
-                        </ul>
-                        <a class="slide-button button mt-5" href="pricing.html">
-                          <div class="first">Purchase</div>
-                          <div class="second">Purchase</div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="tab-pane fade"
-                  id="yearly"
-                  role="tabpanel"
-                  aria-labelledby="yearly-tab"
-                >
-                  <div class="row pricing1 text-center">
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                      <div class="iq-pricing white-bg">
-                        <div class="pricing-header mb-5">
-                          <h6 class="iq-fw-6 mb-2">Start Up</h6>
-                          <h3 class="iq-fw-8">$9.99</h3>
-                        </div>
-                        <ul class="">
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Email Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >Content Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Voice Optimize
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >SEO Consulting
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >Video Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Advertising
-                          </li>
-                        </ul>
-                        <a class="slide-button button mt-5" href="pricing.html">
-                          <div class="first">Purchase</div>
-                          <div class="second">Purchase</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                      <div class="iq-pricing active white-bg">
-                        <div class="pricing-header mb-5">
-                          <h6 class="iq-fw-6 mb-2">Professional</h6>
-                          <h3 class="iq-fw-8">$29.99</h3>
-                        </div>
-                        <ul class="">
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Email Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Content Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Voice Optimize
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >SEO Consulting
-                          </li>
-                          <li class="mb-2">
-                            <i class="fas fa-times-circle main-color mr-2"></i
-                            >Video Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Advertising
-                          </li>
-                        </ul>
-                        <a class="slide-button button mt-5" href="pricing.html">
-                          <div class="first">Purchase</div>
-                          <div class="second">Purchase</div>
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12">
-                      <div class="iq-pricing white-bg">
-                        <div class="pricing-header mb-5">
-                          <h6 class="iq-fw-6 mb-2">Advanced</h6>
-                          <h3 class="iq-fw-8">$49.99</h3>
-                        </div>
-                        <ul class="">
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Email Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Content Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Voice Optimize
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >SEO Consulting
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Video Marketing
-                          </li>
-                          <li class="mb-2">
-                            <i class="fa fa-check-circle text-green mr-2"></i
-                            >Advertising
-                          </li>
-                        </ul>
-                        <a class="slide-button button mt-5" href="pricing.html">
-                          <div class="first">Purchase</div>
-                          <div class="second">Purchase</div>
-                        </a>
+                        <div id="map" style="width: 100%; height: 500px;" ></div>
                       </div>
                     </div>
                   </div>
@@ -2181,8 +1463,9 @@
         </div>
       </section>
       <!-- Pricing END -->
+      
       <!-- Our Blog -->
-      <section class="iq-blogs position-relative pb-xl-0 iq-rmt-40">
+      {{-- <section class="iq-blogs position-relative pb-xl-0 iq-rmt-40">
         <div class="container">
           <div class="col-sm-12 text-center">
             <div class="section-title">
@@ -2455,7 +1738,7 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> --}}
       <!-- Our Blog END -->
     </div>
     <footer class="footer-two">
@@ -2467,7 +1750,7 @@
               <div class="iq-footer-logo">
                 <a href="index.html"
                   ><img
-                    src="{{ asset('assets/assetLanding/images/logo-white.png') }}"
+                   src="{{ asset('assets/assetLanding/images/logo-white.png') }}"
                     class="img-fluid mb-4"
                     alt="image"
                 /></a>
@@ -2524,16 +1807,12 @@
                 <h5 class="text-white">Navigation.</h5>
                 <ul class="list-inline">
                   <li class="list-item">
-                    <a href="about-us.html">About us</a>
+                    <a href="#home">Home</a>
                   </li>
-                  <li class="list-item"><a href="pricing.html">Pricing</a></li>
-                  <li class="list-item"><a href="process.html">Process</a></li>
-                  <li class="list-item"><a href="faq.html">FAQ</a></li>
-                  <li class="list-item"><a href="team.html">Team</a></li>
-                  <li class="list-item">
-                    <a href="contact-us.html">Contact Us</a>
-                  </li>
-                  <li class="list-item"><a href="service.html">Service</a></li>
+                  <li class="list-item"><a href="#sectionCurasCuranmor">Curas</a></li>
+                  <li class="list-item"><a href="#sectionKmeans">Clustering</a></li>
+                  <li class="list-item"><a href="#sectionMapCuras">Map</a></li>
+                  <li class="list-item"><a href="#sectionOurTeam">Our Team</a></li>
                 </ul>
               </div>
             </div>
@@ -2619,37 +1898,30 @@
     <script src="{{ asset('assets/assetLanding/js/custom.js') }}"></script>
     {{-- Script Untuk Progress Circle Bar (Menampilkan Jumlah Kasus) --}}
     <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const lingkaran = document.querySelector(".isi-progres");
-        const nilai = document.getElementById("nilai-progres");
-        const persen = parseInt(lingkaran.getAttribute("data-persentase"));
-        const radius = parseFloat(lingkaran.getAttribute("r"));
-        const keliling = 2 * Math.PI * radius;
-    
-        lingkaran.style.strokeDasharray = `${keliling}`;
-        lingkaran.style.strokeDashoffset = `${keliling}`;
-    
-        const animasiLingkaran = (persen) => {
-          const offset = keliling - (persen / 100) * keliling;
-          lingkaran.style.strokeDashoffset = offset;
-        };
-    
-        const animasiHitung = (tujuan) => {
-          let sekarang = 0;
-          const langkah = () => {
-            if (sekarang <= tujuan) {
-              nilai.innerText = sekarang + "%";
-              sekarang++;
-              setTimeout(langkah, 10);
-            }
-          };
-          langkah();
-        };
-    
-        animasiLingkaran(persen);
-        animasiHitung(persen);
+      function animatePercentage(id, end, duration) {
+        let start = 0;
+        let range = end - start;
+        let current = start;
+        let increment = end > start ? 1 : -1;
+        let stepTime = Math.abs(Math.floor(duration / range));
+        const element = document.getElementById(id);
+  
+        const timer = setInterval(function () {
+          current += increment;
+          element.textContent = current;
+          if (current === end) {
+            clearInterval(timer);
+          }
+        }, stepTime);
+      }
+  
+      // Jalankan animasi untuk masing-masing circle
+      document.querySelectorAll('.circle-inner').forEach((circle, index) => {
+        const target = parseInt(circle.getAttribute('data-percent'));
+        animatePercentage(`percentage${index + 1}`, target, 5000);
       });
     </script>
+  
     
     
 
@@ -2705,5 +1977,102 @@
         }
       }); /*ready*/
     </script>
+
+<script>
+  let map;
+  let geoLayer;
+  let curasData = {};
+  let apiUrl = "{{ url('/api/map/curas') }}"; // default
+
+  function fetchAndLoadMap(url, titleText) {
+      fetch(url)
+          .then(res => res.json())
+          .then(data => {
+              // reset data
+              curasData = {};
+              data.forEach(item => {
+                  curasData[item.kecamatan.toLowerCase().trim()] = item;
+              });
+
+              // hapus layer lama
+              if (geoLayer) {
+                  geoLayer.remove();
+              }
+
+              // buat layer baru
+              geoLayer = new L.GeoJSON.AJAX(["{{ asset('assets/map/gisProbolinggo.geojson') }}"], {
+                  style: styleFeature,
+                  onEachFeature: popUp
+              });
+
+              geoLayer.addTo(map);
+
+              // ubah judul jika ada
+              const mapTitle = document.querySelector('.card-title');
+              if (mapTitle) mapTitle.textContent = titleText;
+          });
+  }
+
+  function getColor(warna) {
+      return warna || '#cccccc';
+  }
+
+  function styleFeature(feature) {
+      let namaKecamatan = feature.properties.WADMKC.toLowerCase().trim();
+      let data = curasData[namaKecamatan];
+      return {
+          fillColor: data ? getColor(data.warna) : '#cccccc',
+          weight: 1,
+          opacity: 1,
+          color: 'white',
+          fillOpacity: 0.7
+      };
+  }
+
+  function popUp(feature, layer) {
+      let namaKecamatan = feature.properties.WADMKC.toLowerCase().trim();
+      let data = curasData[namaKecamatan];
+
+      let content = `<strong>Kecamatan ${feature.properties.WADMKC}</strong><br/><br/>`;
+      if (data) {
+          if ('jumlah_curas' in data) {
+              content += `Jumlah Curas: ${data.jumlah_curas}<br/>Kategori: ${data.klaster}`;
+          } else if ('jumlah_curanmor' in data) {
+              content += `Jumlah Curanmor: ${data.jumlah_curanmor}<br/>Kategori: ${data.klaster}`;
+          }
+      } else {
+          content += `Data tidak tersedia`;
+      }
+
+      layer.bindPopup(content);
+  }
+
+  function loadInitialMap() {
+      map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          maxZoom: 19,
+          attribution: '&copy; OpenStreetMap'
+      }).addTo(map);
+
+      // Load default
+      fetchAndLoadMap(apiUrl, 'Pemetaan Curas Kab Probolinggo');
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      loadInitialMap();
+
+      document.getElementById('btn-curas').addEventListener('click', (e) => {
+          e.preventDefault();
+          fetchAndLoadMap("{{ url('/api/map/curas') }}", "Pemetaan Curas Kab Probolinggo");
+      });
+
+      document.getElementById('btn-curanmor').addEventListener('click', (e) => {
+          e.preventDefault();
+          fetchAndLoadMap("{{ url('/api/map/curanmor') }}", "Pemetaan Curanmor Kab Probolinggo");
+      });
+  });
+</script>
+
+
   </body>
 </html>
