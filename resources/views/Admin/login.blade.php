@@ -8,10 +8,10 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>
-      Markethon - Digital Marketing Agency Responsive HTML5 Template
+      KPROTECT | Probolinggo Threat & Crime Tracker
     </title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets/assetLanding/images/favicon.ico') }}" />
+    <link rel="shortcut icon" href="{{ asset('assets/assetLanding/images/favicon2.png') }}" />
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ asset('assets/assetLanding/css/bootstrap.min.css') }}" />
     <!-- Typography CSS -->

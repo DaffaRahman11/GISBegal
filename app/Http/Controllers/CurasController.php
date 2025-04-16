@@ -16,7 +16,7 @@ class CurasController extends Controller
      */
     public function index()
     {
-        $curases = Curas::orderBy('jumlah_curas', 'asc')->get();
+        $curases = Curas::orderBy('jumlah_curas', 'desc')->get();
         return view('admin.dashboardListCuras', compact('curases'));
 
     }
