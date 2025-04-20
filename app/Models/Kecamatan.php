@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kecamatan extends Model
 {
@@ -19,5 +20,13 @@ class Kecamatan extends Model
     
     public function kecamatanCuranmor(): HasOne {
         return $this->hasOne(Curanmor::class);   
+    }
+
+    public function kecamatan_DetailCuras(): HasMany{
+        return $this->hasMany(Detail_Curas::class);   
+    }
+    
+    public function kecamatan_DetailCuranmor(): HasMany{
+        return $this->hasMany(Detail_Curanmor::class);   
     }
 }

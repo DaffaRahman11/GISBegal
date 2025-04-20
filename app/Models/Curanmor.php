@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -19,6 +20,10 @@ class Curanmor extends Model
     
     public function punyaKecamatanCuranmor(): BelongsTo{
         return $this->belongsTo(Kecamatan::class, 'kecamatan_id');
+    }
+
+    public function curanmor_DetailCuranmor(): HasMany{
+        return $this->hasMany(Detail_Curanmor::class);   
     }
 
     protected $with = ['punyaKecamatanCuranmor', 'punyaKlasterCuranmor'];

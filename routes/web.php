@@ -14,6 +14,10 @@ Route::get('/', function () {
     return view('landing');
 });
 
+Route::get('/detail', function () {
+    return view('admin.dashboardDetailCuras');
+});
+
 
 Route::get('/blank', function () {
     return view('admin.dashboardBlank');

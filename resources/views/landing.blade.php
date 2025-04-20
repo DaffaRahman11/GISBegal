@@ -1453,6 +1453,7 @@
                     <div class="col-xl-12 col-sm-12">
                       <div class="iq-pricing active white-bg">
                         <div id="map" style="width: 100%; height: 500px;" ></div>
+                      
                       </div>
                     </div>
                   </div>

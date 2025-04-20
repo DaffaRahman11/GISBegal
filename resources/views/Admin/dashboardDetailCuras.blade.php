@@ -5,9 +5,9 @@
             <div class="col-lg-12">
                 <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                     <div>
-                        <h4 class="mb-3">Daftar Kasus Pencurian Dengan Kekerasan (CURAS)</h4>
-                        <p class="mb-0">Berikut ini merupakan data kasus Pencurian Dengan Kekerasan (CURAS) pada <br>
-                            masing masing kecamatan di Kabupaten Probolinggo</p>
+                        <h4 class="mb-3">Detail Kasus Curas Per Tanggal</h4>
+                        <p class="mb-0">Berikut ini merupakan rincian kasus Pencurian Dengan Kekerasan (CURAS)  <br>
+                            yang dikelompokkan berdasarkan tanggal</p>
                     </div>
                     <a href="/dashboard/curas/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kasus Curas</a>
                 </div>
@@ -34,12 +34,13 @@
                                 </div>
                             </th>
                             <th>No</th>
+                            <th>Tanggal</th>
+                            <th>Tambahan Kasus Curas</th>
                             <th>Nama Kecamatan</th>
-                            <th>Jumlah Kasus Curas</th>
-                            <th>Klaster</th>
+                            <th>Hapus Kasus</th>
                         </tr>
                     </thead>
-                    @foreach ( $curases as $curas )
+                    {{-- @foreach ( $curases as $curas ) --}}
                     <tbody class="ligth-body">
                         <tr>
                             <td>
@@ -48,13 +49,23 @@
                                     <label for="checkbox2" class="mb-0"></label>
                                 </div>
                             </td>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $curas->punyaKecamatanCuras->nama_kecamatan}}</td>
-                            <td>{{ $curas->jumlah_curas }}</td>
-                            <td style="background-color: {{ $curas->punyaKlasterCuras->warna }}">{{ $curas->punyaKlasterCuras->nama_klaster }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="d-flex align-items-center list-action">
+                                    <form action="/dashboard/curanmor/" method="post" class="d-inline">
+                                        @method('delete')
+                                        @csrf
+                                        <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>
+                                            
+                                    </form>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </table>
                 </div>
             </div>

@@ -6,7 +6,6 @@ use App\Models\Klaster;
 use App\Models\Curanmor;
 use App\Models\Kecamatan;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CuranmorSeeder extends Seeder
 {
