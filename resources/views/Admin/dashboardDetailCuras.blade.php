@@ -27,32 +27,28 @@
                 <table class="data-table table mb-0 tbl-server-info">
                     <thead class="bg-white text-uppercase">
                         <tr class="ligth ligth-data">
-                            <th>
-                                <div class="checkbox d-inline-block">
-                                    <input type="checkbox" class="checkbox-input" id="checkbox1">
-                                    <label for="checkbox1" class="mb-0"></label>
-                                </div>
-                            </th>
-                            <th>No</th>
                             <th>Tanggal</th>
-                            <th>Tambahan Kasus Curas</th>
                             <th>Nama Kecamatan</th>
+                            <th>Tambahan Curas</th>
+                            <th>Jumlah Curas</th>
                             <th>Hapus Kasus</th>
                         </tr>
                     </thead>
-                    {{-- @foreach ( $curases as $curas ) --}}
                     <tbody class="ligth-body">
+                        @php
+                            $grouped = $detail_curas->groupBy(function($item) {
+                                return $item->created_at->format('Y-m-d');
+                            });
+                        @endphp
+                        @foreach($grouped as $tanggal => $items)
+                        @foreach($items as $index => $detail)
                         <tr>
-                            <td>
-                                <div class="checkbox d-inline-block">
-                                    <input type="checkbox" class="checkbox-input" id="checkbox2">
-                                    <label for="checkbox2" class="mb-0"></label>
-                                </div>
-                            </td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            @if ($index == 0)
+                                <td rowspan="{{ $items->count() }}">{{ \Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
+                            @endif
+                            <td>{{ $detail->detailCuras_Kecamatan->nama_kecamatan }}</td>
+                            <td>{{ $detail->tambahan_curas }}</td>
+                            <td>{{ $detail->detailCuras_Curas->jumlah_curas }}</td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
                                     <form action="/dashboard/curanmor/" method="post" class="d-inline">
@@ -64,8 +60,9 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
+                        @endforeach     
                     </tbody>
-                    {{-- @endforeach --}}
                 </table>
                 </div>
             </div>

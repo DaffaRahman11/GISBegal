@@ -8,16 +8,16 @@ use App\Http\Controllers\KlasterController;
 use App\Http\Controllers\CuranmorController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\DetailCurasController;
 use App\Http\Controllers\hasilIterasiController;
 
 Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/detail', function () {
-    return view('admin.dashboardDetailCuras');
-});
 
+
+Route::get('/detail', [DetailCurasController::class, 'index'])->name('login');
 
 Route::get('/blank', function () {
     return view('admin.dashboardBlank');
@@ -38,6 +38,8 @@ Route::resource('/dashboard/kecamatan', KecamatanController::class) ->parameters
 Route::resource('/dashboard/curas', CurasController::class)->middleware('auth');
 Route::resource('/dashboard/curanmor', CuranmorController::class) ->parameters(['data-curanmor' => 'curanmor'])->middleware('auth');
 Route::resource('/dashboard/klaster', KlasterController::class) ->parameters(['data-klaster' => 'klaster'])->middleware('auth');
+
 Route::get('/dashboard/iterasiCuras', [hasilIterasiController::class, 'iterasiCuras'])->middleware('auth');
+
 Route::get('/kmeans-curas', [KmeansController::class, 'KMeansCuras']);
 Route::get('/kmeans-curanmor', [KmeansController::class, 'KMeansCuranmor']);

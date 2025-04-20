@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Curas;
 use App\Models\Klaster;
 use App\Models\Kecamatan;
+use App\Models\Detail_Curas;
 use Illuminate\Http\Request;
 use App\Services\KMeansService;
 use Illuminate\Validation\Rule;
@@ -36,15 +37,48 @@ class CurasController extends Controller
     public function store(Request $request)
     {
         try{
-            $validateData = $request->validate([
-                'kecamatan_id' =>'required|max:255|exists:kecamatans,id|unique:curas,kecamatan_id',
-                'jumlah_curas' =>'required',
-                'klaster_id' =>'required|max:255|exists:klasters,id',
 
+            $request->validate([
+                'kecamatan_id' => 'required|exists:kecamatans,id',
+                'jumlah_curas' => 'required|numeric',
             ]);
-    
-            Curas::create($validateData);
-            return redirect('/dashboard/curas')->with('succes', 'Berhasil Menambahkan Data Curas Baru');
+        
+            $kecamatan_id = $request->kecamatan_id;
+            $tambahan_curas = $request->jumlah_curas;
+        
+            // 2. Ambil data curas berdasarkan kecamatan_id
+            $curas = Curas::where('kecamatan_id', $kecamatan_id)->first();
+        
+            if ($curas) {
+                // 3. Update jumlah_curas dengan nilai yang baru
+                $curas->jumlah_curas += $tambahan_curas;
+                $curas->save();
+        
+                $curas_id = $curas->id;
+            } else {
+                // Jika belum ada, bisa insert baru dulu (optional, sesuai kebutuhan)
+                $curas = Curas::create([
+                    'kecamatan_id' => $kecamatan_id,
+                    'jumlah_curas' => $tambahan_curas,
+                ]);
+                $curas_id = $curas->id;
+            }
+        
+            // 4. Tambah data ke tabel detail_curas
+            Detail_Curas::create([
+                'curas_id' => $curas_id,
+                'tambahan_curas' => $tambahan_curas,
+                'detailCuras_kecamatan_Id' => $kecamatan_id,
+                
+            ]);
+
+            $service = new KMeansService();
+            $hasil = $service->hitungKMeansCuras();
+
+            // simpan hasil ke file json
+            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
+        
+            return redirect('/dashboard/curas')->with('succes', 'Data curas berhasil ditambahkan.');
         }catch (\Exception $e){
             return redirect('/dashboard/curas')->with('error', 'Gagal Menambahkan Data Curas Baru');
         }
