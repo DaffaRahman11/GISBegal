@@ -5,6 +5,7 @@ use App\Http\Controllers\CurasController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\KmeansController;
 use App\Http\Controllers\KlasterController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\CuranmorController;
 use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KecamatanController;
@@ -12,10 +13,8 @@ use App\Http\Controllers\DetailCurasController;
 use App\Http\Controllers\hasilIterasiController;
 use App\Http\Controllers\DetailCuranmorController;
 
-Route::get('/', function () {
-    return view('landing');
-});
 
+Route::get('/', [LandingController::class, 'index']);
 
 Route::resource('/dashboard/detail-curas', DetailCurasController::class)->middleware('auth');
 Route::resource('/dashboard/detail-curanmor', DetailCuranmorController::class)->middleware('auth');

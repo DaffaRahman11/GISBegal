@@ -64,6 +64,47 @@
         font-weight: 600;
         color: #333;
       }
+
+      .map-legend {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    max-width: 400px;
+}
+
+.top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.top-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+}
+
+.legend-label {
+    font-size: 14px;
+    color: #333;
+}
+
+
     </style>
   </head>
   <body>
@@ -1283,17 +1324,16 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Daffa Fauzi Rahman</a>
+                      <a href="/">Daffa Fauzi Rahman</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Web Developer</span
+                      >WEB DEVELOPER</span
                     >
                   </div>
                 </div>
                 <div class="team-hover">
                   <p>
-                    Progravida nibh vel velit auctor alinean sollicitudin nisi
-                    elit consequat ipsum.
+                    Mahasiswa Politeknik Negeri Jember Program Studi D4 Teknik Informatika. Berperan sebagai Web Developer pada Web SIG Pemetaan Daerah Rawan Curas dan Curanmor
                   </p>
                   <ul class="list-inline">
                     <li class="list-inline-item">
@@ -1328,14 +1368,13 @@
                       <a href="team-detail.html">Bety Etikasari</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Pembimbing</span
+                      >PEMBIMBING</span
                     >
                   </div>
                 </div>
                 <div class="team-hover">
                   <p>
-                    Progravida nibh vel velit auctor alinean sollicitudin nisi
-                    elit consequat ipsum.
+                    Dosen Politeknik Negeri Jember Program Studi D4 Teknik Informatika. Berperan sebagai Pengarah dan Pembimbing pada Web SIG Pemetaan Daerah Rawan Curas dan Curanmor
                   </p>
                   <ul class="list-inline">
                     <li class="list-inline-item">
@@ -1370,14 +1409,13 @@
                       <a href="team-detail.html">Dia Bitari Mei Yuana</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
-                      >Penguji</span
+                      >KETUA PENGUJI</span
                     >
                   </div>
                 </div>
                 <div class="team-hover">
                   <p>
-                    Progravida nibh vel velit auctor alinean sollicitudin nisi
-                    elit consequat ipsum.
+                    Dosen Politeknik Negeri Jember Program Studi D4 Teknik Informatika. Berperan sebagai Ketua Penguji pada Web SIG Pemetaan Daerah Rawan Curas dan Curanmor
                   </p>
                   <ul class="list-inline">
                     <li class="list-inline-item">
@@ -1402,7 +1440,7 @@
       </section>
       <!-- Team END -->
 
-      <!--Pricing -->
+      <!--MAP -->
       <section class="iq-pricing-table pt-0 iq-rmt-40" id="sectionMap">
         <div class="container">
           <div class="row">
@@ -1452,7 +1490,33 @@
                   <div class="row pricing1 text-center">
                     <div class="col-xl-12 col-sm-12">
                       <div class="iq-pricing active white-bg">
-                        <div id="map" style="width: 100%; height: 500px;" ></div>
+                        <div id="map" style="width: 100%; height: 500px; position: relative;">
+  
+                          {{-- Pojok Kanan Atas --}}
+                          <div class="map-legend top-right">
+                            @foreach ($klasters as $klaster)
+                              <div class="legend-item">
+                                <span class="legend-color" style="background-color: {{ $klaster->warna }};"></span>
+                                <span class="legend-label">{{ $klaster->nama_klaster }}</span>
+                              </div>
+                            @endforeach
+                          </div>
+                        
+                          {{-- Pojok Kiri Atas --}}
+                          <div class="map-legend top-left">
+                            <div class="legend-item">
+                              <span class="legend-label">Menggunakan Data POLRES Kab. Probolinggo</span>
+                            </div>
+                            <div class="legend-item">
+                              <span class="legend-label">Upadate terakhir data Curas : {{ $tanggalCuras }}</span>
+                            </div>
+                            <div class="legend-item">
+                              <span class="legend-label">Upadate terakhir data Curanmor : {{ $tanggalCuranmor }}</span>
+                            </div>
+                          </div>
+                        
+                        </div>
+                        
                       
                       </div>
                     </div>
@@ -1466,12 +1530,12 @@
       <!-- Pricing END -->
       
       <!-- Our Blog -->
-      {{-- <section class="iq-blogs position-relative pb-xl-0 iq-rmt-40">
+      <section class="iq-blogs position-relative pb-xl-0 iq-rmt-40">
         <div class="container">
           <div class="col-sm-12 text-center">
             <div class="section-title">
-              <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">Latest Articles</p>
-              <h2 class="title iq-fw-8">Our Stories Post</h2>
+              <p class="mb-0 text-uppercase iq-fw-5 iq-ls-2">Berita Terbaru</p>
+              <h2 class="title iq-fw-8">Kasus Curas dan Curanmor di Kab. Probolinggo</h2>
             </div>
           </div>
         </div>
@@ -1494,7 +1558,7 @@
                   <div class="main-blog">
                     <div class="blog-img">
                       <img
-                        src="{{ asset('assets/assetLanding/images/blog/02.jpg') }}"
+                        src="{{ asset('assets/assetLanding/images/blog/02.png') }}"
                         class="img-fluid"
                         alt="image"
                       />
@@ -1503,38 +1567,24 @@
                       <a
                         class="main-color iq-fw-8"
                         href="blog-details-left-sidebar.html"
-                        >Design Concept</a
+                        >Kasus Curas</a
                       >
                       <a href="blog-details-left-sidebar.html">
-                        <h5 class="mt-1 iq-fw-8">Fully dedicated finding.</h5>
+                        <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin.
+                        {{ str(' Seorang Pegawai Garmen Terbegal Saat Pulang di Maron')->limit(40, '...') }}
                       </p>
                       <div class="blog-info">
                         <a href=""
                           ><img
-                            src="{{ asset('assets/assetLanding/images/blog/clients/01.jpg') }}"
+                            src="{{ asset('assets/assetLanding/images/blog/clients/01.png') }}"
                             class="img-fluid rounded-circle mr-3 user-img"
                             alt="image"
                           /><span class="iq-fw-8 font-c iq-font-18"
-                            >John Deo</span
+                            >Humas Polres Probolinggo</span
                           ></a
                         >
-                        <ul class="d-inline-block float-right">
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-thumbs-up"></i>
-                              <span class="iq-fw-8 iq-font-14">90</span></a
-                            >
-                          </li>
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-comment-alt"></i>
-                              <span class="iq-fw-8 iq-font-14">120</span></a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1543,7 +1593,7 @@
                   <div class="main-blog">
                     <div class="blog-img">
                       <img
-                        src="{{ asset('assets/assetLanding/images/blog/03.jpg') }}"
+                        src="{{ asset('assets/assetLanding/images/blog/02.png') }}"
                         class="img-fluid"
                         alt="image"
                       />
@@ -1552,38 +1602,24 @@
                       <a
                         class="main-color iq-fw-8"
                         href="blog-details-left-sidebar.html"
-                        >Design Concept</a
+                        >Kasus Curas</a
                       >
                       <a href="blog-details-left-sidebar.html">
-                        <h5 class="mt-1 iq-fw-8">Progravida nibh vel.</h5>
+                        <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin.
+                        {{ str(' Seorang Pegawai Garmen Terbegal Saat Pulang di Maron')->limit(40, '...') }}
                       </p>
                       <div class="blog-info">
                         <a href=""
                           ><img
-                            src="{{ asset('assets/assetLanding/images/blog/clients/01.jpg') }}"
+                            src="{{ asset('assets/assetLanding/images/blog/clients/01.png') }}"
                             class="img-fluid rounded-circle mr-3 user-img"
                             alt="image"
                           /><span class="iq-fw-8 font-c iq-font-18"
-                            >Glen Jax</span
+                            >Humas Polres Probolinggo</span
                           ></a
                         >
-                        <ul class="d-inline-block float-right">
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-thumbs-up"></i>
-                              <span class="iq-fw-8 iq-font-14">90</span></a
-                            >
-                          </li>
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-comment-alt"></i>
-                              <span class="iq-fw-8 iq-font-14">120</span></a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1592,7 +1628,7 @@
                   <div class="main-blog">
                     <div class="blog-img">
                       <img
-                        src="{{ asset('assets/assetLanding/images/blog/04.jpg') }}"
+                        src="{{ asset('assets/assetLanding/images/blog/02.png') }}"
                         class="img-fluid"
                         alt="image"
                       />
@@ -1601,38 +1637,24 @@
                       <a
                         class="main-color iq-fw-8"
                         href="blog-details-left-sidebar.html"
-                        >Design Concept</a
+                        >Kasus Curas</a
                       >
                       <a href="blog-details-left-sidebar.html">
-                        <h5 class="mt-1 iq-fw-8">Auctor alinean.</h5>
+                        <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin.
+                        {{ str(' Seorang Pegawai Garmen Terbegal Saat Pulang di Maron')->limit(40, '...') }}
                       </p>
                       <div class="blog-info">
                         <a href=""
                           ><img
-                            src="{{ asset('assets/assetLanding/images/blog/clients/02.jpg') }}"
+                            src="{{ asset('assets/assetLanding/images/blog/clients/01.png') }}"
                             class="img-fluid rounded-circle mr-3 user-img"
                             alt="image"
                           /><span class="iq-fw-8 font-c iq-font-18"
-                            >Kips Leo</span
+                            >Humas Polres Probolinggo</span
                           ></a
                         >
-                        <ul class="d-inline-block float-right">
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-thumbs-up"></i>
-                              <span class="iq-fw-8 iq-font-14">90</span></a
-                            >
-                          </li>
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-comment-alt"></i>
-                              <span class="iq-fw-8 iq-font-14">120</span></a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1641,7 +1663,7 @@
                   <div class="main-blog">
                     <div class="blog-img">
                       <img
-                        src="{{ asset('assets/assetLanding/images/blog/02.jpg') }}"
+                        src="{{ asset('assets/assetLanding/images/blog/02.png') }}"
                         class="img-fluid"
                         alt="image"
                       />
@@ -1650,38 +1672,24 @@
                       <a
                         class="main-color iq-fw-8"
                         href="blog-details-left-sidebar.html"
-                        >Design Concept</a
+                        >Kasus Curas</a
                       >
                       <a href="blog-details-left-sidebar.html">
-                        <h5 class="mt-1 iq-fw-8">Alinean sollicitudin.</h5>
+                        <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin.
+                        {{ str(' Seorang Pegawai Garmen Terbegal Saat Pulang di Maron')->limit(40, '...') }}
                       </p>
                       <div class="blog-info">
                         <a href=""
                           ><img
-                            src="{{ asset('assets/assetLanding/images/blog/clients/03.jpg') }}"
+                            src="{{ asset('assets/assetLanding/images/blog/clients/01.png') }}"
                             class="img-fluid rounded-circle mr-3 user-img"
                             alt="image"
                           /><span class="iq-fw-8 font-c iq-font-18"
-                            >John Deo</span
+                            >Humas Polres Probolinggo</span
                           ></a
                         >
-                        <ul class="d-inline-block float-right">
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-thumbs-up"></i>
-                              <span class="iq-fw-8 iq-font-14">90</span></a
-                            >
-                          </li>
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-comment-alt"></i>
-                              <span class="iq-fw-8 iq-font-14">120</span></a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1690,7 +1698,7 @@
                   <div class="main-blog">
                     <div class="blog-img">
                       <img
-                        src="{{ asset('assets/assetLanding/images/blog/03.jpg') }}"
+                        src="{{ asset('assets/assetLanding/images/blog/02.png') }}"
                         class="img-fluid"
                         alt="image"
                       />
@@ -1699,38 +1707,24 @@
                       <a
                         class="main-color iq-fw-8"
                         href="blog-details-left-sidebar.html"
-                        >Design Concept</a
+                        >Kasus Curas</a
                       >
                       <a href="blog-details-left-sidebar.html">
-                        <h5 class="mt-1 iq-fw-8">Progravida nibh vel.</h5>
+                        <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
-                        Progravida nibh vel velit auctor alinean sollicitudin.
+                        {{ str(' Seorang Pegawai Garmen Terbegal Saat Pulang di Maron')->limit(40, '...') }}
                       </p>
                       <div class="blog-info">
                         <a href=""
                           ><img
-                            src="{{ asset('assets/assetLanding/images/blog/clients/04.jpg') }}"
+                            src="{{ asset('assets/assetLanding/images/blog/clients/01.png') }}"
                             class="img-fluid rounded-circle mr-3 user-img"
                             alt="image"
                           /><span class="iq-fw-8 font-c iq-font-18"
-                            >Glen Jax</span
+                            >Humas Polres Probolinggo</span
                           ></a
                         >
-                        <ul class="d-inline-block float-right">
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-thumbs-up"></i>
-                              <span class="iq-fw-8 iq-font-14">90</span></a
-                            >
-                          </li>
-                          <li class="d-inline-block">
-                            <a href="#"
-                              ><i class="far fa-comment-alt"></i>
-                              <span class="iq-fw-8 iq-font-14">120</span></a
-                            >
-                          </li>
-                        </ul>
                       </div>
                     </div>
                   </div>
@@ -1739,7 +1733,7 @@
             </div>
           </div>
         </div>
-      </section> --}}
+      </section>
       <!-- Our Blog END -->
     </div>
     <footer class="footer-two">
@@ -1921,7 +1915,7 @@
         const target = parseInt(circle.getAttribute('data-percent'));
         animatePercentage(`percentage${index + 1}`, target, 5000);
       });
-    </script>
+  </script>
   
     
     
@@ -2037,9 +2031,9 @@
       let content = `<strong>Kecamatan ${feature.properties.WADMKC}</strong><br/><br/>`;
       if (data) {
           if ('jumlah_curas' in data) {
-              content += `Jumlah Curas: ${data.jumlah_curas}<br/>Kategori: ${data.klaster}`;
+              content += `Jumlah Curas : ${data.jumlah_curas}<br/>Kategori : ${data.klaster}`;
           } else if ('jumlah_curanmor' in data) {
-              content += `Jumlah Curanmor: ${data.jumlah_curanmor}<br/>Kategori: ${data.klaster}`;
+              content += `Jumlah Curanmor : ${data.jumlah_curanmor}<br/>Kategori : ${data.klaster}`;
           }
       } else {
           content += `Data tidak tersedia`;

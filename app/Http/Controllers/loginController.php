@@ -22,7 +22,7 @@ class loginController extends Controller
                 $request->session()->regenerate();
                 return redirect()->intended('/dashboard');
             }
-            return back()->with('loginError', 'Email atau password salah.');
+            return redirect('/dashboard')->with('loginError', 'Email atau password salah.');
             
         }catch (\Exception $e){
             return redirect('/login')->with('loginError', 'Terjadi kesalahan sistem: ' . $e->getMessage());
