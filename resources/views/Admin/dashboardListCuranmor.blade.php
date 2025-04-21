@@ -37,7 +37,6 @@
                             <th>Nama Kecamatan</th>
                             <th>Jumlah Kasus Curanmor</th>
                             <th>Klaster</th>
-                            <th>Action</th>
                         </tr>
                     </thead>
                     @foreach ( $curanmors as $curanmor )
@@ -53,18 +52,6 @@
                             <td>{{ $curanmor->punyaKecamatanCuranmor->nama_kecamatan}}</td>
                             <td>{{ $curanmor->jumlah_curanmor }}</td>
                             <td style="background-color: {{ $curanmor->punyaKlasterCuranmor->warna }}">{{ $curanmor->punyaKlasterCuranmor->nama_klaster }}</td>
-                            <td>
-                                <div class="d-flex align-items-center list-action">
-                                    <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
-                                        href="/dashboard/curanmor/{{ $curanmor->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
-                                    <form action="/dashboard/curanmor/{{ $curanmor->id }}" method="post" class="d-inline">
-                                        @method('delete')
-                                        @csrf
-                                        <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>
-                                            
-                                    </form>
-                                </div>
-                            </td>
                         </tr>
                     </tbody>
                     @endforeach

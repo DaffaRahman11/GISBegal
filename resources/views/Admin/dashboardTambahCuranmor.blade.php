@@ -13,7 +13,7 @@
                         <form action="/dashboard/curanmor" data-toggle="validator" method="post">
                             @csrf
                             <div class="row">
-                                <div class="col-md-12"> 
+                                <div class="col-md-6"> 
                                     <div class="form-group">
                                         <label>Nama Kecamatan *</label>
                                         <select  class="selectpicker form-control" data-style="py-0" id="kecamatan_id" name="kecamatan_id">
@@ -31,18 +31,7 @@
                                         <input type="text" class="form-control" placeholder="Jumlah Kasus Curanmor" id="curanmor" name="jumlah_curanmor">
                                     </div>
                                 </div>
-                                <div class="col-md-6"> 
-                                    <div class="form-group">
-                                        <label>Klaster *</label>
-                                        <select  class="selectpicker form-control" data-style="py-0" name="klaster_id" id="klaster_id">
-                                            <option value="" selected disabled>Pilih Klaster</option>
-                                            @foreach ( $klasters as $klaster )
-                                            <option value="{{ $klaster -> id }}" style="background-color: {{ $klaster->warna }}">{{ $klaster -> nama_klaster }}</option> 
-                                            @endforeach
-                                            
-                                        </select>
-                                    </div>
-                                </div>
+                                
                             </div>                            
                             <button type="submit" class="btn btn-primary mr-2">Tambah Data Kasus Curanmor</button>
                             <button type="reset" class="btn btn-danger">Reset</button>

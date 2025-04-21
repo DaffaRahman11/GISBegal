@@ -10,14 +10,16 @@ use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\DetailCurasController;
 use App\Http\Controllers\hasilIterasiController;
+use App\Http\Controllers\DetailCuranmorController;
 
 Route::get('/', function () {
     return view('landing');
 });
 
 
+Route::resource('/dashboard/detail-curas', DetailCurasController::class)->middleware('auth');
+Route::resource('/dashboard/detail-curanmor', DetailCuranmorController::class)->middleware('auth');
 
-Route::get('/detail', [DetailCurasController::class, 'index'])->name('login');
 
 Route::get('/blank', function () {
     return view('admin.dashboardBlank');

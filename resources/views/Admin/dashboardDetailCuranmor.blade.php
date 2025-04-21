@@ -5,9 +5,9 @@
             <div class="col-lg-12">
                 <div class="d-flex flex-wrap align-items-center justify-content-between mb-4">
                     <div>
-                        <h4 class="mb-3">Detail Kasus Curas Per Tanggal</h4>
-                        <p class="mb-0">Berikut ini merupakan rincian kasus Pencurian Dengan Kekerasan (CURAS)
-                            yang dikelompokkan berdasarkan tanggal di inputkannya kasus CURAS yang terjadi</p>
+                        <h4 class="mb-3">Detail Kasus Curanmor Per Tanggal</h4>
+                        <p class="mb-0">Berikut ini merupakan rincian kasus Pencurian Kendaraan Bermotor (CURANMOR)
+                            yang dikelompokkan berdasarkan tanggal di inputkannya kasus CURANMOR yang terjadi</p>
                     </div>
                 </div>
                 @if (session()->has('succes'))
@@ -28,14 +28,14 @@
                         <tr class="ligth ligth-data">
                             <th>Tanggal</th>
                             <th>Nama Kecamatan</th>
-                            <th>Tambahan Kasus Curas</th>
-                            <th>Total Curas Per Kecamatan</th>
+                            <th>Tambahan Kasus Curanmor</th>
+                            <th>Total Curanmor Per Kecamatan</th>
                             <th>Hapus Update Kasus</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
                         @php
-                            $grouped = $detail_curas->groupBy(function($item) {
+                            $grouped = $detail_curanmor->groupBy(function($item) {
                                 return $item->created_at->format('Y-m-d');
                             });
                         @endphp
@@ -45,12 +45,12 @@
                             @if ($index == 0)
                                 <td rowspan="{{ $items->count() }}">{{ \Carbon\Carbon::parse($tanggal)->translatedFormat('d F Y') }}</td>
                             @endif
-                            <td class="text-left">{{ $detail->detailCuras_Kecamatan->nama_kecamatan }}</td>
-                            <td class="text-center">{{ $detail->tambahan_curas }}</td>
-                            <td class="text-center">{{ $detail->detailCuras_Curas->jumlah_curas }}</td>
+                            <td class="text-left">{{ $detail->detailCuranmor_Kecamatan->nama_kecamatan }}</td>
+                            <td class="text-center">{{ $detail->tambahan_curanmor }}</td>
+                            <td class="text-center">{{ $detail->detailCuranmor_Curanmor->jumlah_curanmor }}</td>
                             <td>
                                 <div class="d-flex align-items-center list-action">
-                                    <form action="/dashboard/detail-curas/{{ $detail->id }}" method="post" class="d-inline">
+                                    <form action="/dashboard/detail-curanmor/{{ $detail->id }}" method="post" class="d-inline">
                                         @method('delete')
                                         @csrf
                                         <button type="submit" class="badge bg-warning mr-2 border-0"><i class="ri-delete-bin-line mr-0"></i></button>
