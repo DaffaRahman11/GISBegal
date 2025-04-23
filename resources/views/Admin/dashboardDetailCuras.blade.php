@@ -30,7 +30,7 @@
                             <th>Nama Kecamatan</th>
                             <th>Tambahan Kasus Curas</th>
                             <th>Total Curas Per Kecamatan</th>
-                            <th>Hapus Update Kasus</th>
+                            <th>Batalkan Update Kasus</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">

@@ -11,7 +11,7 @@ class LandingController extends Controller
 {
     public function index()
 {
-    $klasters = Klaster::all(); 
+    $klasters = Klaster::orderBy('id', 'desc')->get(); 
     $updateCuras = Curas::latest('updated_at')->first();
     $tanggalCuras = $updateCuras->updated_at->translatedFormat('d F Y');
     $updateCuranmor = Curanmor::latest('updated_at')->first();

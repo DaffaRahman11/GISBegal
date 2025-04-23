@@ -24,87 +24,86 @@
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="{{ asset('assets/assetLanding/css/responsive.css') }}" />
     <style>
-      #map {
-            position: relative; /* bukan absolute atau fixed */
-            z-index: 0; /* pastikan ini lebih rendah dari header atau layout */
-            }
+        #map {
+          position: relative; /* bukan absolute atau fixed */
+          z-index: 0; /* pastikan ini lebih rendah dari header atau layout */
+        }
 
-.progressbar {
-      text-align: center;
-      margin: 20px; /* Tambahkan jarak antar progressbar */
-    }
+        .progressbar {
+            text-align: center;
+            margin: 20px; /* Tambahkan jarak antar progressbar */
+        }
 
-    .circle-outer {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      background-color: #35e1a4;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 0 auto;
-    }
+        .circle-outer {
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          background-color: #35e1a4;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: 0 auto;
+        }
 
-    .circle-inner {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background-color: #2980b9;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 32px;
-      font-weight: bold;
-    }
-  
-      .iq-progress-bar-text {
-        margin-top: 15px;
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
-      }
+        .circle-inner {
+          width: 110px;
+          height: 110px;
+          border-radius: 50%;
+          background-color: #2980b9;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 32px;
+          font-weight: bold;
+        }
+      
+        .iq-progress-bar-text {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
 
-      .map-legend {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.8);
-    padding: 10px 15px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    max-width: 400px;
-}
+        .map-legend {
+          position: absolute;
+          background: rgba(255, 255, 255, 0.8);
+          padding: 10px 15px;
+          border-radius: 10px;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+          z-index: 1000;
+          max-width: 400px;
+        }
 
-.top-right {
-    top: 20px;
-    right: 20px;
-}
+        .top-right {
+            top: 20px;
+            right: 20px;
+        }
 
-.top-left {
-    bottom: 20px;
-    left: 20px;
-}
+        .top-left {
+            bottom: 20px;
+            left: 20px;
+        }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 5px;
-}
+        .legend-item {
+          display: flex;
+          align-items: left;
 
-.legend-color {
-    width: 20px;
-    height: 20px;
-    border-radius: 3px;
-    margin-right: 10px;
-    border: 1px solid #ccc;
-}
+          margin-bottom: 5px;
+        } 
 
-.legend-label {
-    font-size: 14px;
-    color: #333;
-}
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 3px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+        }
 
-
+        .legend-label {
+            font-size: 14px;
+            color: #333;
+        }
     </style>
   </head>
   <body>
@@ -127,7 +126,7 @@
                 <!-- menu logo -->
                 <ul class="menu-logo">
                   <li>
-                    <a href="index.html"
+                    <a href="/"
                       ><img
                         src="{{ asset('assets/assetLanding/images/logo.png') }}"
                         alt="logo"
@@ -1235,7 +1234,7 @@
                     </div>
                     <div class="media-body ml-3">
                       <h5 class="mt-0 mb-2 iq-fw-8">
-                        <a href="service-detail.html">Curas ( Pencurian Dengan Kekerasan )</a>
+                        <a href="">Curas ( Pencurian Dengan Kekerasan )</a>
                       </h5>
                       <p class="mb-0">
                         Pencurian dengan Kekerasan atau yang sering disebut Curas, merupakan salah satu tindak pidana pencurian yang dalam prakteknya melakukan kekerasan secara fisik maupun ancaman kepada korbannya. Salah satu contoh Curas yaitu Begal
@@ -1250,7 +1249,7 @@
                     </div>
                     <div class="media-body ml-3">
                       <h5 class="mt-0 mb-2 iq-fw-8">
-                        <a href="service-detail.html">Curanmor ( Pencurian Kendaraan Bermotor )</a>
+                        <a href="">Curanmor ( Pencurian Kendaraan Bermotor )</a>
                       </h5>
                       <p class="mb-0">
                         Pencurian Kendaraan Bermotor atau yang sering disebut Curanmor, merupakan salah satu tindak pidana pencurian yang sasaran utamanya yaitu kendaraan bermotor, seperti Motor dan Mobil
@@ -1306,7 +1305,7 @@
                 <p class="mt-5 text-uppercase text-white iq-fw-3 iq-ls-3">
                   Meet the team
                 </p>
-                <h2 class="title text-white iq-fw-8">Our Best Team</h2>
+                <h2 class="title text-white iq-fw-8">Our Team Dev</h2>
               </div>
             </div>
           </div>
@@ -1324,7 +1323,7 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="/">Daffa Fauzi Rahman</a>
+                      <a href="">Daffa Fauzi Rahman</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
                       >WEB DEVELOPER</span
@@ -1337,16 +1336,16 @@
                   </p>
                   <ul class="list-inline">
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="https://www.facebook.com/share/16Z8J2DEYz/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-twitter"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a target="_blank" href="https://www.linkedin.com/in/daffa-fauzi-rahman?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"><i class="fab fa-linkedin-in"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a target="_blank" href="https://www.instagram.com/daff_rahman11?igsh=MWd2dG9jZ2ZpYm9rdQ=="><i class="fab fa-instagram"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -1365,7 +1364,7 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Bety Etikasari</a>
+                      <a href="">Bety Etikasari</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
                       >PEMBIMBING</span
@@ -1378,16 +1377,16 @@
                   </p>
                   <ul class="list-inline">
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-twitter"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-linkedin-in"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-instagram"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -1406,7 +1405,7 @@
                   <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
                   <div class="team-info">
                     <h6 class="mb-0 text-white">
-                      <a href="team-detail.html">Dia Bitari Mei Yuana</a>
+                      <a href="">Dia Bitari Mei Yuana</a>
                     </h6>
                     <span class="mb-0 text-white text-gray iq-fw-4"
                       >KETUA PENGUJI</span
@@ -1419,16 +1418,16 @@
                   </p>
                   <ul class="list-inline">
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-facebook-f"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-facebook-f"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-twitter"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-twitter"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-linkedin-in"></i></a>
                     </li>
                     <li class="list-inline-item">
-                      <a href="#"><i class="fab fa-instagram"></i></a>
+                      <a href="#sectionOurTeam"><i class="fab fa-instagram"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -1497,7 +1496,7 @@
                             @foreach ($klasters as $klaster)
                               <div class="legend-item">
                                 <span class="legend-color" style="background-color: {{ $klaster->warna }};"></span>
-                                <span class="legend-label">{{ $klaster->nama_klaster }}</span>
+                                <span class="legend-label">Daerah {{ $klaster->nama_klaster }}</span>
                               </div>
                             @endforeach
                           </div>
@@ -1507,12 +1506,13 @@
                             <div class="legend-item">
                               <span class="legend-label">Menggunakan Data POLRES Kab. Probolinggo</span>
                             </div>
-                            <div class="legend-item">
-                              <span class="legend-label">Upadate terakhir data Curas : {{ $tanggalCuras }}</span>
+                            <div class="legend-item" id="update-curas">
+                              <span class="legend-label">Update Terakhir Data Curas : {{ $tanggalCuras }}</span>
                             </div>
-                            <div class="legend-item">
-                              <span class="legend-label">Upadate terakhir data Curanmor : {{ $tanggalCuranmor }}</span>
+                            <div class="legend-item" id="update-curanmor" style="display: none;">
+                              <span class="legend-label">Update Terakhir Data Curanmor : {{ $tanggalCuranmor }}</span>
                             </div>
+                            
                           </div>
                         
                         </div>
@@ -1529,8 +1529,8 @@
       </section>
       <!-- Pricing END -->
       
-      <!-- Our Blog -->
-      <section class="iq-blogs position-relative pb-xl-0 iq-rmt-40">
+      <!-- BERITA -->
+      {{-- <section class="iq-blogs position-relative pb-xl-0 iq-rmt-40">
         <div class="container">
           <div class="col-sm-12 text-center">
             <div class="section-title">
@@ -1566,10 +1566,10 @@
                     <div class="blog-detail">
                       <a
                         class="main-color iq-fw-8"
-                        href="blog-details-left-sidebar.html"
+                        href=""
                         >Kasus Curas</a
                       >
-                      <a href="blog-details-left-sidebar.html">
+                      <a href="">
                         <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
@@ -1601,10 +1601,10 @@
                     <div class="blog-detail">
                       <a
                         class="main-color iq-fw-8"
-                        href="blog-details-left-sidebar.html"
+                        href=""
                         >Kasus Curas</a
                       >
-                      <a href="blog-details-left-sidebar.html">
+                      <a href="">
                         <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
@@ -1636,10 +1636,10 @@
                     <div class="blog-detail">
                       <a
                         class="main-color iq-fw-8"
-                        href="blog-details-left-sidebar.html"
+                        href=""
                         >Kasus Curas</a
                       >
-                      <a href="blog-details-left-sidebar.html">
+                      <a href="">
                         <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
@@ -1671,10 +1671,10 @@
                     <div class="blog-detail">
                       <a
                         class="main-color iq-fw-8"
-                        href="blog-details-left-sidebar.html"
+                        href=""
                         >Kasus Curas</a
                       >
-                      <a href="blog-details-left-sidebar.html">
+                      <a href="">
                         <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
@@ -1706,10 +1706,10 @@
                     <div class="blog-detail">
                       <a
                         class="main-color iq-fw-8"
-                        href="blog-details-left-sidebar.html"
+                        href=""
                         >Kasus Curas</a
                       >
-                      <a href="blog-details-left-sidebar.html">
+                      <a href="">
                         <h5 class="mt-1 iq-fw-8">Pegawai Garmen Terbegal Saat Pulang di Maron</h5>
                       </a>
                       <p class="mb-0">
@@ -1733,8 +1733,8 @@
             </div>
           </div>
         </div>
-      </section>
-      <!-- Our Blog END -->
+      </section> --}}
+      <!-- BERITA END -->
     </div>
     <footer class="footer-two">
       <img src="{{ asset('assets/assetLanding/images/footer/1.jpg') }}" class="img-fluid footer-one" alt="image" />
@@ -1743,22 +1743,24 @@
           <div class="row no-gutters">
             <div class="col-lg-4 col-md-5">
               <div class="iq-footer-logo">
-                <a href="index.html"
-                  ><img
-                   src="{{ asset('assets/assetLanding/images/logo-white.png') }}"
-                    class="img-fluid mb-4"
+                <a href="/"
+                  >
+                  <img
+                   src="{{ asset('assets/assetLanding/images/logo.png') }}"
+                    class="img-fluid mb-2"
                     alt="image"
-                /></a>
-                <p class="footer-info text-white">
-                  Contrary to popular belief, Lorem Ipsum is not simply random
-                  text.
+                    
+                  />
+                </a>
+                <p class="footer-info text-white mt-0">
+                  Cek Tingkat Curas dan Curanmor di daerahmu
                 </p>
-                <a class="slide-button button" href="contact-us.html">
+                <a class="slide-button button" href="">
                   <div class="first">
-                    contact us <i class="fas fa-angle-right"></i>
+                    Hubungi Kami<i class="fas fa-angle-right"></i>
                   </div>
                   <div class="second">
-                    contact us <i class="fas fa-angle-right"></i>
+                    Hubungi Kami<i class="fas fa-angle-right"></i>
                   </div>
                 </a>
               </div>
@@ -1790,7 +1792,7 @@
                     >
                   </li>
                   <li>
-                    <a href="#" class="text-uppercase"
+                    <a href="https://www.linkedin.com/in/daffa-fauzi-rahman?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="blank" class="text-uppercase"
                       ><i class="fab fa-linkedin iq-fw-6 pr-3"></i>linkedin</a
                     >
                   </li>
@@ -1799,7 +1801,7 @@
             </div>
             <div class="col-lg-3 col-md-12">
               <div class="footer-link">
-                <h5 class="text-white">Navigation.</h5>
+                <h5 class="text-white">Navigasi </h5>
                 <ul class="list-inline">
                   <li class="list-item">
                     <a href="#home">Home</a>
@@ -1815,7 +1817,7 @@
           <div class="row">
             <div class="col-sm-12">
               <div class="footer-copyright text-center iq-fw-3">
-                Develop By : Daffa Rahman | Designed By : Markethon
+                Develop By : <a target="blank" href="https://www.linkedin.com/in/daffa-fauzi-rahman?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Daffa Rahman</a> | Designed By : <a target="blank" href="https://markethon.co/" >Markethon</a> 
               </div>
             </div>
           </div>
@@ -1915,7 +1917,7 @@
         const target = parseInt(circle.getAttribute('data-percent'));
         animatePercentage(`percentage${index + 1}`, target, 5000);
       });
-  </script>
+    </script>
   
     
     
@@ -1973,100 +1975,120 @@
       }); /*ready*/
     </script>
 
-<script>
-  let map;
-  let geoLayer;
-  let curasData = {};
-  let apiUrl = "{{ url('/api/map/curas') }}"; // default
+    <script>
+      let map;
+      let geoLayer;
+      let curasData = {};
+      let apiUrl = "{{ url('/api/map/curas') }}"; // default
 
-  function fetchAndLoadMap(url, titleText) {
-      fetch(url)
-          .then(res => res.json())
-          .then(data => {
-              // reset data
-              curasData = {};
-              data.forEach(item => {
-                  curasData[item.kecamatan.toLowerCase().trim()] = item;
+      function fetchAndLoadMap(url, titleText) {
+          fetch(url)
+              .then(res => res.json())
+              .then(data => {
+                  // reset data
+                  curasData = {};
+                  data.forEach(item => {
+                      curasData[item.kecamatan.toLowerCase().trim()] = item;
+                  });
+
+                  // hapus layer lama
+                  if (geoLayer) {
+                      geoLayer.remove();
+                  }
+
+                  // buat layer baru
+                  geoLayer = new L.GeoJSON.AJAX(["{{ asset('assets/map/gisProbolinggo.geojson') }}"], {
+                      style: styleFeature,
+                      onEachFeature: popUp
+                  });
+
+                  geoLayer.addTo(map);
+
+                  // ubah judul jika ada
+                  const mapTitle = document.querySelector('.card-title');
+                  if (mapTitle) mapTitle.textContent = titleText;
               });
-
-              // hapus layer lama
-              if (geoLayer) {
-                  geoLayer.remove();
-              }
-
-              // buat layer baru
-              geoLayer = new L.GeoJSON.AJAX(["{{ asset('assets/map/gisProbolinggo.geojson') }}"], {
-                  style: styleFeature,
-                  onEachFeature: popUp
-              });
-
-              geoLayer.addTo(map);
-
-              // ubah judul jika ada
-              const mapTitle = document.querySelector('.card-title');
-              if (mapTitle) mapTitle.textContent = titleText;
-          });
-  }
-
-  function getColor(warna) {
-      return warna || '#cccccc';
-  }
-
-  function styleFeature(feature) {
-      let namaKecamatan = feature.properties.WADMKC.toLowerCase().trim();
-      let data = curasData[namaKecamatan];
-      return {
-          fillColor: data ? getColor(data.warna) : '#cccccc',
-          weight: 1,
-          opacity: 1,
-          color: 'white',
-          fillOpacity: 0.7
-      };
-  }
-
-  function popUp(feature, layer) {
-      let namaKecamatan = feature.properties.WADMKC.toLowerCase().trim();
-      let data = curasData[namaKecamatan];
-
-      let content = `<strong>Kecamatan ${feature.properties.WADMKC}</strong><br/><br/>`;
-      if (data) {
-          if ('jumlah_curas' in data) {
-              content += `Jumlah Curas : ${data.jumlah_curas}<br/>Kategori : ${data.klaster}`;
-          } else if ('jumlah_curanmor' in data) {
-              content += `Jumlah Curanmor : ${data.jumlah_curanmor}<br/>Kategori : ${data.klaster}`;
-          }
-      } else {
-          content += `Data tidak tersedia`;
       }
 
-      layer.bindPopup(content);
-  }
+      function getColor(warna) {
+          return warna || '#cccccc';
+      }
 
-  function loadInitialMap() {
-      map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          maxZoom: 19,
-          attribution: '&copy; OpenStreetMap'
-      }).addTo(map);
+      function styleFeature(feature) {
+          let namaKecamatan = feature.properties.WADMKC.toLowerCase().trim();
+          let data = curasData[namaKecamatan];
+          return {
+              fillColor: data ? getColor(data.warna) : '#cccccc',
+              weight: 1,
+              opacity: 1,
+              color: 'white',
+              fillOpacity: 0.7
+          };
+      }
 
-      // Load default
-      fetchAndLoadMap(apiUrl, 'Pemetaan Curas Kab Probolinggo');
-  }
+      function popUp(feature, layer) {
+          let namaKecamatan = feature.properties.WADMKC.toLowerCase().trim();
+          let data = curasData[namaKecamatan];
 
-  document.addEventListener('DOMContentLoaded', () => {
-      loadInitialMap();
+          let content = `<strong>Kecamatan ${feature.properties.WADMKC}</strong><br/><br/>`;
+          if (data) {
+              if ('jumlah_curas' in data) {
+                  content += `Jumlah Curas : ${data.jumlah_curas}<br/>Kategori : ${data.klaster}`;
+              } else if ('jumlah_curanmor' in data) {
+                  content += `Jumlah Curanmor : ${data.jumlah_curanmor}<br/>Kategori : ${data.klaster}`;
+              }
+          } else {
+              content += `Data tidak tersedia`;
+          }
 
+          layer.bindPopup(content);
+      }
+
+      function loadInitialMap() {
+          map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
+          L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+              maxZoom: 19,
+              attribution: '&copy; OpenStreetMap'
+          }).addTo(map);
+
+          // Load default
+          fetchAndLoadMap(apiUrl, 'Pemetaan Curas Kab Probolinggo');
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+          loadInitialMap();
+
+          document.getElementById('btn-curas').addEventListener('click', (e) => {
+              e.preventDefault();
+              fetchAndLoadMap("{{ url('/api/map/curas') }}", "Pemetaan Curas Kab Probolinggo");
+          });
+
+          document.getElementById('btn-curanmor').addEventListener('click', (e) => {
+              e.preventDefault();
+              fetchAndLoadMap("{{ url('/api/map/curanmor') }}", "Pemetaan Curanmor Kab Probolinggo");
+          });
+      });
+    </script>
+
+    <script>
       document.getElementById('btn-curas').addEventListener('click', (e) => {
           e.preventDefault();
           fetchAndLoadMap("{{ url('/api/map/curas') }}", "Pemetaan Curas Kab Probolinggo");
+
+          // Tampilkan info update curas, sembunyikan curanmor
+          document.getElementById('update-curas').style.display = 'block';
+          document.getElementById('update-curanmor').style.display = 'none';
       });
 
       document.getElementById('btn-curanmor').addEventListener('click', (e) => {
           e.preventDefault();
           fetchAndLoadMap("{{ url('/api/map/curanmor') }}", "Pemetaan Curanmor Kab Probolinggo");
+
+          // Tampilkan info update curanmor, sembunyikan curas
+          document.getElementById('update-curas').style.display = 'none';
+          document.getElementById('update-curanmor').style.display = 'block';
       });
-  });
-</script>
+    </script>
 
 
   </body>

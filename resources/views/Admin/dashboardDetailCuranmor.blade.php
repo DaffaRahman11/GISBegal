@@ -30,7 +30,7 @@
                             <th>Nama Kecamatan</th>
                             <th>Tambahan Kasus Curanmor</th>
                             <th>Total Curanmor Per Kecamatan</th>
-                            <th>Hapus Update Kasus</th>
+                            <th>Batalkan Update Kasus</th>
                         </tr>
                     </thead>
                     <tbody class="ligth-body">
