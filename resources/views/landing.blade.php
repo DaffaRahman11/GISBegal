@@ -88,7 +88,6 @@
         .legend-item {
           display: flex;
           align-items: left;
-
           margin-bottom: 5px;
         } 
 
@@ -1511,7 +1510,7 @@
                               <span class="legend-label">Update Terakhir Data Curas : {{ $tanggalCuras }}</span>
                             </div>
                             <div class="legend-item" id="update-curanmor" style="display: none;">
-                              <span class="legend-label">Update Terakhir Data Curanmor : {{ $tanggalCuranmor }}</span>
+                              <span class="legend-label">Update Terakhir Curanmor : {{ $tanggalCuranmor }}</span>
                             </div>
                             
                           </div>

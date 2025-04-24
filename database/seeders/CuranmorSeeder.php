@@ -45,12 +45,15 @@ class CuranmorSeeder extends Seeder
             24 => 4,
         ];
 
+        $defaultDate = '2024-12-31 00:00:00';
         // Looping untuk membuat data curanmor berdasarkan kecamatan
         foreach ($kecamatanIds as $kecamatanId) {
             Curanmor::create([
                 'kecamatan_id' => $kecamatanId,
                 'jumlah_curanmor' => $dataCuranmor[$kecamatanId], // Gunakan nilai default jika tidak ada data
                 'klaster_id' => $klasterIds->random(), // Pilih klaster secara acak
+                'created_at' => $defaultDate,
+                'updated_at' => $defaultDate,
             ]);
         }
     }
