@@ -14,6 +14,8 @@ class Curanmor extends Model
 
     protected $guarded =['id'];
 
+    public $timestamps = false;
+
     public function punyaKlasterCuranmor(): BelongsTo{
         return $this->belongsTo(Klaster::class, 'klaster_id');
     }
