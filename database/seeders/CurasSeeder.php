@@ -43,11 +43,15 @@ class CurasSeeder extends Seeder
         ];
 
         
+        $defaultDate = '2024-12-31 00:00:00';  // Default date to be used for both created_at and updated_at
+
         foreach ($kecamatanIds as $kecamatanId) {
             Curas::create([
                 'kecamatan_id' => $kecamatanId,
                 'jumlah_curas' => $dataCuras[$kecamatanId],
                 'klaster_id' => $klasterIds->random(),
+                'created_at' => $defaultDate,
+                'updated_at' => $defaultDate,
             ]);
         }
     }

@@ -13,9 +13,9 @@ class LandingController extends Controller
 {
     $klasters = Klaster::orderBy('id', 'desc')->get(); 
     $updateCuras = Curas::latest('updated_at')->first();
-    $tanggalCuras = $updateCuras->updated_at->translatedFormat('d F Y');
+    $tanggalCuras = \Carbon\Carbon::parse($updateCuras->updated_at)->translatedFormat('d F Y');
     $updateCuranmor = Curanmor::latest('updated_at')->first();
-    $tanggalCuranmor = $updateCuranmor->updated_at->translatedFormat('d F Y');
+    $tanggalCuranmor = \Carbon\Carbon::parse($updateCuranmor->updated_at)->translatedFormat('d F Y');
     return view('landing', compact('klasters', 'tanggalCuras', 'tanggalCuranmor'));
 }
 

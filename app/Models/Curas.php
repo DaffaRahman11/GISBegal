@@ -12,6 +12,8 @@ class Curas extends Model
     /** @use HasFactory<\Database\Factories\CurasFactory> */
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $guarded =['id'];
 
     public function punyaKlasterCuras(): BelongsTo{
