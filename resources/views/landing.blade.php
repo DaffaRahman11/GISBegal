@@ -1766,13 +1766,13 @@
               </div>
             </div>
             <div class="col-lg-5 col-md-7">
-              <h5 class="text-white">Subscribe Newsletter.</h5>
+              <h5 class="text-white">Ikuti Informasi Terbaru Kami</h5>
               <form class="position-relative subscribe-form">
                 <div class="form-group mb-0">
                   <input
                     type="email"
                     class="form-control position-relative subscription-email"
-                    placeholder="Enter Email"
+                    placeholder="Masukkan Email"
                   />
                 </div>
                 <a href="#" class="button bt-subscribe subscription-button"
