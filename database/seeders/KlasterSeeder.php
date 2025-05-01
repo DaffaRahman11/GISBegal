@@ -18,14 +18,14 @@ class KlasterSeeder extends Seeder
             'warna'=> '#00FF00',
         ]);
         
-        Klaster::create([
-            'nama_klaster'=> 'Sedang',
-            'warna'=> '#FFFF00',
-        ]);
-        
-        Klaster::create([
-            'nama_klaster'=> 'Rawan',
-            'warna'=> '#FF0000',
-        ]);
+    Klaster::create([
+        'nama_klaster'=> 'Sedang',
+        'warna'=> '#FFFF00',
+    ]);
+    
+    Klaster::create([
+        'nama_klaster'=> 'Rawan',
+        'warna'=> '#FF0000',
+    ]);
     }
 }

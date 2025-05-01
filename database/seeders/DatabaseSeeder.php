@@ -26,6 +26,12 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $serviceKMeansCuras = new KMeansService();
+        $hasilKMeansCuras = $serviceKMeansCuras->SSEElbowCuras();
+        
+        $serviceKMeansCuras = new KMeansService();
+        $hasilKMeansCuras = $serviceKMeansCuras->SSEElbowCuranmor();
+
+        $serviceKMeansCuras = new KMeansService();
         $hasilKMeansCuras = $serviceKMeansCuras->hitungKMeansCuras();
         file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasilKMeansCuras));
 
