@@ -25,11 +25,9 @@ class DatabaseSeeder extends Seeder
             CuranmorSeeder::class,
         ]);
 
-        $serviceKMeansCuras = new KMeansService();
-        $hasilKMeansCuras = $serviceKMeansCuras->SSEElbowCuras();
-        
-        $serviceKMeansCuras = new KMeansService();
-        $hasilKMeansCuras = $serviceKMeansCuras->SSEElbowCuranmor();
+        $serviceKMeans = new KMeansService();
+        $serviceKMeans->SSEElbowCuranmor();
+        $serviceKMeans->SSEElbowCuras();
 
         $serviceKMeansCuras = new KMeansService();
         $hasilKMeansCuras = $serviceKMeansCuras->hitungKMeansCuras();

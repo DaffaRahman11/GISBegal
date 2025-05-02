@@ -89,6 +89,9 @@ class DetailCurasController extends Controller
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
 
+            $serviceSSECuras = new KMeansService();
+            $serviceSSECuras->SSEElbowCuras();
+
             return redirect('/dashboard/detail-curas')->with('succes', 'Data berhasil dihapus dan curas diperbarui.');
         } catch (\Exception $e) {
             return redirect('/dashboard/detail-curas')->with('error', 'Terjadi kesalahan Ketika Menghapus Data : ' . $e->getMessage());

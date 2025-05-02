@@ -103,6 +103,31 @@
                     </div>
                 </div>
             </div>
+            <div class="col-lg-6">
+                <div class="card card-block card-stretch card-height">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <div class="header-title">
+                            <h4 class="card-title">Revenue Vs Cost</h4>
+                        </div>
+                        <div class="card-header-toolbar d-flex align-items-center">
+                            <div class="dropdown">
+                                <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
+                                    data-toggle="dropdown">
+                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
+                                </span>
+                                <div class="dropdown-menu dropdown-menu-right shadow-none"
+                                    aria-labelledby="dropdownMenuButton002">
+                                    <a class="dropdown-item" href="#">Curas</a>
+                                    <a class="dropdown-item" href="#">Curanmor</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="layout1-chart-2" style="min-height: 360px;"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         
         <!-- Page end  -->

@@ -86,6 +86,9 @@ class DetailCuranmorController extends Controller
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasil));
 
+            $serviceSSECuranmor = new KMeansService();
+            $serviceSSECuranmor->SSEElbowCuranmor();
+
             return redirect('/dashboard/detail-curanmor')->with('succes', 'Data berhasil dihapus dan curanmor diperbarui.');
         } catch (\Exception $e) {
             return redirect('/dashboard/detail-curanmor')->with('error', 'Terjadi kesalahan Ketika Menghapus Data : ' . $e->getMessage());

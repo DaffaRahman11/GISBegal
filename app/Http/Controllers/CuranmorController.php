@@ -72,6 +72,9 @@ class CuranmorController extends Controller
             $hasil = $service->hitungKMeansCuranmor();
             file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasil));
 
+            $serviceSSECuranmor = new KMeansService();
+            $serviceSSECuranmor->SSEElbowCuranmor();
+
             // =====CODE TAMBAH SEBELUMNYA=========
             // $validateData = $request->validate([
             //     'kecamatan_id' =>'required|max:255|exists:kecamatans,id|unique:curanmors,kecamatan_id',
@@ -144,6 +147,9 @@ class CuranmorController extends Controller
 
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasil));
+
+            $serviceSSECuranmor = new KMeansService();
+            $serviceSSECuranmor->SSEElbowCuranmor();
     
                 return redirect('/dashboard/curanmor')->with('succes', 'Data Kecamatan Berhasil Diubah');
             } catch (\Exception $e) {
@@ -167,6 +173,9 @@ class CuranmorController extends Controller
 
             // Hapus data
             $hapus->delete();
+
+            $serviceSSECuranmor = new KMeansService();
+            $serviceSSECuranmor->SSEElbowCuranmor();
 
             return redirect('/dashboard/curanmor')->with('succes', 'Data Curanmor Berhasil Dihapus');
         } catch (\Exception $e) {

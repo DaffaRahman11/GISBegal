@@ -221,41 +221,44 @@ class KMeansService
     public function SSEElbowCuras()
     {
         $data = Curas::select('id', 'jumlah_curas')->get();
-        $maxK = 10;
+        $maxK = 4;
         $maxIterasi = 100;
         $elbowData = [];
-
+    
         for ($k = 1; $k <= $maxK; $k++) {
             // Inisialisasi centroid awal secara acak
             $centroids = $data->unique('jumlah_curas')->shuffle()->take($k)->values()->map(function ($item) {
                 return ['jumlah_curas' => $item->jumlah_curas];
             });
-
+    
+            // Simpan centroid awal sebagai array angka
+            $centroidAwal = $centroids->pluck('jumlah_curas')->toArray();
+    
             $prevAssignment = [];
-
+    
             for ($iter = 0; $iter < $maxIterasi; $iter++) {
                 $clustered = [];
                 $currentAssignment = [];
-
+    
                 foreach ($data as $item) {
                     $jarak = [];
-
+    
                     foreach ($centroids as $idx => $centroid) {
                         $dist = abs($item->jumlah_curas - $centroid['jumlah_curas']);
                         $jarak[$idx] = $dist;
                     }
-
+    
                     $minIndex = array_keys($jarak, min($jarak))[0];
                     $clustered[$minIndex][] = $item;
                     $currentAssignment[$item->id] = $minIndex;
                 }
-
+    
                 if ($currentAssignment === $prevAssignment) {
                     break;
                 }
-
+    
                 $prevAssignment = $currentAssignment;
-
+    
                 // Update centroid
                 foreach ($clustered as $key => $group) {
                     $avg = collect($group)->avg('jumlah_curas');
@@ -266,7 +269,7 @@ class KMeansService
                     });
                 }
             }
-
+    
             // Hitung SSE untuk k saat ini
             $sse = 0;
             foreach ($clustered as $key => $group) {
@@ -275,20 +278,21 @@ class KMeansService
                     $sse += pow($item->jumlah_curas - $centroidVal, 2);
                 }
             }
-
+    
             $elbowData[] = [
                 'k' => $k,
-                'sse' => $sse
+                'sse' => $sse,
+                'centroid_awal' => $centroidAwal
             ];
         }
-
+    
         // Simpan ke file
         file_put_contents(
             storage_path('app/public/sse_elbow_curas.json'),
             json_encode($elbowData, JSON_PRETTY_PRINT)
         );
-
     }
+    
 
     public function SSEElbowCuranmor()
     {
@@ -296,40 +300,41 @@ class KMeansService
         $maxK = 10;
         $maxIterasi = 100;
         $elbowData = [];
-
+    
         for ($k = 1; $k <= $maxK; $k++) {
-
-            srand(time());
             // Inisialisasi centroid awal secara acak
             $centroids = $data->unique('jumlah_curanmor')->shuffle()->take($k)->values()->map(function ($item) {
                 return ['jumlah_curanmor' => $item->jumlah_curanmor];
             });
-
+    
+            // Simpan centroid awal sebagai array angka
+            $centroidAwal = $centroids->pluck('jumlah_curanmor')->toArray();
+    
             $prevAssignment = [];
-
+    
             for ($iter = 0; $iter < $maxIterasi; $iter++) {
                 $clustered = [];
                 $currentAssignment = [];
-
+    
                 foreach ($data as $item) {
                     $jarak = [];
-
+    
                     foreach ($centroids as $idx => $centroid) {
                         $dist = abs($item->jumlah_curanmor - $centroid['jumlah_curanmor']);
                         $jarak[$idx] = $dist;
                     }
-
+    
                     $minIndex = array_keys($jarak, min($jarak))[0];
                     $clustered[$minIndex][] = $item;
                     $currentAssignment[$item->id] = $minIndex;
                 }
-
+    
                 if ($currentAssignment === $prevAssignment) {
                     break;
                 }
-
+    
                 $prevAssignment = $currentAssignment;
-
+    
                 // Update centroid
                 foreach ($clustered as $key => $group) {
                     $avg = collect($group)->avg('jumlah_curanmor');
@@ -340,7 +345,7 @@ class KMeansService
                     });
                 }
             }
-
+    
             // Hitung SSE untuk k saat ini
             $sse = 0;
             foreach ($clustered as $key => $group) {
@@ -349,19 +354,19 @@ class KMeansService
                     $sse += pow($item->jumlah_curanmor - $centroidVal, 2);
                 }
             }
-
+    
             $elbowData[] = [
                 'k' => $k,
-                'sse' => $sse
+                'sse' => $sse,
+                'centroid_awal' => $centroidAwal
             ];
         }
-
+    
         // Simpan ke file
         file_put_contents(
             storage_path('app/public/sse_elbow_curanmor.json'),
             json_encode($elbowData, JSON_PRETTY_PRINT)
         );
-
     }
 
 }

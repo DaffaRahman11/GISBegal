@@ -5193,136 +5193,64 @@ if (jQuery("#editor").length) {
       apexChartUpdate(chart, e.detail)
     })
   }
-  if(jQuery('#layout1-chart-2').length){
+
+  if (jQuery('#layout1-chart-2').length) {
     am4core.ready(function() {
-
-    // Themes begin
-    am4core.useTheme(am4themes_animated);
-    // Themes end
-    
-    // Create chart instance
-    var chart = am4core.create("layout1-chart-2", am4charts.XYChart);
-    chart.colors.list = [
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA"),
-		  am4core.color("#32BDEA")
-		];
-    chart.scrollbarX = new am4core.Scrollbar();
-    
-    // Add data
-    chart.data = [{
-      "country": "Jan",
-      "visits": 3025
-    }, {
-      "country": "Feb",
-      "visits": 1882
-    }, {
-      "country": "Mar",
-      "visits": 1809
-    }, {
-      "country": "Apr",
-      "visits": 1322
-    }, {
-      "country": "May",
-      "visits": 1122
-    }, {
-      "country": "Jun",
-      "visits": 1114
-    }, {
-      "country": "Jul",
-      "visits": 984
-    }, {
-      "country": "Aug",
-      "visits": 711
-    }];
-    
-    prepareParetoData();
-    
-    function prepareParetoData(){
-        var total = 0;
-    
-        for(var i = 0; i < chart.data.length; i++){
-            var value = chart.data[i].visits;
-            total += value;
-        }
-    
-        var sum = 0;
-        for(var i = 0; i < chart.data.length; i++){
-            var value = chart.data[i].visits;
-            sum += value;   
-            chart.data[i].pareto = sum / total * 100;
-        }    
-    }
-    
-    // Create axes
-    var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-    categoryAxis.dataFields.category = "country";
-    categoryAxis.renderer.grid.template.location = 0;
-    categoryAxis.renderer.minGridDistance = 60;
-    categoryAxis.tooltip.disabled = true;
-    
-    var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    valueAxis.renderer.minWidth = 50;
-    valueAxis.min = 0;
-    valueAxis.cursorTooltipEnabled = false;
-
-    // Create series
-    var series = chart.series.push(new am4charts.ColumnSeries());
-    series.sequencedInterpolation = true;
-    series.dataFields.valueY = "visits";
-    series.dataFields.categoryX = "country";
-    series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
-    series.columns.template.strokeWidth = 0;
-    
-    series.tooltip.pointerOrientation = "vertical";
-    
-    series.columns.template.column.cornerRadiusTopLeft = 10;
-    series.columns.template.column.cornerRadiusTopRight = 10;
-    series.columns.template.column.fillOpacity = 0.8;
-    
-    // on hover, make corner radiuses bigger
-    var hoverState = series.columns.template.column.states.create("hover");
-    hoverState.properties.cornerRadiusTopLeft = 0;
-    hoverState.properties.cornerRadiusTopRight = 0;
-    hoverState.properties.fillOpacity = 1;
-    
-    series.columns.template.adapter.add("fill", function(fill, target) {
-      return chart.colors.getIndex(target.dataItem.index);
-    })
-    
-    
-    var paretoValueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-    paretoValueAxis.renderer.opposite = true;
-    paretoValueAxis.min = 0;
-    paretoValueAxis.max = 100;
-    paretoValueAxis.strictMinMax = true;
-    paretoValueAxis.renderer.grid.template.disabled = true;
-    paretoValueAxis.numberFormatter = new am4core.NumberFormatter();
-    paretoValueAxis.numberFormatter.numberFormat = "#'%'"
-    paretoValueAxis.cursorTooltipEnabled = false;
-    
-    var paretoSeries = chart.series.push(new am4charts.LineSeries())
-    paretoSeries.dataFields.valueY = "pareto";
-    paretoSeries.dataFields.categoryX = "country";
-    paretoSeries.yAxis = paretoValueAxis;
-    paretoSeries.tooltipText = "pareto: {valueY.formatNumber('#.0')}%[/]";
-    paretoSeries.bullets.push(new am4charts.CircleBullet());
-    paretoSeries.strokeWidth = 2;
-    paretoSeries.stroke = new am4core.InterfaceColorSet().getFor("alternativeBackground");
-    paretoSeries.strokeOpacity = 0.5;
-    
-    // Cursor
-    chart.cursor = new am4charts.XYCursor();
-    chart.cursor.behavior = "panX";
-    
-    }); // end am4core.ready()
+      // Theme
+      am4core.useTheme(am4themes_animated);
+  
+      // Chart instance
+      var chart = am4core.create("layout1-chart-2", am4charts.XYChart);
+  
+      // Load data via Ajax
+      fetch("/storage/sse_elbow_curanmor.json")
+        .then(response => response.json())
+        .then(data => {
+          // Format data untuk chart
+          chart.data = data.map(item => ({
+            k: item.k,
+            sse: item.sse,
+            centroid_awal: item.centroid_awal.join(", ") // Menggabungkan nilai centroid_awal menjadi string
+          }));
+  
+          // X Axis (kategori K)
+          let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+          categoryAxis.dataFields.category = "k";
+          categoryAxis.renderer.grid.template.location = 0;
+          categoryAxis.renderer.minGridDistance = 30;
+          categoryAxis.title.text = "Jumlah Klaster (K)";
+  
+          // Y Axis (nilai SSE)
+          let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+          valueAxis.title.text = "Nilai SSE";
+  
+          // Line Series
+          let lineSeries = chart.series.push(new am4charts.LineSeries());
+          lineSeries.dataFields.valueY = "sse";
+          lineSeries.dataFields.categoryX = "k";
+          lineSeries.name = "SSE";
+          lineSeries.strokeWidth = 2;
+          lineSeries.tooltipText = "K={categoryX}\nSSE={valueY}\nCentroid Awal: {centroid_awal}";
+          lineSeries.tensionX = 1; // untuk garis agak lengkung (opsional)
+  
+          // Bullets pada titik data
+          let bullet = lineSeries.bullets.push(new am4charts.CircleBullet());
+          bullet.circle.radius = 4;
+  
+          // Cursor
+          chart.cursor = new am4charts.XYCursor();
+          chart.cursor.behavior = "panX";
+          chart.cursor.lineX.disabled = false;
+          chart.cursor.lineY.disabled = false;
+  
+          // Scrollbar (opsional)
+          chart.scrollbarX = new am4core.Scrollbar();
+        });
+    });
   }
+  
+  
+
   if (jQuery("#layout1-chart-3").length) {    
     options = {
       series: [{

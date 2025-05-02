@@ -148,21 +148,23 @@ class KmeansController extends Controller
 
             foreach ($data as $item) {
                 $jarak = [];
-
+            
                 foreach ($centroids as $idx => $centroid) {
-                    $dist = abs($item->jumlah_curanmor - $centroid['jumlah_curanmor']);
+                    // Menggunakan Euclidean distance standar (akar kuadrat dari selisih kuadrat)
+                    $dist = sqrt(pow($item->jumlah_curanmor - $centroid['jumlah_curanmor'], 2));
                     $jarak["C" . ($idx + 1)] = $dist;
                 }
-
+            
                 $iterasi[$i][] = array_merge(['kecamatan_id' => $item->kecamatan_id], $jarak);
-
+            
                 $minIndex = array_keys($jarak, min($jarak))[0]; // e.g. "jarakC2"
                 $clusterNumber = (int) str_replace("C", "", $minIndex);
-
+            
                 $clustered[$clusterNumber][] = $item;
                 $item->temp_klaster = $clusterNumber;
                 $currentAssignment[$item->id] = $clusterNumber;
             }
+            
 
             // ✨ Cek konvergensi: jika assignment sekarang == sebelumnya, break
             if ($currentAssignment === $prevAssignment) {

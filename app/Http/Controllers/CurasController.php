@@ -77,6 +77,9 @@ class CurasController extends Controller
 
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
+
+            $serviceSSECuras = new KMeansService();
+            $serviceSSECuras->SSEElbowCuras();
         
             return redirect('/dashboard/curas')->with('succes', 'Data curas berhasil ditambahkan.');
         }catch (\Exception $e){
@@ -146,6 +149,9 @@ class CurasController extends Controller
 
             // simpan hasil ke file json
             file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
+
+            $serviceSSECuras = new KMeansService();
+            $serviceSSECuras->SSEElbowCuras();
 
             return redirect('/dashboard/curas')->with('succes', 'Data Kecamatan Berhasil Diubah');
         } catch (\Exception $e) {
