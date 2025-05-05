@@ -221,7 +221,7 @@ class KMeansService
     public function SSEElbowCuras()
     {
         $data = Curas::select('id', 'jumlah_curas')->get();
-        $maxK = 4;
+        $maxK = 10;
         $maxIterasi = 100;
         $elbowData = [];
     

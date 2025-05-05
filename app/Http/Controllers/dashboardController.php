@@ -14,12 +14,19 @@ class dashboardController extends Controller
     {
         $jumlahRawanCuras = Curas::where('klaster_id', '3')->count();
         $jumlahTotalCuras = Curas::count();
+        $prosentaseCuras = ($jumlahRawanCuras / $jumlahTotalCuras) * 100; 
+
         $jumlahRawanCuranmor = Curanmor::where('klaster_id', '3')->count();
         $jumlahTotalCuranmor = Curanmor::count();
-        $namaUser = Auth::user()->nama;
-        $prosentaseCuras = ($jumlahRawanCuras / $jumlahTotalCuras) * 100; 
         $prosentaseCuranmor = ($jumlahRawanCuranmor / $jumlahTotalCuranmor) * 100; 
+        
         $totalKecamatan = Kecamatan::count();
-        return view('admin.dashboardAdmin', compact('jumlahRawanCuras', 'jumlahRawanCuranmor', 'namaUser', 'prosentaseCuras', 'prosentaseCuranmor', 'totalKecamatan'));
+
+        $curasTertinggis = Curas::orderBy('jumlah_curas', 'desc')->take(5)->get();
+        $curanmorTertinggis = Curanmor::orderBy('jumlah_curanmor', 'desc')->take(5)->get();
+
+
+        $namaUser = Auth::user()->nama;
+        return view('admin.dashboardAdmin', compact('jumlahRawanCuras', 'jumlahRawanCuranmor', 'namaUser', 'prosentaseCuras', 'prosentaseCuranmor', 'totalKecamatan', 'curasTertinggis', 'curanmorTertinggis'));
     }
 }

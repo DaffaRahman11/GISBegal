@@ -39,7 +39,7 @@
       <div class="iq-sidebar  sidebar-default ">
           <div class="iq-sidebar-logo d-flex align-items-center justify-content-between">
               <a href="/dashboard" class="header-logo">
-                  <img src="{{ asset('/assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">PROTECT</h5>
+                  <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal light-logo" alt="logo"><h5 class="logo-title light-logo ml-3">KPROTECT</h5>
               </a>
               <div class="iq-menu-bt-sidebar ml-0">
                   <i class="las la-bars wrapper-menu"></i>
@@ -166,6 +166,28 @@
                             </li>
                         </ul>
                     </li>
+                    <li class=" {{ Request::is('dashboard/TampilHitungCuras')||Request::is('dashboard/TampilHitungCuranmor') ? 'active' : '' }}">
+                        <a href="#return" class="collapsed" data-toggle="collapse" aria-expanded="false">
+                            <svg fill="#676e8a" height="20px" width="20px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" stroke="#676e8a"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <g> <path d="M468.293,0c-6.07,0-418.515,0-424.585,0C19.607,0,0,19.607,0,43.707c0,6.07,0,418.515,0,424.585 C0,492.393,19.607,512,43.707,512c6.07,0,418.515,0,424.585,0c24.1,0,43.707-19.607,43.707-43.707c0-6.07,0-418.515,0-424.585 C512,19.607,492.393,0,468.293,0z M237.268,474.537H43.707c-3.443,0-6.244-2.801-6.244-6.244V274.732h199.805V474.537z M237.268,237.268H37.463V43.707c0-3.443,2.801-6.244,6.244-6.244h193.561V237.268z M474.537,468.293 c0,3.443-2.801,6.244-6.244,6.244H274.732V274.732h199.805V468.293z M474.537,237.268H274.732V37.463h193.561 c3.443,0,6.244,2.801,6.244,6.244V237.268z"></path> </g> </g> <g> <g> <path d="M177.327,118.634h-21.229V97.405c0-10.345-8.387-18.732-18.732-18.732s-18.732,8.387-18.732,18.732v21.229H97.405 c-10.345,0-18.732,8.387-18.732,18.732s8.387,18.732,18.732,18.732h21.229v21.229c0,10.345,8.387,18.732,18.732,18.732 s18.732-8.387,18.732-18.732v-21.229h21.229c10.345,0,18.732-8.387,18.732-18.732S187.672,118.634,177.327,118.634z"></path> </g> </g> <g> <g> <path d="M414.595,384.624h-79.43c-9.616,0-18.051,7.044-19.106,16.601c-1.246,11.299,7.568,20.862,18.614,20.862h79.43 c9.616,0,18.051-7.044,19.106-16.601C434.456,394.188,425.642,384.624,414.595,384.624z"></path> </g> </g> <g> <g> <path d="M414.595,327.18h-79.43c-9.616,0-18.051,7.044-19.106,16.601c-1.246,11.299,7.568,20.862,18.614,20.862h79.43 c9.616,0,18.051-7.044,19.106-16.601C434.456,336.744,425.642,327.18,414.595,327.18z"></path> </g> </g> <g> <g> <path d="M414.595,118.634h-79.922c-10.345,0-18.732,8.387-18.732,18.732s8.387,18.732,18.732,18.732h79.922 c10.345,0,18.732-8.387,18.732-18.732S424.94,118.634,414.595,118.634z"></path> </g> </g> <g> <g> <path d="M178.868,389.646l-15.012-15.012l15.012-15.012c7.315-7.315,7.315-19.175-0.001-26.49c-7.314-7.314-19.175-7.315-26.49,0 l-15.01,15.012l-15.012-15.012c-7.313-7.314-19.174-7.315-26.49,0c-7.315,7.315-7.315,19.175,0,26.49l15.012,15.012 l-15.012,15.012c-7.315,7.315-7.315,19.175,0,26.49c7.314,7.314,19.175,7.315,26.49,0l15.012-15.012l15.012,15.012 c7.314,7.315,19.174,7.315,26.49,0C186.183,408.821,186.183,396.961,178.868,389.646z"></path> </g> </g> </g></svg>
+                            <span class="ml-4">Detail Perhitungan
+                            </span>
+                            <svg class="svg-icon iq-arrow-right arrow-active" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="10 15 15 20 20 15"></polyline><path d="M4 4h7a4 4 0 0 1 4 4v12"></path>
+                            </svg>
+                        </a>
+                        <ul id="return" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class="">
+                                <a href="/dashboard/TampilHitungCuras">
+                                    <i class="las la-minus"></i><span>K - Means Curas</span>
+                                </a>
+                            </li>
+                            <li class="">
+                                <a href="/dashboard/TampilHitungCuranmor">
+                                    <i class="las la-minus"></i><span>K - Means Curanmor</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     
                     
 
@@ -178,9 +200,9 @@
               <nav class="navbar navbar-expand-lg navbar-light p-0">
                   <div class="iq-navbar-logo d-flex align-items-center justify-content-between">
                       <i class="ri-menu-line wrapper-menu"></i>
-                      <a href="../backend/index.html" class="header-logo">
+                      <a href="/dashboard" class="header-logo">
                           <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid rounded-normal" alt="logo">
-                          <h5 class="logo-title ml-3">PROTECT</h5>
+                          <h5 class="logo-title ml-3">KPROTECT</h5>
       
                       </a>
                   </div>

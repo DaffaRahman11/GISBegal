@@ -1012,6 +1012,7 @@ if (jQuery("#radar-multiple-chart").length) {
 
       // Create series
       var series = chart.series.push(new am4charts.ColumnSeries());
+      
       series.dataFields.valueY = "visits";
       series.dataFields.categoryX = "country";
       series.name = "Visits";
@@ -5196,61 +5197,69 @@ if (jQuery("#editor").length) {
 
   if (jQuery('#layout1-chart-2').length) {
     am4core.ready(function() {
-      // Theme
       am4core.useTheme(am4themes_animated);
-  
-      // Chart instance
+
+      // Buat chart instance
       var chart = am4core.create("layout1-chart-2", am4charts.XYChart);
-  
-      // Load data via Ajax
-      fetch("/storage/sse_elbow_curanmor.json")
-        .then(response => response.json())
-        .then(data => {
-          // Format data untuk chart
-          chart.data = data.map(item => ({
-            k: item.k,
-            sse: item.sse,
-            centroid_awal: item.centroid_awal.join(", ") // Menggabungkan nilai centroid_awal menjadi string
-          }));
-  
-          // X Axis (kategori K)
-          let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
-          categoryAxis.dataFields.category = "k";
-          categoryAxis.renderer.grid.template.location = 0;
-          categoryAxis.renderer.minGridDistance = 30;
-          categoryAxis.title.text = "Jumlah Klaster (K)";
-  
-          // Y Axis (nilai SSE)
-          let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-          valueAxis.title.text = "Nilai SSE";
-  
-          // Line Series
-          let lineSeries = chart.series.push(new am4charts.LineSeries());
-          lineSeries.dataFields.valueY = "sse";
-          lineSeries.dataFields.categoryX = "k";
-          lineSeries.name = "SSE";
-          lineSeries.strokeWidth = 2;
-          lineSeries.tooltipText = "K={categoryX}\nSSE={valueY}\nCentroid Awal: {centroid_awal}";
-          lineSeries.tensionX = 1; // untuk garis agak lengkung (opsional)
-  
-          // Bullets pada titik data
-          let bullet = lineSeries.bullets.push(new am4charts.CircleBullet());
-          bullet.circle.radius = 4;
-  
-          // Cursor
-          chart.cursor = new am4charts.XYCursor();
-          chart.cursor.behavior = "panX";
-          chart.cursor.lineX.disabled = false;
-          chart.cursor.lineY.disabled = false;
-  
-          // Scrollbar (opsional)
-          chart.scrollbarX = new am4core.Scrollbar();
+
+      // Inisialisasi axes & series di luar agar tidak duplikat
+      let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "k";
+      categoryAxis.renderer.grid.template.location = 0;
+      categoryAxis.renderer.minGridDistance = 30;
+      categoryAxis.title.text = "Jumlah Klaster (K)";
+
+      let valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.title.text = "Nilai SSE";
+
+      let lineSeries = chart.series.push(new am4charts.LineSeries());
+      
+      lineSeries.dataFields.valueY = "sse";
+      lineSeries.dataFields.categoryX = "k";
+      lineSeries.name = "SSE";
+      lineSeries.strokeWidth = 2;
+      lineSeries.tooltipText = "K={categoryX}\nSSE={valueY}\nCentroid Awal: {centroid_awal}";
+      lineSeries.tensionX = 1;
+
+      let bullet = lineSeries.bullets.push(new am4charts.CircleBullet());
+      bullet.circle.radius = 4;
+
+      chart.cursor = new am4charts.XYCursor();
+      chart.cursor.behavior = "panX";
+      chart.cursor.lineX.disabled = false;
+      chart.cursor.lineY.disabled = false;
+
+      chart.scrollbarX = new am4core.Scrollbar();
+
+      // Fungsi untuk load data berdasarkan tipe
+      function loadChartData(type) {
+        fetch(`/storage/sse_elbow_${type}.json`)
+          .then(response => response.json())
+          .then(data => {
+            chart.data = data.map(item => ({
+              k: item.k,
+              sse: item.sse,
+              centroid_awal: item.centroid_awal.join(", ")
+            }));
+            console.log("Data yang dimuat ke chart:", chart.data);
+
+          });
+      }
+
+      // Load data default saat pertama kali (curas)
+      loadChartData('curanmor');
+
+      // Event listener dropdown
+      document.querySelectorAll('.chart-option').forEach(item => {
+        item.addEventListener('click', function(e) {
+          e.preventDefault();
+          const selected = this.getAttribute('data-value');
+          loadChartData(selected);
+          document.getElementById('dropdownMenuButton002').innerHTML = this.innerText + '<i class="ri-arrow-down-s-line ml-1"></i>';
         });
+      });
     });
   }
-  
-  
-
   if (jQuery("#layout1-chart-3").length) {    
     options = {
       series: [{

@@ -44,5 +44,5 @@ Route::get('/dashboard/mapcuranmor', function () {
 })->middleware('auth');
 
 // Route K-Means Centroid Tetap
-Route::get('/kmeans-curas', [KmeansController::class, 'KMeansCuras']);
-Route::get('/kmeans-curanmor', [KmeansController::class, 'KMeansCuranmor']);
+Route::get('/kmeans-curas', [KmeansController::class, 'KMeansCuras'])->middleware('auth');
+Route::get('/kmeans-curanmor', [KmeansController::class, 'KMeansCuranmor'])->middleware('auth');

@@ -77,11 +77,72 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                       <div class="header-title">
+                          <h4 class="card-title">5 Kecamatan Tertinggi Kasus Curas</h4>
+                       </div>
+                    </div>
+                    <div class="card-body">
+                       <p>Berikut merupakan 5 Kecamatan yang memiliki kasus CURAS tertinggi</p>
+                       <table class="table">
+                          <thead>
+                             <tr class="ligth">
+                                <th scope="col">Nama Kecamatan</th>
+                                <th scope="col">Jumlah Curas</th>
+                                <th scope="col">Klaster</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ( $curasTertinggis as $curasTertinggi )
+                             <tr style="background-color: {{ $curasTertinggi->punyaKlasterCuras->warna }}">
+                                <td>{{ $curasTertinggi->punyaKecamatanCuras->nama_kecamatan }}</td>
+                                <td>{{ $curasTertinggi->jumlah_curas }}</td>
+                                <td>{{ $curasTertinggi->punyaKlasterCuras->nama_klaster }}</td>
+                             </tr>
+                            @endforeach
+                          </tbody>
+                       </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-6">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                       <div class="header-title">
+                          <h4 class="card-title">5 Kecamatan Tertinggi Kasus Curanmor</h4>
+                       </div>
+                    </div>
+                    <div class="card-body">
+                       <p>Berikut merupakan 5 Kecamatan yang memiliki kasus CURANMOR tertinggi</p>
+                       <table class="table">
+                          <thead>
+                             <tr class="ligth">
+                                <th scope="col">Nama Kecamatan</th>
+                                <th scope="col">Jumlah Curanmor</th>
+                                <th scope="col">Klaster</th>
+                             </tr>
+                          </thead>
+                          <tbody>
+                            @foreach ( $curanmorTertinggis as $curanmorTertinggi )
+                             <tr style="background-color: {{ $curanmorTertinggi->punyaKlasterCuranmor->warna }}">
+                                <td>{{ $curanmorTertinggi->punyaKecamatanCuranmor->nama_kecamatan }}</td>
+                                <td>{{ $curanmorTertinggi->jumlah_curanmor }}</td>
+                                <td>{{ $curanmorTertinggi->punyaKlasterCuranmor->nama_klaster }}</td>
+                             </tr>
+                            @endforeach
+                          </tbody>
+                       </table>
+                    </div>
+                </div>
+            </div>
             <div class="col-lg-12">
                 <div class="card card-block card-stretch card-height">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Pemetaan Curas dan Curanmor Kab Probolinggo</h4>
+                            <h4 class="card-title" id="map-card-title">Pemetaan Curas dan Curanmor Kab Probolinggo</h4>
                         </div>                        
                         <div class="card-header-toolbar d-flex align-items-center">
                             <div class="dropdown">
@@ -103,32 +164,33 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card card-block card-stretch card-height">
                     <div class="card-header d-flex align-items-center justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Revenue Vs Cost</h4>
+                            <h4 class="card-title">Nilai K Terbaik</h4>
                         </div>
                         <div class="card-header-toolbar d-flex align-items-center">
                             <div class="dropdown">
                                 <span class="dropdown-toggle dropdown-bg btn" id="dropdownMenuButton002"
                                     data-toggle="dropdown">
-                                    This Month<i class="ri-arrow-down-s-line ml-1"></i>
+                                    Curanmor<i class="ri-arrow-down-s-line ml-1"></i>
                                 </span>
                                 <div class="dropdown-menu dropdown-menu-right shadow-none"
                                     aria-labelledby="dropdownMenuButton002">
-                                    <a class="dropdown-item" href="#">Curas</a>
-                                    <a class="dropdown-item" href="#">Curanmor</a>
+                                    <a class="dropdown-item chart-option" data-value="curanmor" href="#">Curanmor</a>
+                                    <a class="dropdown-item chart-option" data-value="curas" href="#">Curas</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-body">
+                        <p>Perhitungan Nilai K terbaik menggunakan rumus Sum of Squared Errors (SSE) dengan nilai k = 1 sampa k = 10. Kemudian nilai SSE tersebut ditampilkan dalam Grafik Elbow Method</p>
                         <div id="layout1-chart-2" style="min-height: 360px;"></div>
                     </div>
                 </div>
             </div>
-        </div>
+
         
         <!-- Page end  -->
         
@@ -137,7 +199,7 @@
     <script>
         let map;
         let geoLayer;
-        let mapTitle = document.querySelector('.card-title');
+        let mapTitle = document.getElementById('map-card-title');
         let apiUrl = "{{ url('/api/map/curas') }}"; // default awal curas
         let curasData = {};
     
@@ -202,6 +264,7 @@
             map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
             L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 maxZoom: 19,
+                minZoom: 10,  
                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
             }).addTo(map);
             fetchAndLoadMap(apiUrl, 'Pemetaan Curas Kab Probolinggo');

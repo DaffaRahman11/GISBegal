@@ -163,9 +163,10 @@
                     <!-- drop down third level -->
                   </li>
                   <li>
-                    <a href="#sectionMap">Map</a>
+                    <a href="#sectionOurTeam">Our Teams</a>
                   </li>
-                  <li><a href="#sectionOurTeam">Our Teams</a>
+                  <li>
+                    <a href="#sectionMap">Map</a>
                   </li>
                 </ul>
               </div>
@@ -1808,8 +1809,8 @@
                   </li>
                   <li class="list-item"><a href="#sectionCurasCuranmor">Curas</a></li>
                   <li class="list-item"><a href="#sectionKmeans">Clustering</a></li>
-                  <li class="list-item"><a href="#sectionMap">Map</a></li>
                   <li class="list-item"><a href="#sectionOurTeam">Our Team</a></li>
+                  <li class="list-item"><a href="#sectionMap">Map</a></li>
                 </ul>
               </div>
             </div>
@@ -2045,7 +2046,13 @@
       }
 
       function loadInitialMap() {
-          map = L.map('map').setView([-7.843271790154591, 113.2990930356143], 10);
+          map = L.map('map', {
+              center: [-7.843271790154591, 113.2990930356143],
+              zoom: 10,
+              minZoom: 10,  
+              maxZoom: 19
+          });
+
           L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
               maxZoom: 19,
               attribution: '&copy; OpenStreetMap'
@@ -2055,40 +2062,36 @@
           fetchAndLoadMap(apiUrl, 'Pemetaan Curas Kab Probolinggo');
       }
 
+
       document.addEventListener('DOMContentLoaded', () => {
-          loadInitialMap();
+      // Jalankan peta awal
+      loadInitialMap();
 
-          document.getElementById('btn-curas').addEventListener('click', (e) => {
-              e.preventDefault();
-              fetchAndLoadMap("{{ url('/api/map/curas') }}", "Pemetaan Curas Kab Probolinggo");
-          });
-
-          document.getElementById('btn-curanmor').addEventListener('click', (e) => {
-              e.preventDefault();
-              fetchAndLoadMap("{{ url('/api/map/curanmor') }}", "Pemetaan Curanmor Kab Probolinggo");
-          });
-      });
-    </script>
-
-    <script>
-      document.getElementById('btn-curas').addEventListener('click', (e) => {
+        // Tombol Curas diklik
+        document.getElementById('btn-curas').addEventListener('click', (e) => {
           e.preventDefault();
+
           fetchAndLoadMap("{{ url('/api/map/curas') }}", "Pemetaan Curas Kab Probolinggo");
 
-          // Tampilkan info update curas, sembunyikan curanmor
+          // Tampilkan info curas, sembunyikan curanmor
           document.getElementById('update-curas').style.display = 'block';
           document.getElementById('update-curanmor').style.display = 'none';
-      });
+        });
 
-      document.getElementById('btn-curanmor').addEventListener('click', (e) => {
+        // Tombol Curanmor diklik
+        document.getElementById('btn-curanmor').addEventListener('click', (e) => {
           e.preventDefault();
+
           fetchAndLoadMap("{{ url('/api/map/curanmor') }}", "Pemetaan Curanmor Kab Probolinggo");
 
-          // Tampilkan info update curanmor, sembunyikan curas
+          // Tampilkan info curanmor, sembunyikan curas
           document.getElementById('update-curas').style.display = 'none';
           document.getElementById('update-curanmor').style.display = 'block';
+        });
       });
+
     </script>
+
 
 
   </body>
