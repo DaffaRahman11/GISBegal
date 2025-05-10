@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Klaster;
 use Illuminate\Http\Request;
+use App\Services\KMeansService;
 
 class KlasterController extends Controller
 {
@@ -34,12 +35,25 @@ class KlasterController extends Controller
                 'nama_klaster' =>'required|max:255|unique:klasters,nama_klaster',
                 'warna' =>'required|max:255',
             ]);
+
+
+            $serviceKMeans = new KMeansService();
+            $serviceKMeans->SSEElbowCuranmor();
+            $serviceKMeans->SSEElbowCuras();
+    
+            $serviceKMeansCuras = new KMeansService();
+            $hasilKMeansCuras = $serviceKMeansCuras->hitungKMeansCuras();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasilKMeansCuras));
+    
+            $serviceKmeansCuranmor = new KMeansService();
+            $hasilKMeansCuranmor = $serviceKmeansCuranmor->hitungKMeansCuranmor();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasilKMeansCuranmor));
     
             Klaster::create($validateData);
             return redirect('/dashboard/klaster')->with('succes', 'Berhasil Menambahkan Klaster Baru');
         }catch (\Exception $e){
             
-            return redirect('/dashboard/klaster')->with('error', 'Gagal Menambahkan Klaster Baru');
+            return redirect('/dashboard/klaster')->with('error', 'Gagal Menambahkan Klaster Baru ' .$e->getMessage());
         }
     }
 

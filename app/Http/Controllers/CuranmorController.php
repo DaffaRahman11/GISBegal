@@ -5,10 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Klaster;
 use App\Models\Curanmor;
 use App\Models\Kecamatan;
-use App\Models\Detail_Curanmor;
 use Illuminate\Http\Request;
+use App\Models\Detail_Curanmor;
 use App\Services\KMeansService;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class CuranmorController extends Controller
 {
@@ -35,13 +36,14 @@ class CuranmorController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'kecamatan_id' => 'required|exists:kecamatans,id',
+            'jumlah_curanmor' => 'required|numeric',
+        ]);
         try{
 
-            $request->validate([
-                'kecamatan_id' => 'required|exists:kecamatans,id',
-                'jumlah_curanmor' => 'required|numeric',
-            ]);
-        
+            DB::beginTransaction();
+
             $kecamatan_id = $request->kecamatan_id;
             $tambahan_curanmor = $request->jumlah_curanmor;
         
@@ -75,18 +77,11 @@ class CuranmorController extends Controller
             $serviceSSECuranmor = new KMeansService();
             $serviceSSECuranmor->SSEElbowCuranmor();
 
-            // =====CODE TAMBAH SEBELUMNYA=========
-            // $validateData = $request->validate([
-            //     'kecamatan_id' =>'required|max:255|exists:kecamatans,id|unique:curanmors,kecamatan_id',
-            //     'jumlah_curanmor' =>'required',
-            //     'klaster_id' =>'required|max:255|exists:klasters,id',
-
-            // ]);
-    
-            // Curanmor::create($validateData);
+            DB::commit();
             return redirect('/dashboard/curanmor')->with('succes', 'Berhasil Menambahkan Data Curanmor Baru');
         }catch (\Exception $e){
-            return redirect('/dashboard/curanmor')->with('error', 'Gagal Menambahkan Data Curanmor Baru');
+            DB::rollBack();
+            return redirect('/dashboard/curanmor')->with('error', 'Gagal Menambahkan Data Curanmor Baru '. $e->getMessage());
         }
     }
 
@@ -103,18 +98,6 @@ class CuranmorController extends Controller
      */
     public function edit($curanmor)
     {
-        try {
-
-            $edit = Curanmor::find($curanmor);
-            
-            return view('admin.dashboardEditCuranmor', [
-                'curanmor' => $edit,
-                'kecamatans' => Kecamatan::all(),
-                'klasters' => Klaster::all(),
-            ]);
-        } catch (\Exception $e) {
-            abort(404);
-        }
     }
 
     /**
@@ -122,39 +105,7 @@ class CuranmorController extends Controller
      */
     public function update(Request $request, Curanmor $curanmor)
     {
-            try {
-    
-                // Validasi input
-                $request->validate([
-                    'kecamatan_id' => [
-                        'required',
-                        'exists:kecamatans,id',
-                        Rule::unique('curanmors')->ignore($curanmor->id),
-                    ],
-                    'klaster_id' => 'required|exists:klasters,id',
-                    'jumlah_curanmor' => 'required|numeric|min:0',
-                ]);
-    
-                // Update data
-                $curanmor->update([
-                    'kecamatan_id' => $request->kecamatan_id,
-                    'klaster_id' => $request->klaster_id,
-                    'jumlah_curanmor' => $request->jumlah_curanmor,
-                ]);
-
-            $service = new KMeansService();
-            $hasil = $service->hitungKMeansCuranmor();
-
-            // simpan hasil ke file json
-            file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasil));
-
-            $serviceSSECuranmor = new KMeansService();
-            $serviceSSECuranmor->SSEElbowCuranmor();
-    
-                return redirect('/dashboard/curanmor')->with('succes', 'Data Kecamatan Berhasil Diubah');
-            } catch (\Exception $e) {
-                return redirect('/dashboard/curanmor')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
-            }
+            
     }
 
     /**
@@ -162,25 +113,6 @@ class CuranmorController extends Controller
      */
     public function destroy($curanmor)
     {
-        try {
-            // Cari data berdasarkan ID
-            $hapus = Curanmor::find($curanmor);
-
-            // Pastikan data ditemukan sebelum menghapus
-            if (!$hapus) {
-                return redirect('/dashboard/curanmor')->with('error', 'Data tidak ditemukan.');
-            }
-
-            // Hapus data
-            $hapus->delete();
-
-            $serviceSSECuranmor = new KMeansService();
-            $serviceSSECuranmor->SSEElbowCuranmor();
-
-            return redirect('/dashboard/curanmor')->with('succes', 'Data Curanmor Berhasil Dihapus');
-        } catch (\Exception $e) {
-            return redirect('/dashboard/curanmor')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
     }
     
 }

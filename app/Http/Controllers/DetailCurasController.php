@@ -6,6 +6,7 @@ use App\Models\Curas;
 use App\Models\Detail_Curas;
 use Illuminate\Http\Request;
 use App\Services\KMeansService;
+use Illuminate\Support\Facades\DB;
 
 class DetailCurasController extends Controller
 {
@@ -65,6 +66,9 @@ class DetailCurasController extends Controller
     public function destroy($id)
     {
         try {
+
+            DB::beginTransaction();
+
             $detail = Detail_Curas::findOrFail($id);
 
             // Ambil curas terkait
@@ -92,8 +96,12 @@ class DetailCurasController extends Controller
             $serviceSSECuras = new KMeansService();
             $serviceSSECuras->SSEElbowCuras();
 
+            DB::commit();
+
             return redirect('/dashboard/detail-curas')->with('succes', 'Data berhasil dihapus dan curas diperbarui.');
         } catch (\Exception $e) {
+
+            DB::rollBack();
             return redirect('/dashboard/detail-curas')->with('error', 'Terjadi kesalahan Ketika Menghapus Data : ' . $e->getMessage());
         }
 

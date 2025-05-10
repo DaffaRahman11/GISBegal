@@ -9,6 +9,7 @@ use App\Models\Detail_Curas;
 use Illuminate\Http\Request;
 use App\Services\KMeansService;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
 
 class CurasController extends Controller
 {
@@ -36,13 +37,14 @@ class CurasController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'kecamatan_id' => 'required|exists:kecamatans,id',
+            'jumlah_curas' => 'required|numeric',
+        ]);
         try{
 
-            $request->validate([
-                'kecamatan_id' => 'required|exists:kecamatans,id',
-                'jumlah_curas' => 'required|numeric',
-            ]);
-        
+            DB::beginTransaction();
+            
             $kecamatan_id = $request->kecamatan_id;
             $tambahan_curas = $request->jumlah_curas;
         
@@ -74,16 +76,19 @@ class CurasController extends Controller
 
             $service = new KMeansService();
             $hasil = $service->hitungKMeansCuras();
-
-            // simpan hasil ke file json
+            
             file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
 
             $serviceSSECuras = new KMeansService();
             $serviceSSECuras->SSEElbowCuras();
-        
+            
+            DB::commit(); 
+
             return redirect('/dashboard/curas')->with('succes', 'Data curas berhasil ditambahkan.');
         }catch (\Exception $e){
-            return redirect('/dashboard/curas')->with('error', 'Gagal Menambahkan Data Curas Baru');
+
+            DB::rollBack(); 
+            return redirect('/dashboard/curas')->with('error', 'Gagal Menambahkan Data Curas Baru'. $e->getMessage());
         }
     }
 
@@ -100,18 +105,6 @@ class CurasController extends Controller
      */
     public function edit($curas)
     {
-        try {
-
-            $edit = Curas::find($curas);
-            
-            return view('admin.dashboardEditCuras', [
-                'curas' => $edit,
-                'kecamatans' => Kecamatan::all(),
-                'klasters' => Klaster::all(),
-            ]);
-        } catch (\Exception $e) {
-            abort(404);
-        }
     }
 
     /**
@@ -119,71 +112,13 @@ class CurasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try {
-            // Cari data berdasarkan ID yang dikirim
-            $curas = Curas::findOrFail($id);
-
-            // Debugging untuk memastikan data ditemukan
-            // dd($curas->toArray()); // Jika berhasil, ini akan menampilkan data curas
-
-            // Validasi input
-            $request->validate([
-                'kecamatan_id' => [
-                    'required',
-                    'exists:kecamatans,id',
-                    Rule::unique('curas')->ignore($curas->id),
-                ],
-                'klaster_id' => 'required|exists:klasters,id',
-                'jumlah_curas' => 'required|integer|min:0',
-            ]);
-
-            // Update data
-            $curas->update([
-                'kecamatan_id' => $request->kecamatan_id,
-                'klaster_id' => $request->klaster_id,
-                'jumlah_curas' => $request->jumlah_curas,
-            ]);
-
-            $service = new KMeansService();
-            $hasil = $service->hitungKMeansCuras();
-
-            // simpan hasil ke file json
-            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasil));
-
-            $serviceSSECuras = new KMeansService();
-            $serviceSSECuras->SSEElbowCuras();
-
-            return redirect('/dashboard/curas')->with('succes', 'Data Kecamatan Berhasil Diubah');
-        } catch (\Exception $e) {
-            return redirect('/dashboard/curas')->with('error', 'Data Kecamatan Gagal Diubah: ' . $e->getMessage());
-        }
     }
-
-    
-
-
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($curas)
     {
-        try {
-            // Cari data berdasarkan ID
-            $hapus = Curas::find($curas);
-
-            // Pastikan data ditemukan sebelum menghapus
-            if (!$hapus) {
-                return redirect('/dashboard/curas')->with('error', 'Data tidak ditemukan.');
-            }
-
-            // Hapus data
-            $hapus->delete();
-
-            return redirect('/dashboard/curas')->with('succes', 'Data Curas Berhasil Dihapus');
-        } catch (\Exception $e) {
-            return redirect('/dashboard/curas')->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
-        }
     }
     
 

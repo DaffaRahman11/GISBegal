@@ -12,27 +12,24 @@ class KMeansService
     public function hitungKMeansCuras()
     {
         $data = Curas::select('id', 'kecamatan_id', 'klaster_id', 'jumlah_curas')->orderBy('jumlah_curas', 'asc')->get();
-
         $k = Klaster::count('id');
         $maxIterasi = 100;
 
-        $uniqueCount = $data->unique('jumlah_curas')->count();
-        if ($uniqueCount < $k) {
-            throw new \Exception("Jumlah nilai unik pada 'jumlah_curas' ($uniqueCount) kurang dari jumlah klaster ($k). Pastikan data memiliki variasi yang cukup.");
+        // Ambil centroid awal yang unik
+        $minValue = $data->min('jumlah_curas');
+        $maxValue = $data->max('jumlah_curas');
+
+        $generated = collect();
+        while ($generated->count() < $k) {
+            $randomFloat = round(mt_rand($minValue * 100, $maxValue * 100) / 100, 2); 
+            if (!$generated->contains($randomFloat)) {
+                $generated->push($randomFloat);
+            }
         }
 
-        // Ambil centroid awal yang unik
-        $centroids = $data->unique('jumlah_curas') // Pastikan nilai unik
-                        ->shuffle()                // Acak
-                        ->take($k)                 // Ambil k data
-                        ->values()
-                        ->map(function ($item) {
-                            return [
-                                'jumlah_curas' => $item->jumlah_curas,
-                            ];
-                        });
-
-        // Simpan centroid awal sebelum iterasi
+        $centroids = $generated->map(function ($value) {
+            return ['jumlah_curas' => $value];
+        });
         $centroidAwal = $centroids->toArray();
 
         $iterasi = [];
@@ -52,7 +49,7 @@ class KMeansService
 
                 $iterasi[$i][] = array_merge(['kecamatan_id' => $item->kecamatan_id], $jarak);
 
-                $minIndex = array_keys($jarak, min($jarak))[0]; // e.g. "jarakC2"
+                $minIndex = array_keys($jarak, min($jarak))[0];
                 $clusterNumber = (int) str_replace("C", "", $minIndex);
 
                 $clustered[$clusterNumber][] = $item;
@@ -60,14 +57,11 @@ class KMeansService
                 $currentAssignment[$item->id] = $clusterNumber;
             }
 
-            // ✨ Cek konvergensi: jika assignment sekarang == sebelumnya, break
             if ($currentAssignment === $prevAssignment) {
                 break;
             }
 
             $prevAssignment = $currentAssignment;
-
-            
 
             // Update centroid berdasarkan rata-rata
             foreach ($clustered as $key => $group) {
@@ -79,20 +73,16 @@ class KMeansService
                 });
             }
         }
-        
 
-        // Final mapping centroid ke klaster_id (aman/sedang/rawan)
+        // Final mapping centroid ke klaster_id
         $finalCentroids = $centroids->map(function ($item, $index) {
             return ['index' => $index + 1, 'jumlah_curas' => $item['jumlah_curas']];
         })->sortBy('jumlah_curas')->values();
 
         $centroidToKlaster = [];
-
         foreach ($finalCentroids as $i => $centroid) {
-            // Klaster ID mulai dari 1 (asumsi klaster di DB bernomor 1, 2, 3, ...)
             $centroidToKlaster[$centroid['index']] = $i + 1;
         }
-
 
         // Update ke database
         foreach ($data as $item) {
@@ -101,18 +91,22 @@ class KMeansService
             ]);
         }
 
-
+        // Format centroid awal
         $centroidAwalFormatted = collect($centroidAwal)->values()->map(function ($item, $index) {
             return ['C' . ($index + 1) => $item['jumlah_curas']];
         });
-        
+
+        // Format centroid akhir
+        $centroidAkhirFormatted = $centroids->values()->map(function ($item, $index) {
+            return ['C' . ($index + 1) => $item['jumlah_curas']];
+        });
+
         return [
             'centroid_awal' => $centroidAwalFormatted,
+            'centroid_akhir' => $centroidAkhirFormatted,
             'iterasi' => $iterasi
         ];
-        
     }
-
 
     public function hitungKMeansCuranmor()
     {
@@ -121,23 +115,20 @@ class KMeansService
         $k = Klaster::count('id');
         $maxIterasi = 100;
 
-        $uniqueCount = $data->unique('jumlah_curanmor')->count();
-        if ($uniqueCount < $k) {
-            throw new \Exception("Jumlah nilai unik pada 'jumlah_curanmor' ($uniqueCount) kurang dari jumlah klaster ($k). Pastikan data memiliki variasi yang cukup.");
+        $minValue = $data->min('jumlah_curanmor');
+        $maxValue = $data->max('jumlah_curanmor');
+
+        $generated = collect();
+        while ($generated->count() < $k) {
+            $randomFloat = round(mt_rand($minValue * 100, $maxValue * 100) / 100, 2); 
+            if (!$generated->contains($randomFloat)) {
+                $generated->push($randomFloat);
+            }
         }
 
-        // Ambil centroid awal yang unik
-        $centroids = $data->unique('jumlah_curanmor') // Pastikan nilai unik
-                        ->shuffle()                // Acak
-                        ->take($k)                 // Ambil k data
-                        ->values()
-                        ->map(function ($item) {
-                            return [
-                                'jumlah_curanmor' => $item->jumlah_curanmor,
-                            ];
-                        });
-
-        // Simpan centroid awal sebelum iterasi
+        $centroids = $generated->map(function ($value) {
+            return ['jumlah_curanmor' => $value];
+        });
         $centroidAwal = $centroids->toArray();
 
         $iterasi = [];
@@ -224,42 +215,43 @@ class KMeansService
         $maxK = 10;
         $maxIterasi = 100;
         $elbowData = [];
-    
-        for ($k = 1; $k <= $maxK; $k++) {
-            // Inisialisasi centroid awal secara acak
-            $centroids = $data->unique('jumlah_curas')->shuffle()->take($k)->values()->map(function ($item) {
-                return ['jumlah_curas' => $item->jumlah_curas];
+
+        // Ambil nilai minimum dan maksimum dari jumlah_curas
+        $min = $data->min('jumlah_curas');
+        $max = $data->max('jumlah_curas');
+
+        for ($k = 2; $k <= $maxK; $k++) {
+            // Inisialisasi centroid awal sebagai float acak dalam rentang min-max
+            $centroids = collect(range(1, $k))->map(function () use ($min, $max) {
+                return ['jumlah_curas' => mt_rand($min * 100, $max * 100) / 100];
             });
-    
-            // Simpan centroid awal sebagai array angka
+
             $centroidAwal = $centroids->pluck('jumlah_curas')->toArray();
-    
             $prevAssignment = [];
-    
+
             for ($iter = 0; $iter < $maxIterasi; $iter++) {
                 $clustered = [];
                 $currentAssignment = [];
-    
+
                 foreach ($data as $item) {
                     $jarak = [];
-    
+
                     foreach ($centroids as $idx => $centroid) {
                         $dist = abs($item->jumlah_curas - $centroid['jumlah_curas']);
                         $jarak[$idx] = $dist;
                     }
-    
+
                     $minIndex = array_keys($jarak, min($jarak))[0];
                     $clustered[$minIndex][] = $item;
                     $currentAssignment[$item->id] = $minIndex;
                 }
-    
+
                 if ($currentAssignment === $prevAssignment) {
                     break;
                 }
-    
+
                 $prevAssignment = $currentAssignment;
-    
-                // Update centroid
+
                 foreach ($clustered as $key => $group) {
                     $avg = collect($group)->avg('jumlah_curas');
                     $centroids = $centroids->map(function ($centroid, $idx) use ($key, $avg) {
@@ -269,8 +261,8 @@ class KMeansService
                     });
                 }
             }
-    
-            // Hitung SSE untuk k saat ini
+
+            // Hitung SSE
             $sse = 0;
             foreach ($clustered as $key => $group) {
                 $centroidVal = $centroids[$key]['jumlah_curas'];
@@ -278,20 +270,22 @@ class KMeansService
                     $sse += pow($item->jumlah_curas - $centroidVal, 2);
                 }
             }
-    
+
             $elbowData[] = [
                 'k' => $k,
                 'sse' => $sse,
                 'centroid_awal' => $centroidAwal
             ];
         }
-    
-        // Simpan ke file
+
+        
+
         file_put_contents(
             storage_path('app/public/sse_elbow_curas.json'),
             json_encode($elbowData, JSON_PRETTY_PRINT)
         );
     }
+
     
 
     public function SSEElbowCuranmor()
@@ -301,7 +295,7 @@ class KMeansService
         $maxIterasi = 100;
         $elbowData = [];
     
-        for ($k = 1; $k <= $maxK; $k++) {
+        for ($k = 2; $k <= $maxK; $k++) {
             // Inisialisasi centroid awal secara acak
             $centroids = $data->unique('jumlah_curanmor')->shuffle()->take($k)->values()->map(function ($item) {
                 return ['jumlah_curanmor' => $item->jumlah_curanmor];

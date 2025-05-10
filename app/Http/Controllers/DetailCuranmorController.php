@@ -6,6 +6,7 @@ use App\Models\Curanmor;
 use Illuminate\Http\Request;
 use App\Models\Detail_Curanmor;
 use App\Services\KMeansService;
+use Illuminate\Support\Facades\DB;
 
 class DetailCuranmorController extends Controller
 {
@@ -65,6 +66,8 @@ class DetailCuranmorController extends Controller
     public function destroy($id)
     {
         try {
+
+            DB::beginTransaction();
             $detail = Detail_Curanmor::findOrFail($id);
 
             $curanmor = Curanmor::findOrFail($detail->curanmor_id);
@@ -89,8 +92,12 @@ class DetailCuranmorController extends Controller
             $serviceSSECuranmor = new KMeansService();
             $serviceSSECuranmor->SSEElbowCuranmor();
 
+            DB::commit();
+
             return redirect('/dashboard/detail-curanmor')->with('succes', 'Data berhasil dihapus dan curanmor diperbarui.');
         } catch (\Exception $e) {
+
+            DB::rollback();
             return redirect('/dashboard/detail-curanmor')->with('error', 'Terjadi kesalahan Ketika Menghapus Data : ' . $e->getMessage());
         }
     }
