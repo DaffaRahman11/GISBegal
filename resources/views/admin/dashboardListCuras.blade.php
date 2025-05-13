@@ -11,7 +11,8 @@
                     </div>
                     <a href="/dashboard/curas/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kasus Curas</a>
                 </div>
-                @if (session()->has('succes'))
+            </div>
+            @if (session()->has('succes'))
                 <div class="alert alert-success" role="alert">
                     {{ session('succes') }}
                 </div>
@@ -21,7 +22,7 @@
                     {{ session('error') }}
                 </div>
             @endif
-            </div>
+
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
                 <table class="data-table table mb-0 tbl-server-info">

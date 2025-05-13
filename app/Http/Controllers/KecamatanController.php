@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Kecamatan;
 use Illuminate\Http\Request;
+use App\Services\KMeansService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Crypt;
 
 class KecamatanController extends Controller
@@ -30,14 +32,28 @@ class KecamatanController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = $request->validate([
+            'nama_kecamatan' =>'required|max:255|unique:kecamatans,nama_kecamatan',
+        ]);
+
         try{
-            $validateData = $request->validate([
-                'nama_kecamatan' =>'required|max:255|unique:kecamatans,nama_kecamatan',
-            ]);
-    
+            DB::beginTransaction();
             Kecamatan::create($validateData);
+
+            $serviceKMeans = new KMeansService();
+            $serviceKMeans->SSEElbowCuranmor();
+            $serviceKMeans->SSEElbowCuras();
+    
+            $hasilKMeansCuras = $serviceKMeans->hitungKMeansCuras();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasilKMeansCuras));
+    
+            $hasilKMeansCuranmor = $serviceKMeans->hitungKMeansCuranmor();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasilKMeansCuranmor));
+
+            DB::commit();
             return redirect('/dashboard/kecamatan')->with('succes', 'Berhasil Menambahkan Data Kecamatan Baru');
         }catch (\Exception $e){
+            DB::rollBack();
             return redirect('/dashboard/kecamatan')->with('error', 'Gagal Menambahkan Data Kecamatan Baru');
         }
         
@@ -71,14 +87,28 @@ class KecamatanController extends Controller
      */
     public function update(Request $request, Kecamatan $kecamatan)
     {
+        $validateData = $request->validate([
+            'nama_kecamatan' =>'required|max:255|unique:kecamatans,nama_kecamatan',
+        ]);
+
         try{
-            $validateData = $request->validate([
-                'nama_kecamatan' =>'required|max:255|unique:kecamatans,nama_kecamatan',
-            ]);
-    
+            DB::beginTransaction();
             Kecamatan::where('id', $kecamatan->id)->update($validateData);
+
+            $serviceKMeans = new KMeansService();
+            $serviceKMeans->SSEElbowCuranmor();
+            $serviceKMeans->SSEElbowCuras();
+    
+            $hasilKMeansCuras = $serviceKMeans->hitungKMeansCuras();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasilKMeansCuras));
+    
+            $hasilKMeansCuranmor = $serviceKMeans->hitungKMeansCuranmor();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasilKMeansCuranmor));
+
+            DB::commit();
             return redirect('/dashboard/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Ubah');
         }catch (\Exception $e){
+            DB::rollBack();
             return redirect('/dashboard/kecamatan')->with('error', 'Data Kecamatan Gagal Di Ubah');
         }
         
@@ -91,10 +121,24 @@ class KecamatanController extends Controller
     public function destroy(Kecamatan $kecamatan)
     {
         try{
+            DB::beginTransaction();
             Kecamatan::destroy($kecamatan->id);
+
+            $serviceKMeans = new KMeansService();
+            $serviceKMeans->SSEElbowCuranmor();
+            $serviceKMeans->SSEElbowCuras();
+    
+            $hasilKMeansCuras = $serviceKMeans->hitungKMeansCuras();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curas.json'), json_encode($hasilKMeansCuras));
+    
+            $hasilKMeansCuranmor = $serviceKMeans->hitungKMeansCuranmor();
+            file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasilKMeansCuranmor));
+
+            DB::commit();
             return redirect('/dashboard/kecamatan')->with('succes', 'Data Kecamatan Berhasil Di Hapus');
 
         }catch (\Exception $e){
+            DB::rollBack();
             return redirect('/dashboard/kecamatan')->with('error', 'Data Kecamatan '. $kecamatan->nama_kecamatan .' Gagal Di Hapus | Hapus Data Curas Atau Curanmor Untuk Kecamatan '. $kecamatan->nama_kecamatan.' Terlebih Dahulu');
         }
         

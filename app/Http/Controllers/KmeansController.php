@@ -13,23 +13,14 @@ class KmeansController extends Controller
     {
         $data = Curas::select('id', 'kecamatan_id', 'klaster_id', 'jumlah_curas')->orderBy('jumlah_curas', 'asc')->get();
 
-        $k = Klaster::count('id');
         $maxIterasi = 100;
 
-        $uniqueCount = $data->unique('jumlah_curas')->count();
-        if ($uniqueCount < $k) {
-            throw new \Exception("Jumlah nilai unik pada 'jumlah_curas' ($uniqueCount) kurang dari jumlah klaster ($k). Pastikan data memiliki variasi yang cukup.");
-        }
 
-        // Ambil centroid awal yang unik
-        // Gunakan centroid tetap
-
-        $centroidValues = [0, 1, 3];
-        $centroids = collect($centroidValues)->map(function ($val) {
-            return ['jumlah_curas' => $val];
+        $centroidManual = [0, 1, 3]; 
+        $centroids = collect($centroidManual)->map(function ($value) {
+            return ['C' => $value];
         });
 
-        // Simpan centroid awal sebelum iterasi
         $centroidAwal = $centroids->toArray();
 
         $iterasi = [];
@@ -43,13 +34,13 @@ class KmeansController extends Controller
                 $jarak = [];
 
                 foreach ($centroids as $idx => $centroid) {
-                    $dist = abs($item->jumlah_curas - $centroid['jumlah_curas']);
+                    $dist = abs($item->jumlah_curas - $centroid['C']);
                     $jarak["C" . ($idx + 1)] = $dist;
                 }
 
                 $iterasi[$i][] = array_merge(['kecamatan_id' => $item->kecamatan_id], $jarak);
 
-                $minIndex = array_keys($jarak, min($jarak))[0]; // e.g. "jarakC2"
+                $minIndex = array_keys($jarak, min($jarak))[0];
                 $clusterNumber = (int) str_replace("C", "", $minIndex);
 
                 $clustered[$clusterNumber][] = $item;
@@ -57,65 +48,64 @@ class KmeansController extends Controller
                 $currentAssignment[$item->id] = $clusterNumber;
             }
 
-            // ✨ Cek konvergensi: jika assignment sekarang == sebelumnya, break
             if ($currentAssignment === $prevAssignment) {
                 break;
             }
 
             $prevAssignment = $currentAssignment;
 
-            
-
             // Update centroid berdasarkan rata-rata
             foreach ($clustered as $key => $group) {
                 $avg = collect($group)->avg('jumlah_curas');
                 $centroids = $centroids->map(function ($item, $index) use ($key, $avg) {
                     return $index === ($key - 1)
-                        ? ['jumlah_curas' => $avg]
+                        ? ['C' => $avg]
                         : $item;
                 });
             }
         }
-        
 
-        // Final mapping centroid ke klaster_id (aman/sedang/rawan)
+        // Final mapping centroid ke klaster_id
         $finalCentroids = $centroids->map(function ($item, $index) {
-            return ['index' => $index + 1, 'jumlah_curas' => $item['jumlah_curas']];
-        })->sortBy('jumlah_curas')->values();
+            return ['index' => $index + 1, 'C' => $item['C']];
+        })->sortBy('C')->values();
 
-        $centroidToKlaster = [];
+        $availableKlasterIDs = Klaster::orderBy('id', 'asc')->pluck('id')->values();
 
         foreach ($finalCentroids as $i => $centroid) {
-            // Klaster ID mulai dari 1 (asumsi klaster di DB bernomor 1, 2, 3, ...)
-            $centroidToKlaster[$centroid['index']] = $i + 1;
+            $centroidToKlaster[$centroid['index']] = $availableKlasterIDs[$i];
         }
 
-
-        // Update ke database
         foreach ($data as $item) {
             Curas::where('id', $item->id)->update([
                 'klaster_id' => $centroidToKlaster[$item->temp_klaster],
             ]);
         }
 
-
+        // Format centroid awal
         $centroidAwalFormatted = collect($centroidAwal)->values()->map(function ($item, $index) {
-            return ['C' . ($index + 1) => $item['jumlah_curas']];
+            return ['C' . ($index + 1) => $item['C']];
         });
-        
 
-        $hasil = [
+        // Format centroid akhir
+        $centroidAkhirFormatted = $centroids->values()->map(function ($item, $index) {
+            return ['C' . ($index + 1) => $item['C']];
+        });
+
+        $hasilKMeansCuras = [
             'centroid_awal' => $centroidAwalFormatted,
+            'centroid_akhir' => $centroidAkhirFormatted,
             'iterasi' => $iterasi
         ];
-        
+
         file_put_contents(
             storage_path('app/public/hasil_kmeans_curas.json'),
-            json_encode($hasil, JSON_PRETTY_PRINT)
+            json_encode($hasilKMeansCuras, JSON_PRETTY_PRINT)
         );
 
+
         return redirect('/dashboard/TampilHitungCuras');
-        
+
     }
 
 
@@ -123,20 +113,13 @@ class KmeansController extends Controller
     {
         $data = Curanmor::select('id', 'kecamatan_id', 'klaster_id', 'jumlah_curanmor')->orderBy('jumlah_curanmor', 'asc')->get();
 
-        $k = Klaster::count('id');
         $maxIterasi = 100;
 
-        $uniqueCount = $data->unique('jumlah_curanmor')->count();
-        if ($uniqueCount < $k) {
-            throw new \Exception("Jumlah nilai unik pada 'jumlah_curanmor' ($uniqueCount) kurang dari jumlah klaster ($k). Pastikan data memiliki variasi yang cukup.");
-        }
-
-        $centroidValues = [10, 20, 30];
-        $centroids = collect($centroidValues)->map(function ($val) {
-            return ['jumlah_curanmor' => $val];
+        $centroidManual = [10, 20, 30]; 
+        $centroids = collect($centroidManual)->map(function ($value) {
+            return ['C' => $value];
         });
 
-        // Simpan centroid awal sebelum iterasi
         $centroidAwal = $centroids->toArray();
 
         $iterasi = [];
@@ -148,82 +131,84 @@ class KmeansController extends Controller
 
             foreach ($data as $item) {
                 $jarak = [];
-            
+
                 foreach ($centroids as $idx => $centroid) {
-                    // Menggunakan Euclidean distance standar (akar kuadrat dari selisih kuadrat)
-                    $dist = sqrt(pow($item->jumlah_curanmor - $centroid['jumlah_curanmor'], 2));
+                    $dist = abs($item->jumlah_curanmor - $centroid['C']);
                     $jarak["C" . ($idx + 1)] = $dist;
                 }
-            
+
                 $iterasi[$i][] = array_merge(['kecamatan_id' => $item->kecamatan_id], $jarak);
-            
-                $minIndex = array_keys($jarak, min($jarak))[0]; // e.g. "jarakC2"
+
+                $minIndex = array_keys($jarak, min($jarak))[0];
                 $clusterNumber = (int) str_replace("C", "", $minIndex);
-            
+
                 $clustered[$clusterNumber][] = $item;
                 $item->temp_klaster = $clusterNumber;
                 $currentAssignment[$item->id] = $clusterNumber;
             }
-            
 
-            // ✨ Cek konvergensi: jika assignment sekarang == sebelumnya, break
             if ($currentAssignment === $prevAssignment) {
                 break;
             }
 
             $prevAssignment = $currentAssignment;
 
-            
-
             // Update centroid berdasarkan rata-rata
             foreach ($clustered as $key => $group) {
                 $avg = collect($group)->avg('jumlah_curanmor');
                 $centroids = $centroids->map(function ($item, $index) use ($key, $avg) {
                     return $index === ($key - 1)
-                        ? ['jumlah_curanmor' => $avg]
+                        ? ['C' => $avg]
                         : $item;
                 });
             }
         }
-        
 
-        // Final mapping centroid ke klaster_id (aman/sedang/rawan)
+        // Final mapping centroid ke klaster_id
         $finalCentroids = $centroids->map(function ($item, $index) {
-            return ['index' => $index + 1, 'jumlah_curanmor' => $item['jumlah_curanmor']];
-        })->sortBy('jumlah_curanmor')->values();
+            return ['index' => $index + 1, 'C' => $item['C']];
+        })->sortBy('C')->values();
 
-        $centroidToKlaster = [];
+        $availableKlasterIDs = Klaster::orderBy('id', 'asc')->pluck('id')->values();
 
         foreach ($finalCentroids as $i => $centroid) {
-            // Klaster ID mulai dari 1 (asumsi klaster di DB bernomor 1, 2, 3, ...)
-            $centroidToKlaster[$centroid['index']] = $i + 1;
+            $centroidToKlaster[$centroid['index']] = $availableKlasterIDs[$i];
         }
 
 
         // Update ke database
+
+
+
         foreach ($data as $item) {
             Curanmor::where('id', $item->id)->update([
                 'klaster_id' => $centroidToKlaster[$item->temp_klaster],
             ]);
         }
 
-
+        // Format centroid awal
         $centroidAwalFormatted = collect($centroidAwal)->values()->map(function ($item, $index) {
-            return ['C' . ($index + 1) => $item['jumlah_curanmor']];
+            return ['C' . ($index + 1) => $item['C']];
         });
-        
-        $hasil = [
+
+        // Format centroid akhir
+        $centroidAkhirFormatted = $centroids->values()->map(function ($item, $index) {
+            return ['C' . ($index + 1) => $item['C']];
+        });
+
+        $hasilKMeansCuranmor = [
             'centroid_awal' => $centroidAwalFormatted,
+            'centroid_akhir' => $centroidAkhirFormatted,
             'iterasi' => $iterasi
         ];
-        
+
         file_put_contents(
             storage_path('app/public/hasil_kmeans_curanmor.json'),
-            json_encode($hasil, JSON_PRETTY_PRINT)
+            json_encode($hasilKMeansCuranmor, JSON_PRETTY_PRINT)
         );
 
+
         return redirect('/dashboard/TampilHitungCuranmor');
-        
     }
 
 }

@@ -13,15 +13,15 @@
                 </div>
             </div>
             @if (session()->has('succes'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('succes') }}
-                    </div>
-                @endif
-                @if (session()->has('error'))
-                    <div class="alert alert-danger" role="alert">
-                        {{ session('error') }}
-                    </div>
-                @endif
+                <div class="alert alert-success" role="alert">
+                    {{ session('succes') }}
+                </div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
+                </div>
+            @endif
             <div class="col-lg-12">
                 <div class="table-responsive rounded mb-3">
                 <table class="data-table table mb-0 tbl-server-info">

@@ -5213,12 +5213,11 @@ if (jQuery("#editor").length) {
       valueAxis.title.text = "Nilai SSE";
 
       let lineSeries = chart.series.push(new am4charts.LineSeries());
-      
       lineSeries.dataFields.valueY = "sse";
       lineSeries.dataFields.categoryX = "k";
       lineSeries.name = "SSE";
       lineSeries.strokeWidth = 2;
-      lineSeries.tooltipText = "K={categoryX}\nSSE={valueY}\nCentroid Awal: {centroid_awal}";
+      lineSeries.tooltipText = "K={categoryX}\nSSE={valueY}";  // Tooltip tanpa centroid_awal
       lineSeries.tensionX = 1;
 
       let bullet = lineSeries.bullets.push(new am4charts.CircleBullet());
@@ -5236,20 +5235,19 @@ if (jQuery("#editor").length) {
         fetch(`/storage/sse_elbow_${type}.json`)
           .then(response => response.json())
           .then(data => {
+            // Format data untuk chart
             chart.data = data.map(item => ({
               k: item.k,
-              sse: item.sse,
-              centroid_awal: item.centroid_awal.join(", ")
+              sse: item.sse
             }));
             console.log("Data yang dimuat ke chart:", chart.data);
-
           });
       }
 
-      // Load data default saat pertama kali (curas)
+      // Load data default saat pertama kali (curanmor)
       loadChartData('curanmor');
 
-      // Event listener dropdown
+      // Event listener dropdown untuk memilih tipe data
       document.querySelectorAll('.chart-option').forEach(item => {
         item.addEventListener('click', function(e) {
           e.preventDefault();
