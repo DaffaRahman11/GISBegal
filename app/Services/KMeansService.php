@@ -15,7 +15,6 @@ class KMeansService
         $k = Klaster::count('id');
         $maxIterasi = 100;
 
-        // Ambil centroid awal yang unik
         $minValue = $data->min('jumlah_curas');
         $maxValue = $data->max('jumlah_curas');
 
@@ -88,9 +87,6 @@ class KMeansService
 
 
         // Update ke database
-
-
-
         foreach ($data as $item) {
             Curas::where('id', $item->id)->update([
                 'klaster_id' => $centroidToKlaster[$item->temp_klaster],
@@ -232,9 +228,17 @@ class KMeansService
 
         // Loop untuk setiap nilai k dari 2 hingga maxK
         for ($k = 2; $k <= $maxK; $k++) {
-            $centroids = collect(range(1, $k))->map(function () use ($min, $max) {
-                return ['jumlah_curanmor' => mt_rand($min, $max)];
-            });
+            $usedValues = [];
+            $centroids = collect();
+
+            while ($centroids->count() < $k) {
+                $randVal = mt_rand($min, $max);
+                if (!in_array($randVal, $usedValues)) {
+                    $centroids->push(['jumlah_curanmor' => $randVal]);
+                    $usedValues[] = $randVal;
+                }
+            }
+
 
             $prevAssignment = [];
 
@@ -301,7 +305,7 @@ class KMeansService
     public function SSEElbowCuras()
     {
         $data = Curas::select('id', 'jumlah_curas')->get();
-        $maxK = 10;
+        $maxK = 4;
         $maxIterasi = 100;
         $elbowData = [];
 
@@ -310,9 +314,17 @@ class KMeansService
 
         // Loop untuk setiap nilai k dari 2 hingga maxK
         for ($k = 2; $k <= $maxK; $k++) {
-            $centroids = collect(range(1, $k))->map(function () use ($min, $max) {
-                return ['jumlah_curas' => mt_rand($min, $max)];
-            });
+            $usedValues = [];
+            $centroids = collect();
+
+            while ($centroids->count() < $k) {
+                $randVal = mt_rand($min, $max);
+                if (!in_array($randVal, $usedValues)) {
+                    $centroids->push(['jumlah_curas' => $randVal]);
+                    $usedValues[] = $randVal;
+                }
+            }
+
 
             $prevAssignment = [];
 

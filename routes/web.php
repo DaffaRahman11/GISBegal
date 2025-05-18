@@ -14,6 +14,7 @@ use App\Http\Controllers\DetailCuranmorController;
 use App\Http\Controllers\TampilHitunganController;
 
 // Route Landing
+Route::get('/kmeans', [LandingController::class, 'runKmeans']);
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/blank', function () {
     return view('admin.dashboardBlank');
