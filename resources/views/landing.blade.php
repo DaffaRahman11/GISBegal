@@ -1434,6 +1434,47 @@
                 </div>
               </div>
             </div>
+            <div class="col-lg-3 col-md-6">
+              <div class="team-box">
+                <div class="team-img text-center">
+                  <img
+                    src="{{ asset('assets/assetLanding/images/team/zahra.jpg') }}"
+                    class="img-fluid rounded-circle"
+                    alt="image"
+                  />
+                </div>
+                <div class="team-detail">
+                  <a class="team-plus" href="#"><i class="fas fa-plus"></i></a>
+                  <div class="team-info">
+                    <h6 class="mb-0 text-white">
+                      <a href="">Fatimatuzzahra <br></a>
+                    </h6>
+                    <span class="mb-0 text-white text-gray iq-fw-4"
+                      >ANGGOTA PENGUJI</span
+                    >
+                  </div>
+                </div>
+                <div class="team-hover">
+                  <p>
+                    Dosen Politeknik Negeri Jember Program Studi D4 Teknik Informatika. Berperan sebagai Anggota Penguji pada Web SIG Pemetaan Daerah Rawan Curas dan Curanmor
+                  </p>
+                  <ul class="list-inline">
+                    <li class="list-inline-item">
+                      <a href="#sectionOurTeam"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#sectionOurTeam"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#sectionOurTeam"><i class="fab fa-linkedin-in"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="#sectionOurTeam"><i class="fab fa-instagram"></i></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
             
           </div>
         </div>

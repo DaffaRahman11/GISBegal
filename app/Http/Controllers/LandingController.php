@@ -25,6 +25,9 @@ class LandingController extends Controller
         $serviceKMeans = new KMeansService();
         $serviceKMeans->SSEElbowCuranmor();
         $serviceKMeans->SSEElbowCuras();
+        $serviceKMeans->hitungDBSCANManual();
+        $serviceKMeans->kmeansWithSilhouetteSingleMethod();
+        
 
         $serviceKMeansCuras = new KMeansService();
         $hasilKMeansCuras = $serviceKMeansCuras->hitungKMeansCuras();
