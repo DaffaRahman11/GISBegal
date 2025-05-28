@@ -37,7 +37,7 @@ class LandingController extends Controller
         $hasilKMeansCuranmor = $serviceKmeansCuranmor->hitungKMeansCuranmor();
         file_put_contents(storage_path('app/public/hasil_kmeans_curanmor.json'), json_encode($hasilKMeansCuranmor));
 
-    return redirect('/dashboard/curanmor');
+    return redirect('/dashboard');
 }
 
 

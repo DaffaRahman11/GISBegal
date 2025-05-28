@@ -13,7 +13,7 @@ class KmeansController extends Controller
     public function KMeansCuras()
     {
         $data = Curas::select('id', 'kecamatan_id', 'klaster_id', 'jumlah_curas')
-            ->orderBy('kecamatan_id', 'asc')->get();
+            ->orderBy('jumlah_curas', 'asc')->get();
 
         // Hitung min dan max untuk normalisasi
         $min = $data->min('jumlah_curas');
@@ -123,12 +123,11 @@ class KmeansController extends Controller
         return redirect('/dashboard/TampilHitungCuras');
     }
 
-
     public function KMeansCuranmor()
     {
         // Ambil data awal
         $data = Curanmor::select('id', 'kecamatan_id', 'klaster_id', 'jumlah_curanmor')
-            ->orderBy('kecamatan_id', 'asc')->get();
+            ->orderBy('jumlah_curanmor', 'asc')->get();
 
         // Hitung min dan max untuk normalisasi Min-Max
         $min = $data->min('jumlah_curanmor');

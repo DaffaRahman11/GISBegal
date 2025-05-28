@@ -10,7 +10,7 @@
                          Kabupaten Probolinggo. </p>
                     </div>
                     
-                    <a href="/dashboard/kecamatan/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kecamatan</a>
+                    {{-- <a href="/dashboard/kecamatan/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Kecamatan</a> --}}
                 </div>
                 @if (session()->has('succes'))
                     <div class="alert alert-success" role="alert">
@@ -36,7 +36,7 @@
                             </th>
                             <th>No</th>
                             <th class="text-center">Nama Kecamatan</th>
-                            <th>Action</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     @foreach ( $kecamatans as $kecamatan )
@@ -50,7 +50,7 @@
                             </td>
                             <td>{{ $kecamatan -> id }}</td>
                             <td>{{ $kecamatan -> nama_kecamatan }}</td>
-                            <td class="text-center">
+                            {{-- <td class="text-center">
                                 <div class="d-flex align-items-center list-action">
                                     <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" 
                                         href="/dashboard/kecamatan/{{ $kecamatan ->id}}/edit"><i class="ri-pencil-line mr-0"></i></a>
@@ -61,7 +61,7 @@
                                         
                                     </form>
                                 </div>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
                     @endforeach

@@ -9,7 +9,6 @@
                         <p class="mb-0">Berikut merupakan data Klaster atau Kategori yang dijadikan sebagai acuan pemetaan.<br>
                          Ingat dalam pengisian data klaster, kategori aman atau rendah dimulai dari id 1</p>
                     </div>
-                    <a href="/dashboard/klaster/create" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Tambah Klaster</a>
                 </div>
             </div>
             @if (session()->has('succes'))
@@ -36,7 +35,7 @@
                             <th>id</th>
                             <th>Nama Klaster</th>
                             <th>Warna</th>
-                            <th>Action</th>
+                            {{-- <th>Action</th> --}}
                         </tr>
                     </thead>
                     @foreach ( $klasters as $klaster )
@@ -51,7 +50,7 @@
                             <td>{{ $klaster -> id }}</td>
                             <td>{{ $klaster -> nama_klaster }}</td>
                             <td style="background-color: {{ $klaster->warna }}" >{{ $klaster -> warna }}</td>
-                            <td>
+                            {{-- <td>
                                 <div class="d-flex align-items-center list-action">
                                     <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" 
                                         href="/dashboard/klaster/{{ $klaster->id }}/edit"><i class="ri-pencil-line mr-0"></i></a>
@@ -62,7 +61,7 @@
                                             
                                         </form>
                                 </div>
-                            </td>
+                            </td> --}}
                         </tr>
                     </tbody>
                     @endforeach
